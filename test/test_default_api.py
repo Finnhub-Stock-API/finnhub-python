@@ -133,20 +133,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_economic_code(self):
-        """Test case for economic_code
-
-        Economic Code  # noqa: E501
-        """
-        pass
-
-    def test_economic_data(self):
-        """Test case for economic_data
-
-        Economic Data  # noqa: E501
-        """
-        pass
-
     def test_filings(self):
         """Test case for filings
 
@@ -231,13 +217,6 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
-    def test_merger(self):
-        """Test case for merger
-
-        Merger & Acquisitions  # noqa: E501
-        """
-        pass
-
     def test_news_sentiment(self):
         """Test case for news_sentiment
 
@@ -284,13 +263,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for stock_dividends
 
         Dividends  # noqa: E501
-        """
-        pass
-
-    def test_stock_exchanges(self):
-        """Test case for stock_exchanges
-
-        Stock Exchanges  # noqa: E501
         """
         pass
 

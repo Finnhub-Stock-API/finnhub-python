@@ -111,8 +111,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**crypto_exchanges**](docs/DefaultApi.md#crypto_exchanges) | **GET** /crypto/exchange | Crypto Exchanges
 *DefaultApi* | [**crypto_symbols**](docs/DefaultApi.md#crypto_symbols) | **GET** /crypto/symbol | Crypto Symbol
 *DefaultApi* | [**earnings_calendar**](docs/DefaultApi.md#earnings_calendar) | **GET** /calendar/earnings | Earnings Calendar
-*DefaultApi* | [**economic_code**](docs/DefaultApi.md#economic_code) | **GET** /economic/code | Economic Code
-*DefaultApi* | [**economic_data**](docs/DefaultApi.md#economic_data) | **GET** /economic | Economic Data
 *DefaultApi* | [**filings**](docs/DefaultApi.md#filings) | **GET** /stock/filings | Filings
 *DefaultApi* | [**financials**](docs/DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
 *DefaultApi* | [**financials_reported**](docs/DefaultApi.md#financials_reported) | **GET** /stock/financials-reported | Financials As Reported
@@ -125,7 +123,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**investors_ownership**](docs/DefaultApi.md#investors_ownership) | **GET** /stock/investor-ownership | Investors Ownership
 *DefaultApi* | [**ipo_calendar**](docs/DefaultApi.md#ipo_calendar) | **GET** /calendar/ipo | IPO Calendar
 *DefaultApi* | [**major_developments**](docs/DefaultApi.md#major_developments) | **GET** /major-development | Major Developments
-*DefaultApi* | [**merger**](docs/DefaultApi.md#merger) | **GET** /merger | Merger &amp; Acquisitions
 *DefaultApi* | [**news_sentiment**](docs/DefaultApi.md#news_sentiment) | **GET** /news-sentiment | News Sentiment
 *DefaultApi* | [**pattern_recognition**](docs/DefaultApi.md#pattern_recognition) | **GET** /scan/pattern | Pattern Recognition
 *DefaultApi* | [**price_target**](docs/DefaultApi.md#price_target) | **GET** /stock/price-target | Price Target
@@ -133,7 +130,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**recommendation_trends**](docs/DefaultApi.md#recommendation_trends) | **GET** /stock/recommendation | Recommendation Trends
 *DefaultApi* | [**stock_candles**](docs/DefaultApi.md#stock_candles) | **GET** /stock/candle | Stock Candles
 *DefaultApi* | [**stock_dividends**](docs/DefaultApi.md#stock_dividends) | **GET** /stock/dividend | Dividends
-*DefaultApi* | [**stock_exchanges**](docs/DefaultApi.md#stock_exchanges) | **GET** /stock/exchange | Stock Exchanges
 *DefaultApi* | [**stock_splits**](docs/DefaultApi.md#stock_splits) | **GET** /stock/split | Splits
 *DefaultApi* | [**stock_symbols**](docs/DefaultApi.md#stock_symbols) | **GET** /stock/symbol | Stock Symbol
 *DefaultApi* | [**stock_tick**](docs/DefaultApi.md#stock_tick) | **GET** /stock/tick | Tick Data
@@ -163,9 +159,6 @@ Class | Method | HTTP request | Description
  - [EarningsCallTranscripts](docs/EarningsCallTranscripts.md)
  - [EarningsCallTranscriptsList](docs/EarningsCallTranscriptsList.md)
  - [EarningsEstimates](docs/EarningsEstimates.md)
- - [Economic](docs/Economic.md)
- - [EconomicCalendar](docs/EconomicCalendar.md)
- - [EconomicCode](docs/EconomicCode.md)
  - [Estimate](docs/Estimate.md)
  - [Filing](docs/Filing.md)
  - [FinancialStatements](docs/FinancialStatements.md)
@@ -179,7 +172,6 @@ Class | Method | HTTP request | Description
  - [Investor](docs/Investor.md)
  - [InvestorsOwnership](docs/InvestorsOwnership.md)
  - [MajorDevelopments](docs/MajorDevelopments.md)
- - [MergerCountry](docs/MergerCountry.md)
  - [Metrics](docs/Metrics.md)
  - [News](docs/News.md)
  - [NewsSentiment](docs/NewsSentiment.md)
@@ -188,10 +180,10 @@ Class | Method | HTTP request | Description
  - [RecommendationTrends](docs/RecommendationTrends.md)
  - [Report](docs/Report.md)
  - [RevenueEstimates](docs/RevenueEstimates.md)
+ - [Sentiment](docs/Sentiment.md)
  - [Splits](docs/Splits.md)
  - [Stock](docs/Stock.md)
  - [StockCandles](docs/StockCandles.md)
- - [StockExchange](docs/StockExchange.md)
  - [StockTranscripts](docs/StockTranscripts.md)
  - [TechnicalAnalysis](docs/TechnicalAnalysis.md)
  - [TechnicalIndicators](docs/TechnicalIndicators.md)

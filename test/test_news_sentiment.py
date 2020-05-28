@@ -43,19 +43,9 @@ class TestNewsSentiment(unittest.TestCase):
                 company_news_score = 1.337, 
                 sector_average_bullish_percent = 1.337, 
                 sector_average_news_score = 1.337, 
-                sentiment = finnhub.models.news_sentiment.NewsSentiment(
-                    buzz = finnhub.models.company_news_statistics.CompanyNewsStatistics(
-                        articles_in_last_week = 56, 
-                        weekly_average = 1.337, ), 
-                    company_news_score = 1.337, 
-                    sector_average_bullish_percent = 1.337, 
-                    sector_average_news_score = 1.337, 
-                    sentiment = finnhub.models.news_sentiment.NewsSentiment(
-                        company_news_score = 1.337, 
-                        sector_average_bullish_percent = 1.337, 
-                        sector_average_news_score = 1.337, 
-                        symbol = '0', ), 
-                    symbol = '0', ), 
+                sentiment = finnhub.models.sentiment.Sentiment(
+                    bearish_percent = 56, 
+                    bullish_percent = 56, ), 
                 symbol = '0'
             )
         else :

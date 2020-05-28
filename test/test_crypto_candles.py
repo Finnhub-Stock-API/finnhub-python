@@ -36,12 +36,24 @@ class TestCryptoCandles(unittest.TestCase):
         # model = finnhub.models.crypto_candles.CryptoCandles()  # noqa: E501
         if include_optional :
             return CryptoCandles(
-                o = 1.337, 
-                h = 1.337, 
-                l = 1.337, 
-                c = 1.337, 
-                v = 1.337, 
-                t = 56, 
+                o = [
+                    1.337
+                    ], 
+                h = [
+                    1.337
+                    ], 
+                l = [
+                    1.337
+                    ], 
+                c = [
+                    1.337
+                    ], 
+                v = [
+                    1.337
+                    ], 
+                t = [
+                    56
+                    ], 
                 s = '0'
             )
         else :

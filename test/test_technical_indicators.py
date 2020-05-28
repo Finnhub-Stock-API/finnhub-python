@@ -36,12 +36,24 @@ class TestTechnicalIndicators(unittest.TestCase):
         # model = finnhub.models.technical_indicators.TechnicalIndicators()  # noqa: E501
         if include_optional :
             return TechnicalIndicators(
-                o = 1.337, 
-                h = 1.337, 
-                l = 1.337, 
-                c = 1.337, 
-                v = 1.337, 
-                t = 56, 
+                o = [
+                    1.337
+                    ], 
+                h = [
+                    1.337
+                    ], 
+                l = [
+                    1.337
+                    ], 
+                c = [
+                    1.337
+                    ], 
+                v = [
+                    1.337
+                    ], 
+                t = [
+                    56
+                    ], 
                 s = '0'
             )
         else :

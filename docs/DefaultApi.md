@@ -19,8 +19,6 @@ Method | HTTP request | Description
 [**crypto_exchanges**](DefaultApi.md#crypto_exchanges) | **GET** /crypto/exchange | Crypto Exchanges
 [**crypto_symbols**](DefaultApi.md#crypto_symbols) | **GET** /crypto/symbol | Crypto Symbol
 [**earnings_calendar**](DefaultApi.md#earnings_calendar) | **GET** /calendar/earnings | Earnings Calendar
-[**economic_code**](DefaultApi.md#economic_code) | **GET** /economic/code | Economic Code
-[**economic_data**](DefaultApi.md#economic_data) | **GET** /economic | Economic Data
 [**filings**](DefaultApi.md#filings) | **GET** /stock/filings | Filings
 [**financials**](DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
 [**financials_reported**](DefaultApi.md#financials_reported) | **GET** /stock/financials-reported | Financials As Reported
@@ -33,7 +31,6 @@ Method | HTTP request | Description
 [**investors_ownership**](DefaultApi.md#investors_ownership) | **GET** /stock/investor-ownership | Investors Ownership
 [**ipo_calendar**](DefaultApi.md#ipo_calendar) | **GET** /calendar/ipo | IPO Calendar
 [**major_developments**](DefaultApi.md#major_developments) | **GET** /major-development | Major Developments
-[**merger**](DefaultApi.md#merger) | **GET** /merger | Merger &amp; Acquisitions
 [**news_sentiment**](DefaultApi.md#news_sentiment) | **GET** /news-sentiment | News Sentiment
 [**pattern_recognition**](DefaultApi.md#pattern_recognition) | **GET** /scan/pattern | Pattern Recognition
 [**price_target**](DefaultApi.md#price_target) | **GET** /stock/price-target | Price Target
@@ -41,7 +38,6 @@ Method | HTTP request | Description
 [**recommendation_trends**](DefaultApi.md#recommendation_trends) | **GET** /stock/recommendation | Recommendation Trends
 [**stock_candles**](DefaultApi.md#stock_candles) | **GET** /stock/candle | Stock Candles
 [**stock_dividends**](DefaultApi.md#stock_dividends) | **GET** /stock/dividend | Dividends
-[**stock_exchanges**](DefaultApi.md#stock_exchanges) | **GET** /stock/exchange | Stock Exchanges
 [**stock_splits**](DefaultApi.md#stock_splits) | **GET** /stock/split | Splits
 [**stock_symbols**](DefaultApi.md#stock_symbols) | **GET** /stock/symbol | Stock Symbol
 [**stock_tick**](DefaultApi.md#stock_tick) | **GET** /stock/tick | Tick Data
@@ -1237,156 +1233,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **economic_code**
-> list[EconomicCode] economic_code()
-
-Economic Code
-
-List codes of supported economic data.
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://finnhub.io/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1",
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    
-    try:
-        # Economic Code
-        api_response = api_instance.economic_code()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->economic_code: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**list[EconomicCode]**](EconomicCode.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **economic_data**
-> list[Economic] economic_data(code)
-
-Economic Data
-
-Get economic data.
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://finnhub.io/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1",
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    code = 'code_example' # str | Economic code.
-
-    try:
-        # Economic Data
-        api_response = api_instance.economic_data(code)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->economic_data: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Economic code. | 
-
-### Return type
-
-[**list[Economic]**](Economic.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **filings**
 > list[Filing] filings(symbol=symbol, cik=cik, access_number=access_number)
 
@@ -1791,7 +1637,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forex_rates**
-> Forexrates forex_rates()
+> Forexrates forex_rates(base=base)
 
 Forex rates
 
@@ -1831,17 +1677,21 @@ configuration = finnhub.Configuration(
 with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
-    
+    base = 'base_example' # str | Base currency. Default to EUR. (optional)
+
     try:
         # Forex rates
-        api_response = api_instance.forex_rates()
+        api_response = api_instance.forex_rates(base=base)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->forex_rates: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **base** | **str**| Base currency. Default to EUR. | [optional] 
 
 ### Return type
 
@@ -2140,7 +1990,7 @@ with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Symbol of the company: AAPL.
-limit = 'limit_example' # str | Limit number of results. Leave empty to get the full list. (optional)
+limit = 56 # int | Limit number of results. Leave empty to get the full list. (optional)
 
     try:
         # Investors Ownership
@@ -2155,7 +2005,7 @@ limit = 'limit_example' # str | Limit number of results. Leave empty to get the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Symbol of the company: AAPL. | 
- **limit** | **str**| Limit number of results. Leave empty to get the full list. | [optional] 
+ **limit** | **int**| Limit number of results. Leave empty to get the full list. | [optional] 
 
 ### Return type
 
@@ -2320,87 +2170,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MajorDevelopments**](MajorDevelopments.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **merger**
-> list[MergerCountry] merger(country, _from=_from, to=to)
-
-Merger & Acquisitions
-
-List latest merger and acquisitions deal by country. Limit to 50 results/call
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://finnhub.io/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1",
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    country = 'country_example' # str | Country to get M&A deals. A list of supported countries can be found <a href=\"https://static.finnhub.io/csv/merger-country.csv\">here</a>
-_from = '_from_example' # str | From date in format <code>YYYY-MM-DD</code>. If from and to are not set, it will return latest deals. (optional)
-to = 'to_example' # str | To date in format <code>YYYY-MM-DD</code>. (optional)
-
-    try:
-        # Merger & Acquisitions
-        api_response = api_instance.merger(country, _from=_from, to=to)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->merger: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **country** | **str**| Country to get M&amp;A deals. A list of supported countries can be found &lt;a href&#x3D;\&quot;https://static.finnhub.io/csv/merger-country.csv\&quot;&gt;here&lt;/a&gt; | 
- **_from** | **str**| From date in format &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. If from and to are not set, it will return latest deals. | [optional] 
- **to** | **str**| To date in format &lt;code&gt;YYYY-MM-DD&lt;/code&gt;. | [optional] 
-
-### Return type
-
-[**list[MergerCountry]**](MergerCountry.md)
 
 ### Authorization
 
@@ -2973,79 +2742,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **stock_exchanges**
-> list[StockExchange] stock_exchanges()
-
-Stock Exchanges
-
-List supported stock exchanges
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://finnhub.io/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1",
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    
-    try:
-        # Stock Exchanges
-        api_response = api_instance.stock_exchanges()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->stock_exchanges: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**list[StockExchange]**](StockExchange.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **stock_splits**
 > Splits stock_splits(symbol, _from, to)
 
@@ -3168,7 +2864,7 @@ configuration = finnhub.Configuration(
 with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
-    exchange = 'exchange_example' # str | Exchange you want to get the list of symbols from. Use field <code>code</code> in <code>/stock/exchange</code> here.
+    exchange = 'exchange_example' # str | Exchange you want to get the list of symbols from. List of exchanges with fundamental data can be found <a href=\"https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp=sharing\" target=\"_blank\">here</a>.
 
     try:
         # Stock Symbol
@@ -3182,7 +2878,7 @@ with finnhub.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **exchange** | **str**| Exchange you want to get the list of symbols from. Use field &lt;code&gt;code&lt;/code&gt; in &lt;code&gt;/stock/exchange&lt;/code&gt; here. | 
+ **exchange** | **str**| Exchange you want to get the list of symbols from. List of exchanges with fundamental data can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1I3pBxjfXB056-g_JYf_6o3Rns3BV2kMGG1nCatb91ls/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. | 
 
 ### Return type
 
@@ -3454,7 +3150,7 @@ Name | Type | Description  | Notes
 
 Earnings Call Transcripts
 
-Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies.
+Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.
 
 ### Example
 
@@ -3531,7 +3227,7 @@ Name | Type | Description  | Notes
 
 Earnings Call Transcripts List
 
-List earnings call transcripts' metadata. This endpoint is only available for US companies.
+List earnings call transcripts' metadata. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.
 
 ### Example
 

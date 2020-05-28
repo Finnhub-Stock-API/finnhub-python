@@ -33,12 +33,12 @@ class CryptoCandles(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'o': 'float',
-        'h': 'float',
-        'l': 'float',
-        'c': 'float',
-        'v': 'float',
-        't': 'int',
+        'o': 'list[float]',
+        'h': 'list[float]',
+        'l': 'list[float]',
+        'c': 'list[float]',
+        'v': 'list[float]',
+        't': 'list[int]',
         's': 'str'
     }
 
@@ -89,7 +89,7 @@ class CryptoCandles(object):
         List of open prices for returned candles.  # noqa: E501
 
         :return: The o of this CryptoCandles.  # noqa: E501
-        :rtype: float
+        :rtype: list[float]
         """
         return self._o
 
@@ -100,7 +100,7 @@ class CryptoCandles(object):
         List of open prices for returned candles.  # noqa: E501
 
         :param o: The o of this CryptoCandles.  # noqa: E501
-        :type: float
+        :type: list[float]
         """
 
         self._o = o
@@ -112,7 +112,7 @@ class CryptoCandles(object):
         List of high prices for returned candles.  # noqa: E501
 
         :return: The h of this CryptoCandles.  # noqa: E501
-        :rtype: float
+        :rtype: list[float]
         """
         return self._h
 
@@ -123,7 +123,7 @@ class CryptoCandles(object):
         List of high prices for returned candles.  # noqa: E501
 
         :param h: The h of this CryptoCandles.  # noqa: E501
-        :type: float
+        :type: list[float]
         """
 
         self._h = h
@@ -135,7 +135,7 @@ class CryptoCandles(object):
         List of low prices for returned candles.  # noqa: E501
 
         :return: The l of this CryptoCandles.  # noqa: E501
-        :rtype: float
+        :rtype: list[float]
         """
         return self._l
 
@@ -146,7 +146,7 @@ class CryptoCandles(object):
         List of low prices for returned candles.  # noqa: E501
 
         :param l: The l of this CryptoCandles.  # noqa: E501
-        :type: float
+        :type: list[float]
         """
 
         self._l = l
@@ -158,7 +158,7 @@ class CryptoCandles(object):
         List of close prices for returned candles.  # noqa: E501
 
         :return: The c of this CryptoCandles.  # noqa: E501
-        :rtype: float
+        :rtype: list[float]
         """
         return self._c
 
@@ -169,7 +169,7 @@ class CryptoCandles(object):
         List of close prices for returned candles.  # noqa: E501
 
         :param c: The c of this CryptoCandles.  # noqa: E501
-        :type: float
+        :type: list[float]
         """
 
         self._c = c
@@ -181,7 +181,7 @@ class CryptoCandles(object):
         List of volume data for returned candles.  # noqa: E501
 
         :return: The v of this CryptoCandles.  # noqa: E501
-        :rtype: float
+        :rtype: list[float]
         """
         return self._v
 
@@ -192,7 +192,7 @@ class CryptoCandles(object):
         List of volume data for returned candles.  # noqa: E501
 
         :param v: The v of this CryptoCandles.  # noqa: E501
-        :type: float
+        :type: list[float]
         """
 
         self._v = v
@@ -204,7 +204,7 @@ class CryptoCandles(object):
         List of timestamp for returned candles.  # noqa: E501
 
         :return: The t of this CryptoCandles.  # noqa: E501
-        :rtype: int
+        :rtype: list[int]
         """
         return self._t
 
@@ -215,7 +215,7 @@ class CryptoCandles(object):
         List of timestamp for returned candles.  # noqa: E501
 
         :param t: The t of this CryptoCandles.  # noqa: E501
-        :type: int
+        :type: list[int]
         """
 
         self._t = t

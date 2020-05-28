@@ -36,12 +36,24 @@ class TestForexCandles(unittest.TestCase):
         # model = finnhub.models.forex_candles.ForexCandles()  # noqa: E501
         if include_optional :
             return ForexCandles(
-                o = 1.337, 
-                h = 1.337, 
-                l = 1.337, 
-                c = 1.337, 
-                v = 1.337, 
-                t = 1.337, 
+                o = [
+                    1.337
+                    ], 
+                h = [
+                    1.337
+                    ], 
+                l = [
+                    1.337
+                    ], 
+                c = [
+                    1.337
+                    ], 
+                v = [
+                    1.337
+                    ], 
+                t = [
+                    1.337
+                    ], 
                 s = '0'
             )
         else :

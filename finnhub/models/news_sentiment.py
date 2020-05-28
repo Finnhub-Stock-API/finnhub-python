@@ -37,7 +37,7 @@ class NewsSentiment(object):
         'company_news_score': 'float',
         'sector_average_bullish_percent': 'float',
         'sector_average_news_score': 'float',
-        'sentiment': 'NewsSentiment',
+        'sentiment': 'Sentiment',
         'symbol': 'str'
     }
 
@@ -173,7 +173,7 @@ class NewsSentiment(object):
 
 
         :return: The sentiment of this NewsSentiment.  # noqa: E501
-        :rtype: NewsSentiment
+        :rtype: Sentiment
         """
         return self._sentiment
 
@@ -183,7 +183,7 @@ class NewsSentiment(object):
 
 
         :param sentiment: The sentiment of this NewsSentiment.  # noqa: E501
-        :type: NewsSentiment
+        :type: Sentiment
         """
 
         self._sentiment = sentiment

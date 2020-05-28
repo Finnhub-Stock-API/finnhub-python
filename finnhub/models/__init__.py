@@ -31,9 +31,6 @@ from finnhub.models.earning_result import EarningResult
 from finnhub.models.earnings_call_transcripts import EarningsCallTranscripts
 from finnhub.models.earnings_call_transcripts_list import EarningsCallTranscriptsList
 from finnhub.models.earnings_estimates import EarningsEstimates
-from finnhub.models.economic import Economic
-from finnhub.models.economic_calendar import EconomicCalendar
-from finnhub.models.economic_code import EconomicCode
 from finnhub.models.estimate import Estimate
 from finnhub.models.filing import Filing
 from finnhub.models.financial_statements import FinancialStatements
@@ -47,7 +44,6 @@ from finnhub.models.indicator import Indicator
 from finnhub.models.investor import Investor
 from finnhub.models.investors_ownership import InvestorsOwnership
 from finnhub.models.major_developments import MajorDevelopments
-from finnhub.models.merger_country import MergerCountry
 from finnhub.models.metrics import Metrics
 from finnhub.models.news import News
 from finnhub.models.news_sentiment import NewsSentiment
@@ -56,10 +52,10 @@ from finnhub.models.quote import Quote
 from finnhub.models.recommendation_trends import RecommendationTrends
 from finnhub.models.report import Report
 from finnhub.models.revenue_estimates import RevenueEstimates
+from finnhub.models.sentiment import Sentiment
 from finnhub.models.splits import Splits
 from finnhub.models.stock import Stock
 from finnhub.models.stock_candles import StockCandles
-from finnhub.models.stock_exchange import StockExchange
 from finnhub.models.stock_transcripts import StockTranscripts
 from finnhub.models.technical_analysis import TechnicalAnalysis
 from finnhub.models.technical_indicators import TechnicalIndicators

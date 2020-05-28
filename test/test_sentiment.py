@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import finnhub
-from finnhub.models.transcript_content import TranscriptContent  # noqa: E501
+from finnhub.models.sentiment import Sentiment  # noqa: E501
 from finnhub.rest import ApiException
 
-class TestTranscriptContent(unittest.TestCase):
-    """TranscriptContent unit test stubs"""
+class TestSentiment(unittest.TestCase):
+    """Sentiment unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,24 +29,22 @@ class TestTranscriptContent(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test TranscriptContent
+        """Test Sentiment
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = finnhub.models.transcript_content.TranscriptContent()  # noqa: E501
+        # model = finnhub.models.sentiment.Sentiment()  # noqa: E501
         if include_optional :
-            return TranscriptContent(
-                name = '0', 
-                speech = [
-                    '0'
-                    ]
+            return Sentiment(
+                bearish_percent = 56, 
+                bullish_percent = 56
             )
         else :
-            return TranscriptContent(
+            return Sentiment(
         )
 
-    def testTranscriptContent(self):
-        """Test TranscriptContent"""
+    def testSentiment(self):
+        """Test Sentiment"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 
