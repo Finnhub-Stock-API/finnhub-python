@@ -5,10 +5,10 @@ All URIs are relative to *https://finnhub.io/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregate_indicator**](DefaultApi.md#aggregate_indicator) | **GET** /scan/technical-indicator | Aggregate Indicators
+[**company_basic_financials**](DefaultApi.md#company_basic_financials) | **GET** /stock/metric | Basic Financials
 [**company_earnings**](DefaultApi.md#company_earnings) | **GET** /stock/earnings | Earnings Surprises
 [**company_eps_estimates**](DefaultApi.md#company_eps_estimates) | **GET** /stock/eps-estimate | Earnings Estimates
 [**company_executive**](DefaultApi.md#company_executive) | **GET** /stock/executive | Company Executive
-[**company_metrics**](DefaultApi.md#company_metrics) | **GET** /stock/metric | Metrics
 [**company_news**](DefaultApi.md#company_news) | **GET** /company-news | Company News
 [**company_peers**](DefaultApi.md#company_peers) | **GET** /stock/peers | Peers
 [**company_profile**](DefaultApi.md#company_profile) | **GET** /stock/profile | Company Profile
@@ -110,6 +110,85 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AggregateIndicators**](AggregateIndicators.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **company_basic_financials**
+> BasicFinancials company_basic_financials(symbol, metric)
+
+Basic Financials
+
+Get company basic financials such as margin, P/E ratio, 52-week high/low etc.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import finnhub
+from finnhub.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://finnhub.io/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1",
+    api_key = {
+        'token': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with finnhub.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finnhub.DefaultApi(api_client)
+    symbol = 'symbol_example' # str | Symbol of the company: AAPL.
+metric = 'metric_example' # str | Metric type. Can be 1 of the following values <code>all, price, valuation, margin</code>
+
+    try:
+        # Basic Financials
+        api_response = api_instance.company_basic_financials(symbol, metric)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->company_basic_financials: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **str**| Symbol of the company: AAPL. | 
+ **metric** | **str**| Metric type. Can be 1 of the following values &lt;code&gt;all, price, valuation, margin&lt;/code&gt; | 
+
+### Return type
+
+[**BasicFinancials**](BasicFinancials.md)
 
 ### Authorization
 
@@ -345,85 +424,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CompanyExecutive**](CompanyExecutive.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | successful operation |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **company_metrics**
-> Metrics company_metrics(symbol, metric)
-
-Metrics
-
-Get company key metrics such as growth, price, valuation. Full list of supported fields can be downloaded <a target=\"_blank\" href=\"https://static.finnhub.io/csv/metrics.csv\">here</a>
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-# Defining the host is optional and defaults to https://finnhub.io/api/v1
-# See configuration.py for a list of all supported configuration parameters.
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: api_key
-configuration = finnhub.Configuration(
-    host = "https://finnhub.io/api/v1",
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['token'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    symbol = 'symbol_example' # str | Symbol of the company: AAPL.
-metric = 'metric_example' # str | Metric type. Can be 1 of the following values <code>price, valuation, growth, margin, management, financialStrength, perShare</code>
-
-    try:
-        # Metrics
-        api_response = api_instance.company_metrics(symbol, metric)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->company_metrics: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **symbol** | **str**| Symbol of the company: AAPL. | 
- **metric** | **str**| Metric type. Can be 1 of the following values &lt;code&gt;price, valuation, growth, margin, management, financialStrength, perShare&lt;/code&gt; | 
-
-### Return type
-
-[**Metrics**](Metrics.md)
 
 ### Authorization
 
@@ -845,7 +845,7 @@ Name | Type | Description  | Notes
 
 COVID-19
 
-Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources.
+Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources. You can also access this API <a href=\"https://rapidapi.com/Finnhub/api/finnhub-real-time-covid-19\" target=\"_blank\" rel=\"nofollow\">here</a>
 
 ### Example
 
@@ -1234,11 +1234,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **filings**
-> list[Filing] filings(symbol=symbol, cik=cik, access_number=access_number)
+> list[Filing] filings(symbol=symbol, cik=cik, access_number=access_number, form=form, _from=_from, to=to)
 
 Filings
 
-List company's filing.
+List company's filing. Limit to 250 documents at a time. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/sec-filings\" target=\"_blank\">Kaggle SEC Filings database</a>.
 
 ### Example
 
@@ -1277,10 +1277,13 @@ with finnhub.ApiClient(configuration) as api_client:
     symbol = 'symbol_example' # str | Symbol. Leave <code>symbol</code>,<code>cik</code> and <code>accessNumber</code> empty to list latest filings. (optional)
 cik = 'cik_example' # str | CIK. (optional)
 access_number = 'access_number_example' # str | Access number of a specific report you want to retrieve data from. (optional)
+form = 'form_example' # str | Filter by form. You can use this value <code>NT 10-K</code> to find non-timely filings for a company. (optional)
+_from = '2013-10-20' # date | From date: 2020-03-15. (optional)
+to = '2013-10-20' # date | To date: 2020-03-16. (optional)
 
     try:
         # Filings
-        api_response = api_instance.filings(symbol=symbol, cik=cik, access_number=access_number)
+        api_response = api_instance.filings(symbol=symbol, cik=cik, access_number=access_number, form=form, _from=_from, to=to)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->filings: %s\n" % e)
@@ -1293,6 +1296,9 @@ Name | Type | Description  | Notes
  **symbol** | **str**| Symbol. Leave &lt;code&gt;symbol&lt;/code&gt;,&lt;code&gt;cik&lt;/code&gt; and &lt;code&gt;accessNumber&lt;/code&gt; empty to list latest filings. | [optional] 
  **cik** | **str**| CIK. | [optional] 
  **access_number** | **str**| Access number of a specific report you want to retrieve data from. | [optional] 
+ **form** | **str**| Filter by form. You can use this value &lt;code&gt;NT 10-K&lt;/code&gt; to find non-timely filings for a company. | [optional] 
+ **_from** | **date**| From date: 2020-03-15. | [optional] 
+ **to** | **date**| To date: 2020-03-16. | [optional] 
 
 ### Return type
 
@@ -1400,7 +1406,7 @@ Name | Type | Description  | Notes
 
 Financials As Reported
 
-Get financials as reported.
+Get financials as reported. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/reported-financials\" target=\"_blank\">Kaggle SEC Financials database</a>.
 
 ### Example
 
@@ -2111,7 +2117,7 @@ Name | Type | Description  | Notes
 
 Major Developments
 
-List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events. Limit to 200 results/call for Ultimate users, and 20 results/call other plans.
+List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events.
 
 ### Example
 
@@ -2148,8 +2154,8 @@ with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Company symbol.
-_from = '2013-10-20' # date | From time: 2020-01-01. This option is only available for Ultimate users. (optional)
-to = '2013-10-20' # date | To time: 2020-01-05. This option is only available for Ultimate users. (optional)
+_from = '2013-10-20' # date | From time: 2020-01-01. (optional)
+to = '2013-10-20' # date | To time: 2020-01-05. (optional)
 
     try:
         # Major Developments
@@ -2164,8 +2170,8 @@ to = '2013-10-20' # date | To time: 2020-01-05. This option is only available fo
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Company symbol. | 
- **_from** | **date**| From time: 2020-01-01. This option is only available for Ultimate users. | [optional] 
- **to** | **date**| To time: 2020-01-05. This option is only available for Ultimate users. | [optional] 
+ **_from** | **date**| From time: 2020-01-01. | [optional] 
+ **to** | **date**| To time: 2020-01-05. | [optional] 
 
 ### Return type
 
@@ -2905,7 +2911,7 @@ Name | Type | Description  | Notes
 
 Tick Data
 
-<p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1993 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
+<p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
 
 ### Example
 
@@ -3150,7 +3156,7 @@ Name | Type | Description  | Notes
 
 Earnings Call Transcripts
 
-Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.
+<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>
 
 ### Example
 
@@ -3300,7 +3306,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upgrade_downgrade**
-> list[UpgradeDowngrade] upgrade_downgrade(symbol=symbol)
+> list[UpgradeDowngrade] upgrade_downgrade(symbol=symbol, _from=_from, to=to)
 
 Stock Upgrade/Downgrade
 
@@ -3341,10 +3347,12 @@ with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Symbol of the company: AAPL. If left blank, the API will return latest stock upgrades/downgrades. (optional)
+_from = '2013-10-20' # date | From date: 2000-03-15. (optional)
+to = '2013-10-20' # date | To date: 2020-03-16. (optional)
 
     try:
         # Stock Upgrade/Downgrade
-        api_response = api_instance.upgrade_downgrade(symbol=symbol)
+        api_response = api_instance.upgrade_downgrade(symbol=symbol, _from=_from, to=to)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->upgrade_downgrade: %s\n" % e)
@@ -3355,6 +3363,8 @@ with finnhub.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Symbol of the company: AAPL. If left blank, the API will return latest stock upgrades/downgrades. | [optional] 
+ **_from** | **date**| From date: 2000-03-15. | [optional] 
+ **to** | **date**| To date: 2020-03-16. | [optional] 
 
 ### Return type
 

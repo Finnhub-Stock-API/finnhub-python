@@ -1,7 +1,7 @@
 # finnhub-python
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 1.0.2
+- Package version: 1.0.3
 
 ## Requirements.
 
@@ -54,10 +54,10 @@ All URIs are relative to *https://finnhub.io/api/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**aggregate_indicator**](docs/DefaultApi.md#aggregate_indicator) | **GET** /scan/technical-indicator | Aggregate Indicators
+*DefaultApi* | [**company_basic_financials**](docs/DefaultApi.md#company_basic_financials) | **GET** /stock/metric | Basic Financials
 *DefaultApi* | [**company_earnings**](docs/DefaultApi.md#company_earnings) | **GET** /stock/earnings | Earnings Surprises
 *DefaultApi* | [**company_eps_estimates**](docs/DefaultApi.md#company_eps_estimates) | **GET** /stock/eps-estimate | Earnings Estimates
 *DefaultApi* | [**company_executive**](docs/DefaultApi.md#company_executive) | **GET** /stock/executive | Company Executive
-*DefaultApi* | [**company_metrics**](docs/DefaultApi.md#company_metrics) | **GET** /stock/metric | Metrics
 *DefaultApi* | [**company_news**](docs/DefaultApi.md#company_news) | **GET** /company-news | Company News
 *DefaultApi* | [**company_peers**](docs/DefaultApi.md#company_peers) | **GET** /stock/peers | Peers
 *DefaultApi* | [**company_profile**](docs/DefaultApi.md#company_profile) | **GET** /stock/profile | Company Profile
@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 ## Models
 
  - [AggregateIndicators](docs/AggregateIndicators.md)
+ - [BasicFinancials](docs/BasicFinancials.md)
  - [COVID19](docs/COVID19.md)
  - [Company](docs/Company.md)
  - [CompanyExecutive](docs/CompanyExecutive.md)
@@ -128,7 +129,6 @@ Class | Method | HTTP request | Description
  - [Investor](docs/Investor.md)
  - [InvestorsOwnership](docs/InvestorsOwnership.md)
  - [MajorDevelopments](docs/MajorDevelopments.md)
- - [Metrics](docs/Metrics.md)
  - [News](docs/News.md)
  - [NewsSentiment](docs/NewsSentiment.md)
  - [PriceTarget](docs/PriceTarget.md)

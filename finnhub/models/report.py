@@ -42,6 +42,7 @@ class Report(object):
         'start_date': 'datetime',
         'end_date': 'datetime',
         'filed_date': 'datetime',
+        'accepted_date': 'datetime',
         'report': 'object'
     }
 
@@ -55,10 +56,11 @@ class Report(object):
         'start_date': 'startDate',
         'end_date': 'endDate',
         'filed_date': 'filedDate',
+        'accepted_date': 'acceptedDate',
         'report': 'report'
     }
 
-    def __init__(self, access_number=None, symbol=None, cik=None, year=None, quarter=None, form=None, start_date=None, end_date=None, filed_date=None, report=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, access_number=None, symbol=None, cik=None, year=None, quarter=None, form=None, start_date=None, end_date=None, filed_date=None, accepted_date=None, report=None, local_vars_configuration=None):  # noqa: E501
         """Report - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -73,6 +75,7 @@ class Report(object):
         self._start_date = None
         self._end_date = None
         self._filed_date = None
+        self._accepted_date = None
         self._report = None
         self.discriminator = None
 
@@ -94,6 +97,8 @@ class Report(object):
             self.end_date = end_date
         if filed_date is not None:
             self.filed_date = filed_date
+        if accepted_date is not None:
+            self.accepted_date = accepted_date
         if report is not None:
             self.report = report
 
@@ -303,6 +308,29 @@ class Report(object):
         """
 
         self._filed_date = filed_date
+
+    @property
+    def accepted_date(self):
+        """Gets the accepted_date of this Report.  # noqa: E501
+
+        Accepted date <code>%Y-%m-%d %H:%M:%S</code>.  # noqa: E501
+
+        :return: The accepted_date of this Report.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._accepted_date
+
+    @accepted_date.setter
+    def accepted_date(self, accepted_date):
+        """Sets the accepted_date of this Report.
+
+        Accepted date <code>%Y-%m-%d %H:%M:%S</code>.  # noqa: E501
+
+        :param accepted_date: The accepted_date of this Report.  # noqa: E501
+        :type: datetime
+        """
+
+        self._accepted_date = accepted_date
 
     @property
     def report(self):

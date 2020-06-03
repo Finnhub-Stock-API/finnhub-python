@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **symbol** | **str** | Symbol. | [optional] 
 **date** | **date** | Ex-Dividend date. | [optional] 
 **amount** | **float** | Amount in local currency. | [optional] 
+**adjusted_amount** | **float** | Adjusted dividend. | [optional] 
 **pay_date** | **date** | Pay date. | [optional] 
 **record_date** | **date** | Record date. | [optional] 
 **declaration_date** | **date** | Declaration date. | [optional] 

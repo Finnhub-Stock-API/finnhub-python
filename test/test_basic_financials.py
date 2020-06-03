@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import finnhub
-from finnhub.models.investor import Investor  # noqa: E501
+from finnhub.models.basic_financials import BasicFinancials  # noqa: E501
 from finnhub.rest import ApiException
 
-class TestInvestor(unittest.TestCase):
-    """Investor unit test stubs"""
+class TestBasicFinancials(unittest.TestCase):
+    """BasicFinancials unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,24 +29,23 @@ class TestInvestor(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test Investor
+        """Test BasicFinancials
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = finnhub.models.investor.Investor()  # noqa: E501
+        # model = finnhub.models.basic_financials.BasicFinancials()  # noqa: E501
         if include_optional :
-            return Investor(
-                name = '0', 
-                share = 56, 
-                change = 56, 
-                filing_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date()
+            return BasicFinancials(
+                symbol = '0', 
+                metric_type = '0', 
+                metric = None
             )
         else :
-            return Investor(
+            return BasicFinancials(
         )
 
-    def testInvestor(self):
-        """Test Investor"""
+    def testBasicFinancials(self):
+        """Test BasicFinancials"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

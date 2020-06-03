@@ -159,6 +159,129 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def company_basic_financials(self, symbol, metric, **kwargs):  # noqa: E501
+        """Basic Financials  # noqa: E501
+
+        Get company basic financials such as margin, P/E ratio, 52-week high/low etc.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.company_basic_financials(symbol, metric, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str symbol: Symbol of the company: AAPL. (required)
+        :param str metric: Metric type. Can be 1 of the following values <code>all, price, valuation, margin</code> (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: BasicFinancials
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.company_basic_financials_with_http_info(symbol, metric, **kwargs)  # noqa: E501
+
+    def company_basic_financials_with_http_info(self, symbol, metric, **kwargs):  # noqa: E501
+        """Basic Financials  # noqa: E501
+
+        Get company basic financials such as margin, P/E ratio, 52-week high/low etc.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.company_basic_financials_with_http_info(symbol, metric, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str symbol: Symbol of the company: AAPL. (required)
+        :param str metric: Metric type. Can be 1 of the following values <code>all, price, valuation, margin</code> (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(BasicFinancials, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'symbol',
+            'metric'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method company_basic_financials" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'symbol' is set
+        if self.api_client.client_side_validation and ('symbol' not in local_var_params or  # noqa: E501
+                                                        local_var_params['symbol'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `symbol` when calling `company_basic_financials`")  # noqa: E501
+        # verify the required parameter 'metric' is set
+        if self.api_client.client_side_validation and ('metric' not in local_var_params or  # noqa: E501
+                                                        local_var_params['metric'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `metric` when calling `company_basic_financials`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'symbol' in local_var_params and local_var_params['symbol'] is not None:  # noqa: E501
+            query_params.append(('symbol', local_var_params['symbol']))  # noqa: E501
+        if 'metric' in local_var_params and local_var_params['metric'] is not None:  # noqa: E501
+            query_params.append(('metric', local_var_params['metric']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/stock/metric', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='BasicFinancials',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def company_earnings(self, symbol, **kwargs):  # noqa: E501
         """Earnings Surprises  # noqa: E501
 
@@ -504,129 +627,6 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='CompanyExecutive',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def company_metrics(self, symbol, metric, **kwargs):  # noqa: E501
-        """Metrics  # noqa: E501
-
-        Get company key metrics such as growth, price, valuation. Full list of supported fields can be downloaded <a target=\"_blank\" href=\"https://static.finnhub.io/csv/metrics.csv\">here</a>  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.company_metrics(symbol, metric, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL. (required)
-        :param str metric: Metric type. Can be 1 of the following values <code>price, valuation, growth, margin, management, financialStrength, perShare</code> (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Metrics
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.company_metrics_with_http_info(symbol, metric, **kwargs)  # noqa: E501
-
-    def company_metrics_with_http_info(self, symbol, metric, **kwargs):  # noqa: E501
-        """Metrics  # noqa: E501
-
-        Get company key metrics such as growth, price, valuation. Full list of supported fields can be downloaded <a target=\"_blank\" href=\"https://static.finnhub.io/csv/metrics.csv\">here</a>  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.company_metrics_with_http_info(symbol, metric, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL. (required)
-        :param str metric: Metric type. Can be 1 of the following values <code>price, valuation, growth, margin, management, financialStrength, perShare</code> (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(Metrics, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = [
-            'symbol',
-            'metric'
-        ]
-        all_params.extend(
-            [
-                'async_req',
-                '_return_http_data_only',
-                '_preload_content',
-                '_request_timeout'
-            ]
-        )
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method company_metrics" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'symbol' is set
-        if self.api_client.client_side_validation and ('symbol' not in local_var_params or  # noqa: E501
-                                                        local_var_params['symbol'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `symbol` when calling `company_metrics`")  # noqa: E501
-        # verify the required parameter 'metric' is set
-        if self.api_client.client_side_validation and ('metric' not in local_var_params or  # noqa: E501
-                                                        local_var_params['metric'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `metric` when calling `company_metrics`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-
-        query_params = []
-        if 'symbol' in local_var_params and local_var_params['symbol'] is not None:  # noqa: E501
-            query_params.append(('symbol', local_var_params['symbol']))  # noqa: E501
-        if 'metric' in local_var_params and local_var_params['metric'] is not None:  # noqa: E501
-            query_params.append(('metric', local_var_params['metric']))  # noqa: E501
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/stock/metric', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Metrics',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -1242,7 +1242,7 @@ class DefaultApi(object):
     def covid19(self, **kwargs):  # noqa: E501
         """COVID-19  # noqa: E501
 
-        Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources.  # noqa: E501
+        Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources. You can also access this API <a href=\"https://rapidapi.com/Finnhub/api/finnhub-real-time-covid-19\" target=\"_blank\" rel=\"nofollow\">here</a>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.covid19(async_req=True)
@@ -1266,7 +1266,7 @@ class DefaultApi(object):
     def covid19_with_http_info(self, **kwargs):  # noqa: E501
         """COVID-19  # noqa: E501
 
-        Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources.  # noqa: E501
+        Get real-time updates on the number of COVID-19 (Corona virus) cases in the US with a state-by-state breakdown. Data is sourced from CDC and reputable sources. You can also access this API <a href=\"https://rapidapi.com/Finnhub/api/finnhub-real-time-covid-19\" target=\"_blank\" rel=\"nofollow\">here</a>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.covid19_with_http_info(async_req=True)
@@ -1834,7 +1834,7 @@ class DefaultApi(object):
     def filings(self, **kwargs):  # noqa: E501
         """Filings  # noqa: E501
 
-        List company's filing.  # noqa: E501
+        List company's filing. Limit to 250 documents at a time. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/sec-filings\" target=\"_blank\">Kaggle SEC Filings database</a>.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.filings(async_req=True)
@@ -1844,6 +1844,9 @@ class DefaultApi(object):
         :param str symbol: Symbol. Leave <code>symbol</code>,<code>cik</code> and <code>accessNumber</code> empty to list latest filings.
         :param str cik: CIK.
         :param str access_number: Access number of a specific report you want to retrieve data from.
+        :param str form: Filter by form. You can use this value <code>NT 10-K</code> to find non-timely filings for a company.
+        :param date _from: From date: 2020-03-15.
+        :param date to: To date: 2020-03-16.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1861,7 +1864,7 @@ class DefaultApi(object):
     def filings_with_http_info(self, **kwargs):  # noqa: E501
         """Filings  # noqa: E501
 
-        List company's filing.  # noqa: E501
+        List company's filing. Limit to 250 documents at a time. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/sec-filings\" target=\"_blank\">Kaggle SEC Filings database</a>.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.filings_with_http_info(async_req=True)
@@ -1871,6 +1874,9 @@ class DefaultApi(object):
         :param str symbol: Symbol. Leave <code>symbol</code>,<code>cik</code> and <code>accessNumber</code> empty to list latest filings.
         :param str cik: CIK.
         :param str access_number: Access number of a specific report you want to retrieve data from.
+        :param str form: Filter by form. You can use this value <code>NT 10-K</code> to find non-timely filings for a company.
+        :param date _from: From date: 2020-03-15.
+        :param date to: To date: 2020-03-16.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1890,7 +1896,10 @@ class DefaultApi(object):
         all_params = [
             'symbol',
             'cik',
-            'access_number'
+            'access_number',
+            'form',
+            '_from',
+            'to'
         ]
         all_params.extend(
             [
@@ -1921,6 +1930,12 @@ class DefaultApi(object):
             query_params.append(('cik', local_var_params['cik']))  # noqa: E501
         if 'access_number' in local_var_params and local_var_params['access_number'] is not None:  # noqa: E501
             query_params.append(('accessNumber', local_var_params['access_number']))  # noqa: E501
+        if 'form' in local_var_params and local_var_params['form'] is not None:  # noqa: E501
+            query_params.append(('form', local_var_params['form']))  # noqa: E501
+        if '_from' in local_var_params and local_var_params['_from'] is not None:  # noqa: E501
+            query_params.append(('from', local_var_params['_from']))  # noqa: E501
+        if 'to' in local_var_params and local_var_params['to'] is not None:  # noqa: E501
+            query_params.append(('to', local_var_params['to']))  # noqa: E501
 
         header_params = {}
 
@@ -2086,7 +2101,7 @@ class DefaultApi(object):
     def financials_reported(self, **kwargs):  # noqa: E501
         """Financials As Reported  # noqa: E501
 
-        Get financials as reported.  # noqa: E501
+        Get financials as reported. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/reported-financials\" target=\"_blank\">Kaggle SEC Financials database</a>.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.financials_reported(async_req=True)
@@ -2114,7 +2129,7 @@ class DefaultApi(object):
     def financials_reported_with_http_info(self, **kwargs):  # noqa: E501
         """Financials As Reported  # noqa: E501
 
-        Get financials as reported.  # noqa: E501
+        Get financials as reported. This data is available for bulk download on <a href=\"https://www.kaggle.com/finnhub/reported-financials\" target=\"_blank\">Kaggle SEC Financials database</a>.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.financials_reported_with_http_info(async_req=True)
@@ -3158,7 +3173,7 @@ class DefaultApi(object):
     def major_developments(self, symbol, **kwargs):  # noqa: E501
         """Major Developments  # noqa: E501
 
-        List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events. Limit to 200 results/call for Ultimate users, and 20 results/call other plans.  # noqa: E501
+        List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.major_developments(symbol, async_req=True)
@@ -3166,8 +3181,8 @@ class DefaultApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Company symbol. (required)
-        :param date _from: From time: 2020-01-01. This option is only available for Ultimate users.
-        :param date to: To time: 2020-01-05. This option is only available for Ultimate users.
+        :param date _from: From time: 2020-01-01.
+        :param date to: To time: 2020-01-05.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -3185,7 +3200,7 @@ class DefaultApi(object):
     def major_developments_with_http_info(self, symbol, **kwargs):  # noqa: E501
         """Major Developments  # noqa: E501
 
-        List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events. Limit to 200 results/call for Ultimate users, and 20 results/call other plans.  # noqa: E501
+        List latest major developments of a company going back 20 years with 12M+ data points. This data can be used to highlight the most significant events.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.major_developments_with_http_info(symbol, async_req=True)
@@ -3193,8 +3208,8 @@ class DefaultApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Company symbol. (required)
-        :param date _from: From time: 2020-01-01. This option is only available for Ultimate users.
-        :param date to: To time: 2020-01-05. This option is only available for Ultimate users.
+        :param date _from: From time: 2020-01-01.
+        :param date to: To time: 2020-01-05.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4382,7 +4397,7 @@ class DefaultApi(object):
     def stock_tick(self, symbol, date, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
-        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1993 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
+        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_tick(symbol, date, async_req=True)
@@ -4408,7 +4423,7 @@ class DefaultApi(object):
     def stock_tick_with_http_info(self, symbol, date, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
-        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1993 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
+        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_tick_with_http_info(symbol, date, async_req=True)
@@ -4783,7 +4798,7 @@ class DefaultApi(object):
     def transcripts(self, id, **kwargs):  # noqa: E501
         """Earnings Call Transcripts  # noqa: E501
 
-        Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.  # noqa: E501
+        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts(id, async_req=True)
@@ -4808,7 +4823,7 @@ class DefaultApi(object):
     def transcripts_with_http_info(self, id, **kwargs):  # noqa: E501
         """Earnings Call Transcripts  # noqa: E501
 
-        Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.  # noqa: E501
+        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts_with_http_info(id, async_req=True)
@@ -5019,6 +5034,8 @@ class DefaultApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol of the company: AAPL. If left blank, the API will return latest stock upgrades/downgrades.
+        :param date _from: From date: 2000-03-15.
+        :param date to: To date: 2020-03-16.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5044,6 +5061,8 @@ class DefaultApi(object):
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol of the company: AAPL. If left blank, the API will return latest stock upgrades/downgrades.
+        :param date _from: From date: 2000-03-15.
+        :param date to: To date: 2020-03-16.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5061,7 +5080,9 @@ class DefaultApi(object):
         local_var_params = locals()
 
         all_params = [
-            'symbol'
+            'symbol',
+            '_from',
+            'to'
         ]
         all_params.extend(
             [
@@ -5088,6 +5109,10 @@ class DefaultApi(object):
         query_params = []
         if 'symbol' in local_var_params and local_var_params['symbol'] is not None:  # noqa: E501
             query_params.append(('symbol', local_var_params['symbol']))  # noqa: E501
+        if '_from' in local_var_params and local_var_params['_from'] is not None:  # noqa: E501
+            query_params.append(('from', local_var_params['_from']))  # noqa: E501
+        if 'to' in local_var_params and local_var_params['to'] is not None:  # noqa: E501
+            query_params.append(('to', local_var_params['to']))  # noqa: E501
 
         header_params = {}
 

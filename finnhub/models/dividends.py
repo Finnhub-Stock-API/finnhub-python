@@ -36,6 +36,7 @@ class Dividends(object):
         'symbol': 'str',
         'date': 'date',
         'amount': 'float',
+        'adjusted_amount': 'float',
         'pay_date': 'date',
         'record_date': 'date',
         'declaration_date': 'date',
@@ -44,15 +45,16 @@ class Dividends(object):
 
     attribute_map = {
         'symbol': 'symbol',
-        'date': 'Date',
-        'amount': 'Amount',
+        'date': 'date',
+        'amount': 'amount',
+        'adjusted_amount': 'adjustedAmount',
         'pay_date': 'payDate',
         'record_date': 'recordDate',
         'declaration_date': 'declarationDate',
         'currency': 'currency'
     }
 
-    def __init__(self, symbol=None, date=None, amount=None, pay_date=None, record_date=None, declaration_date=None, currency=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, symbol=None, date=None, amount=None, adjusted_amount=None, pay_date=None, record_date=None, declaration_date=None, currency=None, local_vars_configuration=None):  # noqa: E501
         """Dividends - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -61,6 +63,7 @@ class Dividends(object):
         self._symbol = None
         self._date = None
         self._amount = None
+        self._adjusted_amount = None
         self._pay_date = None
         self._record_date = None
         self._declaration_date = None
@@ -73,6 +76,8 @@ class Dividends(object):
             self.date = date
         if amount is not None:
             self.amount = amount
+        if adjusted_amount is not None:
+            self.adjusted_amount = adjusted_amount
         if pay_date is not None:
             self.pay_date = pay_date
         if record_date is not None:
@@ -150,6 +155,29 @@ class Dividends(object):
         """
 
         self._amount = amount
+
+    @property
+    def adjusted_amount(self):
+        """Gets the adjusted_amount of this Dividends.  # noqa: E501
+
+        Adjusted dividend.  # noqa: E501
+
+        :return: The adjusted_amount of this Dividends.  # noqa: E501
+        :rtype: float
+        """
+        return self._adjusted_amount
+
+    @adjusted_amount.setter
+    def adjusted_amount(self, adjusted_amount):
+        """Sets the adjusted_amount of this Dividends.
+
+        Adjusted dividend.  # noqa: E501
+
+        :param adjusted_amount: The adjusted_amount of this Dividends.  # noqa: E501
+        :type: float
+        """
+
+        self._adjusted_amount = adjusted_amount
 
     @property
     def pay_date(self):

@@ -35,6 +35,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_company_basic_financials(self):
+        """Test case for company_basic_financials
+
+        Basic Financials  # noqa: E501
+        """
+        pass
+
     def test_company_earnings(self):
         """Test case for company_earnings
 
@@ -53,13 +60,6 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for company_executive
 
         Company Executive  # noqa: E501
-        """
-        pass
-
-    def test_company_metrics(self):
-        """Test case for company_metrics
-
-        Metrics  # noqa: E501
         """
         pass
 

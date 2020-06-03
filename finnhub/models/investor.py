@@ -35,8 +35,6 @@ class Investor(object):
     openapi_types = {
         'name': 'str',
         'share': 'int',
-        'turnover': 'str',
-        'turnover_percent': 'float',
         'change': 'int',
         'filing_date': 'date'
     }
@@ -44,13 +42,11 @@ class Investor(object):
     attribute_map = {
         'name': 'name',
         'share': 'share',
-        'turnover': 'turnover',
-        'turnover_percent': 'turnoverPercent',
         'change': 'change',
         'filing_date': 'filingDate'
     }
 
-    def __init__(self, name=None, share=None, turnover=None, turnover_percent=None, change=None, filing_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, share=None, change=None, filing_date=None, local_vars_configuration=None):  # noqa: E501
         """Investor - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -58,8 +54,6 @@ class Investor(object):
 
         self._name = None
         self._share = None
-        self._turnover = None
-        self._turnover_percent = None
         self._change = None
         self._filing_date = None
         self.discriminator = None
@@ -68,10 +62,6 @@ class Investor(object):
             self.name = name
         if share is not None:
             self.share = share
-        if turnover is not None:
-            self.turnover = turnover
-        if turnover_percent is not None:
-            self.turnover_percent = turnover_percent
         if change is not None:
             self.change = change
         if filing_date is not None:
@@ -122,52 +112,6 @@ class Investor(object):
         """
 
         self._share = share
-
-    @property
-    def turnover(self):
-        """Gets the turnover of this Investor.  # noqa: E501
-
-        Turnover rating of the investor.  # noqa: E501
-
-        :return: The turnover of this Investor.  # noqa: E501
-        :rtype: str
-        """
-        return self._turnover
-
-    @turnover.setter
-    def turnover(self, turnover):
-        """Sets the turnover of this Investor.
-
-        Turnover rating of the investor.  # noqa: E501
-
-        :param turnover: The turnover of this Investor.  # noqa: E501
-        :type: str
-        """
-
-        self._turnover = turnover
-
-    @property
-    def turnover_percent(self):
-        """Gets the turnover_percent of this Investor.  # noqa: E501
-
-        Trading's values relative to investor's assets expressed in percentage.  # noqa: E501
-
-        :return: The turnover_percent of this Investor.  # noqa: E501
-        :rtype: float
-        """
-        return self._turnover_percent
-
-    @turnover_percent.setter
-    def turnover_percent(self, turnover_percent):
-        """Sets the turnover_percent of this Investor.
-
-        Trading's values relative to investor's assets expressed in percentage.  # noqa: E501
-
-        :param turnover_percent: The turnover_percent of this Investor.  # noqa: E501
-        :type: float
-        """
-
-        self._turnover_percent = turnover_percent
 
     @property
     def change(self):

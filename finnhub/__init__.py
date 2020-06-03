@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "0.0.1"
+__version__ = "1.0.3"
 
 # import apis into sdk package
 from finnhub.api.default_api import DefaultApi
@@ -29,6 +29,7 @@ from finnhub.exceptions import ApiKeyError
 from finnhub.exceptions import ApiException
 # import models into sdk package
 from finnhub.models.aggregate_indicators import AggregateIndicators
+from finnhub.models.basic_financials import BasicFinancials
 from finnhub.models.covid19 import COVID19
 from finnhub.models.company import Company
 from finnhub.models.company_executive import CompanyExecutive
@@ -58,7 +59,6 @@ from finnhub.models.indicator import Indicator
 from finnhub.models.investor import Investor
 from finnhub.models.investors_ownership import InvestorsOwnership
 from finnhub.models.major_developments import MajorDevelopments
-from finnhub.models.metrics import Metrics
 from finnhub.models.news import News
 from finnhub.models.news_sentiment import NewsSentiment
 from finnhub.models.price_target import PriceTarget

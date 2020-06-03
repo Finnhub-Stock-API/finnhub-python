@@ -39,6 +39,7 @@ class TestDividends(unittest.TestCase):
                 symbol = '0', 
                 date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                 amount = 1.337, 
+                adjusted_amount = 1.337, 
                 pay_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                 record_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
                 declaration_date = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
