@@ -32,6 +32,9 @@ from finnhub.models.earning_result import EarningResult
 from finnhub.models.earnings_call_transcripts import EarningsCallTranscripts
 from finnhub.models.earnings_call_transcripts_list import EarningsCallTranscriptsList
 from finnhub.models.earnings_estimates import EarningsEstimates
+from finnhub.models.economic_code import EconomicCode
+from finnhub.models.economic_data import EconomicData
+from finnhub.models.economic_event import EconomicEvent
 from finnhub.models.estimate import Estimate
 from finnhub.models.filing import Filing
 from finnhub.models.financial_statements import FinancialStatements

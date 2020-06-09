@@ -98,6 +98,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_country(self):
+        """Test case for country
+
+        Country Metadata  # noqa: E501
+        """
+        pass
+
     def test_covid19(self):
         """Test case for covid19
 
@@ -130,6 +137,20 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for earnings_calendar
 
         Earnings Calendar  # noqa: E501
+        """
+        pass
+
+    def test_economic_code(self):
+        """Test case for economic_code
+
+        Economic Code  # noqa: E501
+        """
+        pass
+
+    def test_economic_data(self):
+        """Test case for economic_data
+
+        Economic Data  # noqa: E501
         """
         pass
 

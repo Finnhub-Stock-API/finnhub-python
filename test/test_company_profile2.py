@@ -42,7 +42,7 @@ class TestCompanyProfile2(unittest.TestCase):
                 name = '0', 
                 ticker = '0', 
                 ipo = datetime.datetime.strptime('1975-12-30', '%Y-%m-%d').date(), 
-                market_capitalization = 56, 
+                market_capitalization = 1.337, 
                 share_outstanding = 1.337, 
                 logo = '0', 
                 phone = '0', 

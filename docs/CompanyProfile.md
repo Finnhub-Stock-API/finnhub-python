@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **ticker** | **str** | Company symbol/ticker as used on the listed exchange. | [optional] 
 **weburl** | **str** | Company website. | [optional] 
 **ipo** | **date** | IPO date. | [optional] 
-**market_capitalization** | **int** | Market Capitalization. | [optional] 
+**market_capitalization** | **float** | Market Capitalization. | [optional] 
 **share_outstanding** | **float** | Number of oustanding shares. | [optional] 
 **employee_total** | **int** | Number of employee. | [optional] 
 **logo** | **str** | Logo image. | [optional] 

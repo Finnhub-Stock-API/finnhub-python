@@ -14,11 +14,14 @@ Method | HTTP request | Description
 [**company_profile**](DefaultApi.md#company_profile) | **GET** /stock/profile | Company Profile
 [**company_profile2**](DefaultApi.md#company_profile2) | **GET** /stock/profile2 | Company Profile 2
 [**company_revenue_estimates**](DefaultApi.md#company_revenue_estimates) | **GET** /stock/revenue-estimate | Revenue Estimates
+[**country**](DefaultApi.md#country) | **GET** /country | Country Metadata
 [**covid19**](DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
 [**crypto_candles**](DefaultApi.md#crypto_candles) | **GET** /crypto/candle | Crypto Candles
 [**crypto_exchanges**](DefaultApi.md#crypto_exchanges) | **GET** /crypto/exchange | Crypto Exchanges
 [**crypto_symbols**](DefaultApi.md#crypto_symbols) | **GET** /crypto/symbol | Crypto Symbol
 [**earnings_calendar**](DefaultApi.md#earnings_calendar) | **GET** /calendar/earnings | Earnings Calendar
+[**economic_code**](DefaultApi.md#economic_code) | **GET** /economic/code | Economic Code
+[**economic_data**](DefaultApi.md#economic_data) | **GET** /economic | Economic Data
 [**filings**](DefaultApi.md#filings) | **GET** /stock/filings | Filings
 [**financials**](DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
 [**financials_reported**](DefaultApi.md#financials_reported) | **GET** /stock/financials-reported | Financials As Reported
@@ -640,7 +643,7 @@ configuration = finnhub.Configuration(
 with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
-    symbol = 'symbol_example' # str | Symbol of the company: AAPL, SBIN.NS e.g. (optional)
+    symbol = 'symbol_example' # str | Symbol of the company: AAPL e.g. (optional)
 isin = 'isin_example' # str | ISIN (optional)
 cusip = 'cusip_example' # str | CUSIP (optional)
 
@@ -656,7 +659,7 @@ cusip = 'cusip_example' # str | CUSIP (optional)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **str**| Symbol of the company: AAPL, SBIN.NS e.g. | [optional] 
+ **symbol** | **str**| Symbol of the company: AAPL e.g. | [optional] 
  **isin** | **str**| ISIN | [optional] 
  **cusip** | **str**| CUSIP | [optional] 
 
@@ -721,7 +724,7 @@ configuration = finnhub.Configuration(
 with finnhub.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = finnhub.DefaultApi(api_client)
-    symbol = 'symbol_example' # str | Symbol of the company: AAPL, SBIN.NS e.g. (optional)
+    symbol = 'symbol_example' # str | Symbol of the company: AAPL e.g. (optional)
 isin = 'isin_example' # str | ISIN (optional)
 cusip = 'cusip_example' # str | CUSIP (optional)
 
@@ -737,7 +740,7 @@ cusip = 'cusip_example' # str | CUSIP (optional)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **symbol** | **str**| Symbol of the company: AAPL, SBIN.NS e.g. | [optional] 
+ **symbol** | **str**| Symbol of the company: AAPL e.g. | [optional] 
  **isin** | **str**| ISIN | [optional] 
  **cusip** | **str**| CUSIP | [optional] 
 
@@ -840,6 +843,79 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **country**
+> list[EconomicCode] country()
+
+Country Metadata
+
+List all countries and metadata.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import finnhub
+from finnhub.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://finnhub.io/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1",
+    api_key = {
+        'token': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with finnhub.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finnhub.DefaultApi(api_client)
+    
+    try:
+        # Country Metadata
+        api_response = api_instance.country()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->country: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**list[EconomicCode]**](EconomicCode.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **covid19**
 > COVID19 covid19()
 
@@ -914,7 +990,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **crypto_candles**
-> CryptoCandles crypto_candles(symbol, resolution, _from=_from, to=to, format=format, count=count)
+> CryptoCandles crypto_candles(symbol, resolution, _from, to, format=format)
 
 Crypto Candles
 
@@ -956,14 +1032,13 @@ with finnhub.ApiClient(configuration) as api_client:
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Use symbol returned in <code>/crypto/symbol</code> endpoint for this field.
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
-_from = 56 # int | UNIX timestamp. Interval initial value. If count is not provided, this field is required (optional)
-to = 56 # int | UNIX timestamp. Interval end value. If count is not provided, this field is required (optional)
+_from = 56 # int | UNIX timestamp. Interval initial value.
+to = 56 # int | UNIX timestamp. Interval end value.
 format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
-count = 56 # int | Shortcut to set <code>to=Unix.Now</code> and <code>from=Unix.Now - count * resolution_second</code>. (optional)
 
     try:
         # Crypto Candles
-        api_response = api_instance.crypto_candles(symbol, resolution, _from=_from, to=to, format=format, count=count)
+        api_response = api_instance.crypto_candles(symbol, resolution, _from, to, format=format)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->crypto_candles: %s\n" % e)
@@ -975,10 +1050,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Use symbol returned in &lt;code&gt;/crypto/symbol&lt;/code&gt; endpoint for this field. | 
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
- **_from** | **int**| UNIX timestamp. Interval initial value. If count is not provided, this field is required | [optional] 
- **to** | **int**| UNIX timestamp. Interval end value. If count is not provided, this field is required | [optional] 
+ **_from** | **int**| UNIX timestamp. Interval initial value. | 
+ **to** | **int**| UNIX timestamp. Interval end value. | 
  **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
- **count** | **int**| Shortcut to set &lt;code&gt;to&#x3D;Unix.Now&lt;/code&gt; and &lt;code&gt;from&#x3D;Unix.Now - count * resolution_second&lt;/code&gt;. | [optional] 
 
 ### Return type
 
@@ -1216,6 +1290,156 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**list[EarningRelease]**](EarningRelease.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **economic_code**
+> list[EconomicCode] economic_code()
+
+Economic Code
+
+List codes of supported economic data.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import finnhub
+from finnhub.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://finnhub.io/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1",
+    api_key = {
+        'token': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with finnhub.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finnhub.DefaultApi(api_client)
+    
+    try:
+        # Economic Code
+        api_response = api_instance.economic_code()
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->economic_code: %s\n" % e)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**list[EconomicCode]**](EconomicCode.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **economic_data**
+> EconomicData economic_data(code)
+
+Economic Data
+
+Get economic data.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import finnhub
+from finnhub.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://finnhub.io/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1",
+    api_key = {
+        'token': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with finnhub.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finnhub.DefaultApi(api_client)
+    code = 'code_example' # str | Economic code.
+
+    try:
+        # Economic Data
+        api_response = api_instance.economic_data(code)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->economic_data: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **str**| Economic code. | 
+
+### Return type
+
+[**EconomicData**](EconomicData.md)
 
 ### Authorization
 
@@ -1485,7 +1709,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forex_candles**
-> ForexCandles forex_candles(symbol, resolution, _from=_from, to=to, format=format)
+> ForexCandles forex_candles(symbol, resolution, _from, to, format=format)
 
 Forex Candles
 
@@ -1527,13 +1751,13 @@ with finnhub.ApiClient(configuration) as api_client:
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Use symbol returned in <code>/forex/symbol</code> endpoint for this field.
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
-_from = 56 # int | UNIX timestamp. Interval initial value. If count is not provided, this field is required (optional)
-to = 56 # int | UNIX timestamp. Interval end value. If count is not provided, this field is required (optional)
+_from = 56 # int | UNIX timestamp. Interval initial value.
+to = 56 # int | UNIX timestamp. Interval end value.
 format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
 
     try:
         # Forex Candles
-        api_response = api_instance.forex_candles(symbol, resolution, _from=_from, to=to, format=format)
+        api_response = api_instance.forex_candles(symbol, resolution, _from, to, format=format)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->forex_candles: %s\n" % e)
@@ -1545,8 +1769,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Use symbol returned in &lt;code&gt;/forex/symbol&lt;/code&gt; endpoint for this field. | 
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
- **_from** | **int**| UNIX timestamp. Interval initial value. If count is not provided, this field is required | [optional] 
- **to** | **int**| UNIX timestamp. Interval end value. If count is not provided, this field is required | [optional] 
+ **_from** | **int**| UNIX timestamp. Interval initial value. | 
+ **to** | **int**| UNIX timestamp. Interval end value. | 
  **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
 
 ### Return type
@@ -2431,7 +2655,7 @@ Name | Type | Description  | Notes
 
 Quote
 
-<p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2581,11 +2805,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stock_candles**
-> StockCandles stock_candles(symbol, resolution, _from=_from, to=to, format=format, adjusted=adjusted)
+> StockCandles stock_candles(symbol, resolution, _from, to, format=format, adjusted=adjusted)
 
 Stock Candles
 
-<p>Get candlestick data for stocks going back 25 years.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2623,14 +2847,14 @@ with finnhub.ApiClient(configuration) as api_client:
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Symbol.
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
-_from = 56 # int | UNIX timestamp. Interval initial value. If count is not provided, this field is required (optional)
-to = 56 # int | UNIX timestamp. Interval end value. If count is not provided, this field is required (optional)
+_from = 56 # int | UNIX timestamp. Interval initial value.
+to = 56 # int | UNIX timestamp. Interval end value.
 format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
 adjusted = 'adjusted_example' # str | By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data. (optional)
 
     try:
         # Stock Candles
-        api_response = api_instance.stock_candles(symbol, resolution, _from=_from, to=to, format=format, adjusted=adjusted)
+        api_response = api_instance.stock_candles(symbol, resolution, _from, to, format=format, adjusted=adjusted)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->stock_candles: %s\n" % e)
@@ -2642,8 +2866,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Symbol. | 
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
- **_from** | **int**| UNIX timestamp. Interval initial value. If count is not provided, this field is required | [optional] 
- **to** | **int**| UNIX timestamp. Interval end value. If count is not provided, this field is required | [optional] 
+ **_from** | **int**| UNIX timestamp. Interval initial value. | 
+ **to** | **int**| UNIX timestamp. Interval end value. | 
  **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
  **adjusted** | **str**| By default, &lt;code&gt;adjusted&#x3D;false&lt;/code&gt;. Use &lt;code&gt;true&lt;/code&gt; to get adjusted data. | [optional] 
 
@@ -3107,8 +3331,8 @@ with finnhub.ApiClient(configuration) as api_client:
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | symbol
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
-_from = 56 # int | UNIX timestamp. Interval initial value. If count is not provided, this field is required
-to = 56 # int | UNIX timestamp. Interval end value. If count is not provided, this field is required
+_from = 56 # int | UNIX timestamp. Interval initial value.
+to = 56 # int | UNIX timestamp. Interval end value.
 indicator = 'indicator_example' # str | Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>.
 indicator_specific_fields = None # object | Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported. (optional)
 
@@ -3126,8 +3350,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| symbol | 
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
- **_from** | **int**| UNIX timestamp. Interval initial value. If count is not provided, this field is required | 
- **to** | **int**| UNIX timestamp. Interval end value. If count is not provided, this field is required | 
+ **_from** | **int**| UNIX timestamp. Interval initial value. | 
+ **to** | **int**| UNIX timestamp. Interval end value. | 
  **indicator** | **str**| Indicator name. Full list can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. | 
  **indicator_specific_fields** | [**object**](.md)| Check out &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;this page&lt;/a&gt; to see which indicators and params are supported. | [optional] 
 

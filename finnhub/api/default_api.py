@@ -890,7 +890,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL, SBIN.NS e.g.
+        :param str symbol: Symbol of the company: AAPL e.g.
         :param str isin: ISIN
         :param str cusip: CUSIP
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -917,7 +917,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL, SBIN.NS e.g.
+        :param str symbol: Symbol of the company: AAPL e.g.
         :param str isin: ISIN
         :param str cusip: CUSIP
         :param _return_http_data_only: response data without head status code
@@ -1010,7 +1010,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL, SBIN.NS e.g.
+        :param str symbol: Symbol of the company: AAPL e.g.
         :param str isin: ISIN
         :param str cusip: CUSIP
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1037,7 +1037,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
-        :param str symbol: Symbol of the company: AAPL, SBIN.NS e.g.
+        :param str symbol: Symbol of the company: AAPL e.g.
         :param str isin: ISIN
         :param str cusip: CUSIP
         :param _return_http_data_only: response data without head status code
@@ -1239,6 +1239,111 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def country(self, **kwargs):  # noqa: E501
+        """Country Metadata  # noqa: E501
+
+        List all countries and metadata.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.country(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[EconomicCode]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.country_with_http_info(**kwargs)  # noqa: E501
+
+    def country_with_http_info(self, **kwargs):  # noqa: E501
+        """Country Metadata  # noqa: E501
+
+        List all countries and metadata.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.country_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[EconomicCode], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method country" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/country', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[EconomicCode]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def covid19(self, **kwargs):  # noqa: E501
         """COVID-19  # noqa: E501
 
@@ -1344,22 +1449,21 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def crypto_candles(self, symbol, resolution, **kwargs):  # noqa: E501
+    def crypto_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Crypto Candles  # noqa: E501
 
         Get candlestick data for crypto symbols.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.crypto_candles(symbol, resolution, async_req=True)
+        >>> thread = api.crypto_candles(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Use symbol returned in <code>/crypto/symbol</code> endpoint for this field. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
-        :param int count: Shortcut to set <code>to=Unix.Now</code> and <code>from=Unix.Now - count * resolution_second</code>.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1372,24 +1476,23 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.crypto_candles_with_http_info(symbol, resolution, **kwargs)  # noqa: E501
+        return self.crypto_candles_with_http_info(symbol, resolution, _from, to, **kwargs)  # noqa: E501
 
-    def crypto_candles_with_http_info(self, symbol, resolution, **kwargs):  # noqa: E501
+    def crypto_candles_with_http_info(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Crypto Candles  # noqa: E501
 
         Get candlestick data for crypto symbols.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.crypto_candles_with_http_info(symbol, resolution, async_req=True)
+        >>> thread = api.crypto_candles_with_http_info(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Use symbol returned in <code>/crypto/symbol</code> endpoint for this field. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
-        :param int count: Shortcut to set <code>to=Unix.Now</code> and <code>from=Unix.Now - count * resolution_second</code>.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1411,8 +1514,7 @@ class DefaultApi(object):
             'resolution',
             '_from',
             'to',
-            'format',
-            'count'
+            'format'
         ]
         all_params.extend(
             [
@@ -1439,6 +1541,14 @@ class DefaultApi(object):
         if self.api_client.client_side_validation and ('resolution' not in local_var_params or  # noqa: E501
                                                         local_var_params['resolution'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resolution` when calling `crypto_candles`")  # noqa: E501
+        # verify the required parameter '_from' is set
+        if self.api_client.client_side_validation and ('_from' not in local_var_params or  # noqa: E501
+                                                        local_var_params['_from'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `_from` when calling `crypto_candles`")  # noqa: E501
+        # verify the required parameter 'to' is set
+        if self.api_client.client_side_validation and ('to' not in local_var_params or  # noqa: E501
+                                                        local_var_params['to'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to` when calling `crypto_candles`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1455,8 +1565,6 @@ class DefaultApi(object):
             query_params.append(('to', local_var_params['to']))  # noqa: E501
         if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
             query_params.append(('format', local_var_params['format']))  # noqa: E501
-        if 'count' in local_var_params and local_var_params['count'] is not None:  # noqa: E501
-            query_params.append(('count', local_var_params['count']))  # noqa: E501
 
         header_params = {}
 
@@ -1824,6 +1932,225 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='list[EarningRelease]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def economic_code(self, **kwargs):  # noqa: E501
+        """Economic Code  # noqa: E501
+
+        List codes of supported economic data.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.economic_code(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[EconomicCode]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.economic_code_with_http_info(**kwargs)  # noqa: E501
+
+    def economic_code_with_http_info(self, **kwargs):  # noqa: E501
+        """Economic Code  # noqa: E501
+
+        List codes of supported economic data.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.economic_code_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[EconomicCode], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method economic_code" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/economic/code', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[EconomicCode]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def economic_data(self, code, **kwargs):  # noqa: E501
+        """Economic Data  # noqa: E501
+
+        Get economic data.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.economic_data(code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str code: Economic code. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: EconomicData
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.economic_data_with_http_info(code, **kwargs)  # noqa: E501
+
+    def economic_data_with_http_info(self, code, **kwargs):  # noqa: E501
+        """Economic Data  # noqa: E501
+
+        Get economic data.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.economic_data_with_http_info(code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str code: Economic code. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(EconomicData, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'code'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method economic_data" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'code' is set
+        if self.api_client.client_side_validation and ('code' not in local_var_params or  # noqa: E501
+                                                        local_var_params['code'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `code` when calling `economic_data`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'code' in local_var_params and local_var_params['code'] is not None:  # noqa: E501
+            query_params.append(('code', local_var_params['code']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/economic', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='EconomicData',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2223,20 +2550,20 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def forex_candles(self, symbol, resolution, **kwargs):  # noqa: E501
+    def forex_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Forex Candles  # noqa: E501
 
         Get candlestick data for forex symbols.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.forex_candles(symbol, resolution, async_req=True)
+        >>> thread = api.forex_candles(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Use symbol returned in <code>/forex/symbol</code> endpoint for this field. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -2250,22 +2577,22 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.forex_candles_with_http_info(symbol, resolution, **kwargs)  # noqa: E501
+        return self.forex_candles_with_http_info(symbol, resolution, _from, to, **kwargs)  # noqa: E501
 
-    def forex_candles_with_http_info(self, symbol, resolution, **kwargs):  # noqa: E501
+    def forex_candles_with_http_info(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Forex Candles  # noqa: E501
 
         Get candlestick data for forex symbols.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.forex_candles_with_http_info(symbol, resolution, async_req=True)
+        >>> thread = api.forex_candles_with_http_info(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Use symbol returned in <code>/forex/symbol</code> endpoint for this field. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -2315,6 +2642,14 @@ class DefaultApi(object):
         if self.api_client.client_side_validation and ('resolution' not in local_var_params or  # noqa: E501
                                                         local_var_params['resolution'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resolution` when calling `forex_candles`")  # noqa: E501
+        # verify the required parameter '_from' is set
+        if self.api_client.client_side_validation and ('_from' not in local_var_params or  # noqa: E501
+                                                        local_var_params['_from'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `_from` when calling `forex_candles`")  # noqa: E501
+        # verify the required parameter 'to' is set
+        if self.api_client.client_side_validation and ('to' not in local_var_params or  # noqa: E501
+                                                        local_var_params['to'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to` when calling `forex_candles`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3648,7 +3983,7 @@ class DefaultApi(object):
     def quote(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote(symbol, async_req=True)
@@ -3673,7 +4008,7 @@ class DefaultApi(object):
     def quote_with_http_info(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote_with_http_info(symbol, async_req=True)
@@ -3873,20 +4208,20 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def stock_candles(self, symbol, resolution, **kwargs):  # noqa: E501
+    def stock_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stock_candles(symbol, resolution, async_req=True)
+        >>> thread = api.stock_candles(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param str adjusted: By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -3901,22 +4236,22 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.stock_candles_with_http_info(symbol, resolution, **kwargs)  # noqa: E501
+        return self.stock_candles_with_http_info(symbol, resolution, _from, to, **kwargs)  # noqa: E501
 
-    def stock_candles_with_http_info(self, symbol, resolution, **kwargs):  # noqa: E501
+    def stock_candles_with_http_info(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years.</p><p> Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stock_candles_with_http_info(symbol, resolution, async_req=True)
+        >>> thread = api.stock_candles_with_http_info(symbol, resolution, _from, to, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol. (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param str adjusted: By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data.
         :param _return_http_data_only: response data without head status code
@@ -3968,6 +4303,14 @@ class DefaultApi(object):
         if self.api_client.client_side_validation and ('resolution' not in local_var_params or  # noqa: E501
                                                         local_var_params['resolution'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `resolution` when calling `stock_candles`")  # noqa: E501
+        # verify the required parameter '_from' is set
+        if self.api_client.client_side_validation and ('_from' not in local_var_params or  # noqa: E501
+                                                        local_var_params['_from'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `_from` when calling `stock_candles`")  # noqa: E501
+        # verify the required parameter 'to' is set
+        if self.api_client.client_side_validation and ('to' not in local_var_params or  # noqa: E501
+                                                        local_var_params['to'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `to` when calling `stock_candles`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4652,8 +4995,8 @@ class DefaultApi(object):
         :param async_req bool: execute request asynchronously
         :param str symbol: symbol (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required (required)
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required (required)
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str indicator: Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>. (required)
         :param object indicator_specific_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4682,8 +5025,8 @@ class DefaultApi(object):
         :param async_req bool: execute request asynchronously
         :param str symbol: symbol (required)
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
-        :param int _from: UNIX timestamp. Interval initial value. If count is not provided, this field is required (required)
-        :param int to: UNIX timestamp. Interval end value. If count is not provided, this field is required (required)
+        :param int _from: UNIX timestamp. Interval initial value. (required)
+        :param int to: UNIX timestamp. Interval end value. (required)
         :param str indicator: Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>. (required)
         :param object indicator_specific_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
         :param _return_http_data_only: response data without head status code

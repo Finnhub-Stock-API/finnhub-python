@@ -56,7 +56,7 @@ class CompanyProfile(object):
         'ticker': 'str',
         'weburl': 'str',
         'ipo': 'date',
-        'market_capitalization': 'int',
+        'market_capitalization': 'float',
         'share_outstanding': 'float',
         'employee_total': 'int',
         'logo': 'str',
@@ -723,7 +723,7 @@ class CompanyProfile(object):
         Market Capitalization.  # noqa: E501
 
         :return: The market_capitalization of this CompanyProfile.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._market_capitalization
 
@@ -734,7 +734,7 @@ class CompanyProfile(object):
         Market Capitalization.  # noqa: E501
 
         :param market_capitalization: The market_capitalization of this CompanyProfile.  # noqa: E501
-        :type: int
+        :type: float
         """
 
         self._market_capitalization = market_capitalization

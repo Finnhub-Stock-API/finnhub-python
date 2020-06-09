@@ -1,7 +1,7 @@
 # finnhub-python
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 1.0.3
+- Package version: 1.1.0
 
 ## Requirements.
 
@@ -63,11 +63,14 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**company_profile**](docs/DefaultApi.md#company_profile) | **GET** /stock/profile | Company Profile
 *DefaultApi* | [**company_profile2**](docs/DefaultApi.md#company_profile2) | **GET** /stock/profile2 | Company Profile 2
 *DefaultApi* | [**company_revenue_estimates**](docs/DefaultApi.md#company_revenue_estimates) | **GET** /stock/revenue-estimate | Revenue Estimates
+*DefaultApi* | [**country**](docs/DefaultApi.md#country) | **GET** /country | Country Metadata
 *DefaultApi* | [**covid19**](docs/DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
 *DefaultApi* | [**crypto_candles**](docs/DefaultApi.md#crypto_candles) | **GET** /crypto/candle | Crypto Candles
 *DefaultApi* | [**crypto_exchanges**](docs/DefaultApi.md#crypto_exchanges) | **GET** /crypto/exchange | Crypto Exchanges
 *DefaultApi* | [**crypto_symbols**](docs/DefaultApi.md#crypto_symbols) | **GET** /crypto/symbol | Crypto Symbol
 *DefaultApi* | [**earnings_calendar**](docs/DefaultApi.md#earnings_calendar) | **GET** /calendar/earnings | Earnings Calendar
+*DefaultApi* | [**economic_code**](docs/DefaultApi.md#economic_code) | **GET** /economic/code | Economic Code
+*DefaultApi* | [**economic_data**](docs/DefaultApi.md#economic_data) | **GET** /economic | Economic Data
 *DefaultApi* | [**filings**](docs/DefaultApi.md#filings) | **GET** /stock/filings | Filings
 *DefaultApi* | [**financials**](docs/DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
 *DefaultApi* | [**financials_reported**](docs/DefaultApi.md#financials_reported) | **GET** /stock/financials-reported | Financials As Reported
@@ -96,6 +99,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**transcripts_list**](docs/DefaultApi.md#transcripts_list) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
 *DefaultApi* | [**upgrade_downgrade**](docs/DefaultApi.md#upgrade_downgrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
 
+
 ## Models
 
  - [AggregateIndicators](docs/AggregateIndicators.md)
@@ -116,6 +120,9 @@ Class | Method | HTTP request | Description
  - [EarningsCallTranscripts](docs/EarningsCallTranscripts.md)
  - [EarningsCallTranscriptsList](docs/EarningsCallTranscriptsList.md)
  - [EarningsEstimates](docs/EarningsEstimates.md)
+ - [EconomicCode](docs/EconomicCode.md)
+ - [EconomicData](docs/EconomicData.md)
+ - [EconomicEvent](docs/EconomicEvent.md)
  - [Estimate](docs/Estimate.md)
  - [Filing](docs/Filing.md)
  - [FinancialStatements](docs/FinancialStatements.md)

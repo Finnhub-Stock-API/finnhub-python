@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | Company name. | [optional] 
 **ticker** | **str** | Company symbol/ticker as used on the listed exchange. | [optional] 
 **ipo** | **date** | IPO date. | [optional] 
-**market_capitalization** | **int** | Market Capitalization. | [optional] 
+**market_capitalization** | **float** | Market Capitalization. | [optional] 
 **share_outstanding** | **float** | Number of oustanding shares. | [optional] 
 **logo** | **str** | Logo image. | [optional] 
 **phone** | **str** | Company phone number. | [optional] 
