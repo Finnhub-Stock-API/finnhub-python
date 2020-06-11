@@ -36,7 +36,9 @@ class TestEconomicCalendar(unittest.TestCase):
         # model = finnhub.models.economic_calendar.EconomicCalendar()  # noqa: E501
         if include_optional :
             return EconomicCalendar(
-                array = None
+                economic_calendar = [
+                    None
+                    ]
             )
         else :
             return EconomicCalendar(

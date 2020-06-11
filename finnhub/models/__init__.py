@@ -16,12 +16,12 @@ from __future__ import absolute_import
 # import models into model package
 from finnhub.models.aggregate_indicators import AggregateIndicators
 from finnhub.models.basic_financials import BasicFinancials
-from finnhub.models.covid19 import COVID19
 from finnhub.models.company import Company
 from finnhub.models.company_executive import CompanyExecutive
 from finnhub.models.company_news_statistics import CompanyNewsStatistics
 from finnhub.models.company_profile import CompanyProfile
 from finnhub.models.company_profile2 import CompanyProfile2
+from finnhub.models.covid19 import Covid19
 from finnhub.models.crypto_candles import CryptoCandles
 from finnhub.models.crypto_symbol import CryptoSymbol
 from finnhub.models.development import Development
@@ -29,9 +29,11 @@ from finnhub.models.dividends import Dividends
 from finnhub.models.earning_estimate import EarningEstimate
 from finnhub.models.earning_release import EarningRelease
 from finnhub.models.earning_result import EarningResult
+from finnhub.models.earnings_calendar import EarningsCalendar
 from finnhub.models.earnings_call_transcripts import EarningsCallTranscripts
 from finnhub.models.earnings_call_transcripts_list import EarningsCallTranscriptsList
 from finnhub.models.earnings_estimates import EarningsEstimates
+from finnhub.models.economic_calendar import EconomicCalendar
 from finnhub.models.economic_code import EconomicCode
 from finnhub.models.economic_data import EconomicData
 from finnhub.models.economic_event import EconomicEvent
@@ -43,6 +45,7 @@ from finnhub.models.forex_candles import ForexCandles
 from finnhub.models.forex_symbol import ForexSymbol
 from finnhub.models.forexrates import Forexrates
 from finnhub.models.fund_ownership import FundOwnership
+from finnhub.models.ipo_calendar import IPOCalendar
 from finnhub.models.ipo_event import IPOEvent
 from finnhub.models.indicator import Indicator
 from finnhub.models.investor import Investor
@@ -50,16 +53,18 @@ from finnhub.models.investors_ownership import InvestorsOwnership
 from finnhub.models.major_developments import MajorDevelopments
 from finnhub.models.news import News
 from finnhub.models.news_sentiment import NewsSentiment
+from finnhub.models.pattern_recognition import PatternRecognition
 from finnhub.models.price_target import PriceTarget
 from finnhub.models.quote import Quote
-from finnhub.models.recommendation_trends import RecommendationTrends
+from finnhub.models.recommendation_trend import RecommendationTrend
 from finnhub.models.report import Report
 from finnhub.models.revenue_estimates import RevenueEstimates
 from finnhub.models.sentiment import Sentiment
-from finnhub.models.splits import Splits
+from finnhub.models.split import Split
 from finnhub.models.stock import Stock
 from finnhub.models.stock_candles import StockCandles
 from finnhub.models.stock_transcripts import StockTranscripts
+from finnhub.models.support_resistance import SupportResistance
 from finnhub.models.technical_analysis import TechnicalAnalysis
 from finnhub.models.technical_indicators import TechnicalIndicators
 from finnhub.models.tick_data import TickData

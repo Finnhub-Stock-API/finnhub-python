@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import finnhub
-from finnhub.models.covid19 import Covid19  # noqa: E501
+from finnhub.models.recommendation_trend import RecommendationTrend  # noqa: E501
 from finnhub.rest import ApiException
 
-class TestCovid19(unittest.TestCase):
-    """Covid19 unit test stubs"""
+class TestRecommendationTrend(unittest.TestCase):
+    """RecommendationTrend unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,24 +29,27 @@ class TestCovid19(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test Covid19
+        """Test RecommendationTrend
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = finnhub.models.covid19.Covid19()  # noqa: E501
+        # model = finnhub.models.recommendation_trend.RecommendationTrend()  # noqa: E501
         if include_optional :
-            return Covid19(
-                state = '0', 
-                case = 1.337, 
-                death = 1.337, 
-                updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
+            return RecommendationTrend(
+                symbol = '0', 
+                buy = 56, 
+                hold = 56, 
+                period = '0', 
+                sell = 56, 
+                strong_buy = 56, 
+                strong_sell = 56
             )
         else :
-            return Covid19(
+            return RecommendationTrend(
         )
 
-    def testCovid19(self):
-        """Test Covid19"""
+    def testRecommendationTrend(self):
+        """Test RecommendationTrend"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

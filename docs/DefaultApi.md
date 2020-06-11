@@ -917,7 +917,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **covid19**
-> COVID19 covid19()
+> list[Covid19] covid19()
 
 COVID-19
 
@@ -971,7 +971,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**COVID19**](COVID19.md)
+[**list[Covid19]**](Covid19.md)
 
 ### Authorization
 
@@ -1225,7 +1225,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **earnings_calendar**
-> list[EarningRelease] earnings_calendar(_from=_from, to=to, symbol=symbol, international=international)
+> EarningsCalendar earnings_calendar(_from=_from, to=to, symbol=symbol, international=international)
 
 Earnings Calendar
 
@@ -1289,7 +1289,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[EarningRelease]**](EarningRelease.md)
+[**EarningsCalendar**](EarningsCalendar.md)
 
 ### Authorization
 
@@ -2258,7 +2258,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ipo_calendar**
-> list[IPOEvent] ipo_calendar(_from, to)
+> IPOCalendar ipo_calendar(_from, to)
 
 IPO Calendar
 
@@ -2318,7 +2318,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[IPOEvent]**](IPOEvent.md)
+[**IPOCalendar**](IPOCalendar.md)
 
 ### Authorization
 
@@ -2495,7 +2495,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pattern_recognition**
-> list[object] pattern_recognition(symbol, resolution)
+> PatternRecognition pattern_recognition(symbol, resolution)
 
 Pattern Recognition
 
@@ -2555,7 +2555,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**list[object]**
+[**PatternRecognition**](PatternRecognition.md)
 
 ### Authorization
 
@@ -2728,7 +2728,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **recommendation_trends**
-> RecommendationTrends recommendation_trends(symbol)
+> list[RecommendationTrend] recommendation_trends(symbol)
 
 Recommendation Trends
 
@@ -2786,7 +2786,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**RecommendationTrends**](RecommendationTrends.md)
+[**list[RecommendationTrend]**](RecommendationTrend.md)
 
 ### Authorization
 
@@ -2892,7 +2892,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stock_dividends**
-> Dividends stock_dividends(symbol, _from, to)
+> list[Dividends] stock_dividends(symbol, _from, to)
 
 Dividends
 
@@ -2954,7 +2954,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Dividends**](Dividends.md)
+[**list[Dividends]**](Dividends.md)
 
 ### Authorization
 
@@ -2973,7 +2973,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stock_splits**
-> Splits stock_splits(symbol, _from, to)
+> list[Split] stock_splits(symbol, _from, to)
 
 Splits
 
@@ -3035,7 +3035,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Splits**](Splits.md)
+[**list[Split]**](Split.md)
 
 ### Authorization
 
@@ -3210,7 +3210,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **support_resistance**
-> list[float] support_resistance(symbol, resolution)
+> Resistance support_resistance(symbol, resolution)
 
 Support/Resistance
 
@@ -3270,7 +3270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**list[float]**
+[**Resistance**](Resistance.md)
 
 ### Authorization
 
