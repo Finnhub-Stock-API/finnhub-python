@@ -32,134 +32,154 @@ configuration = finnhub.Configuration(
 )
 
 # Enter a context with an instance of the API client
-with finnhub.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = finnhub.DefaultApi(api_client)
-    symbol = 'AAPL' # str | symbol
-    resolution = 'D' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
+import finnhub
 
-    try:
-        # Aggregate Indicators
-        api_response = api_instance.aggregate_indicator(symbol, resolution)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling DefaultApi->aggregate_indicator: %s\n" % e)
+# Configure API key
+configuration = finnhub.Configuration(
+    api_key={
+        'token': '<API_KEY>' # Replace this
+    }
+)
+
+finnhub_client = finnhub.DefaultApi(finnhub.ApiClient(configuration))
+
+# Stock candles
+print(finnhub_client.stock_candles('AAPL', 'D', 1590988249, 1591852249))
+
+# Aggregate Indicators
+print(finnhub_client.aggregate_indicator('AAPL', 'D'))
+
+# Basic financials
+print(finnhub_client.company_basic_financials('AAPL', 'margin'))
+
+# Earnings surprises
+print(finnhub_client.company_earnings('TSLA', limit=5))
+
+# EPS estimates
+print(finnhub_client.company_eps_estimates('AMZN', freq='quarterly'))
+
+# Company Executives
+print(finnhub_client.company_executive('AAPL'))
+
+# Company News
+# Need to use _from instead of from to avoid conflict
+print(finnhub_client.company_news('AAPL', _from="2020-06-01", to="2020-06-10"))
+
+# Company Peers
+print(finnhub_client.company_peers('AAPL'))
+
+# Company Profile
+print(finnhub_client.company_profile(symbol='AAPL'))
+print(finnhub_client.company_profile(isin='US0378331005'))
+print(finnhub_client.company_profile(cusip='037833100'))
+
+# Company Profile 2
+print(finnhub_client.company_profile2(symbol='AAPL'))
+
+# Revenue Estimates
+print(finnhub_client.company_revenue_estimates('TSLA', freq='quarterly'))
+
+# List country
+print(finnhub_client.country())
+
+# Crypto Exchange
+print(finnhub_client.crypto_exchanges())
+
+# Crypto symbols
+print(finnhub_client.crypto_symbols('BINANCE'))
+
+# Economic data
+print(finnhub_client.economic_data('MA-USA-656880'))
+
+# Filings
+print(finnhub_client.filings(symbol='AAPL', _from="2020-01-01", to="2020-06-11"))
+
+# Financials
+print(finnhub_client.financials('AAPL', 'bs', 'annual'))
+
+# Financials as reported
+print(finnhub_client.financials_reported(symbol='AAPL', freq='annual'))
+
+# Forex exchanges
+print(finnhub_client.forex_exchanges())
+
+# Forex all pairs
+print(finnhub_client.forex_rates(base='USD'))
+
+# Forex symbols
+print(finnhub_client.forex_symbols('OANDA'))
+
+# Fund Ownership
+print(finnhub_client.fund_ownership('AMZN', limit=5))
+
+# General news
+print(finnhub_client.general_news('forex', min_id=0))
+
+# Investors ownership
+print(finnhub_client.investors_ownership('AAPL', limit=5))
+
+# IPO calendar
+print(finnhub_client.ipo_calendar(_from="2020-05-01", to="2020-06-01"))
+
+# Major developments
+print(finnhub_client.major_developments('AAPL', _from="2020-01-01", to="2020-12-31"))
+
+# News sentiment
+print(finnhub_client.news_sentiment('AAPL'))
+
+# Pattern recognition
+print(finnhub_client.pattern_recognition('AAPL', 'D'))
+
+# Price target
+print(finnhub_client.price_target('AAPL'))
+
+# Quote
+print(finnhub_client.quote('AAPL'))
+
+# Recommendation trends
+print(finnhub_client.recommendation_trends('AAPL'))
+
+# Stock dividends
+print(finnhub_client.stock_dividends('KO', _from='2019-01-01', to='2020-01-01'))
+
+# Stock symbols
+print(finnhub_client.stock_symbols('US')[0:5])
+
+# Transcripts
+print(finnhub_client.transcripts('AAPL_162777'))
+
+# Transcripts list
+print(finnhub_client.transcripts_list('AAPL'))
+
+# Earnings Calendar
+print(finnhub_client.earnings_calendar(_from="2020-06-10", to="2020-06-30", symbol="", international=False))
+
+# Covid-19
+print(finnhub_client.covid19())
+
+# Upgrade downgrade
+print(finnhub_client.upgrade_downgrade(symbol='AAPL', _from='2020-01-01', to='2020-06-30'))
+
+# Economic code
+print(finnhub_client.economic_code()[0:5])
+
+# Support resistance
+print(finnhub_client.support_resistance('AAPL', 'D'))
+
+# Technical Indicator
+print(finnhub_client.technical_indicator('AAPL', 'D', 1580988249, 1591852249, 'macd'))
+
+# Stock splits
+print(finnhub_client.stock_splits('AAPL', _from='2000-01-01', to='2020-01-01'))
+
+# Forex candles
+print(finnhub_client.forex_candles('OANDA:EUR_USD', 'D', 1590988249, 1591852249))
+
+# Crypto Candles
+print(finnhub_client.crypto_candles('BINANCE:BTCUSDT', 'D', 1590988249, 1591852249))
+
     
 ```
-
-## API Endpoints
-
-All URIs are relative to *https://finnhub.io/api/v1*
-
-Class | Method | HTTP request | Description
------------- | ------------- | ------------- | -------------
-*DefaultApi* | [**aggregate_indicator**](docs/DefaultApi.md#aggregate_indicator) | **GET** /scan/technical-indicator | Aggregate Indicators
-*DefaultApi* | [**company_basic_financials**](docs/DefaultApi.md#company_basic_financials) | **GET** /stock/metric | Basic Financials
-*DefaultApi* | [**company_earnings**](docs/DefaultApi.md#company_earnings) | **GET** /stock/earnings | Earnings Surprises
-*DefaultApi* | [**company_eps_estimates**](docs/DefaultApi.md#company_eps_estimates) | **GET** /stock/eps-estimate | Earnings Estimates
-*DefaultApi* | [**company_executive**](docs/DefaultApi.md#company_executive) | **GET** /stock/executive | Company Executive
-*DefaultApi* | [**company_news**](docs/DefaultApi.md#company_news) | **GET** /company-news | Company News
-*DefaultApi* | [**company_peers**](docs/DefaultApi.md#company_peers) | **GET** /stock/peers | Peers
-*DefaultApi* | [**company_profile**](docs/DefaultApi.md#company_profile) | **GET** /stock/profile | Company Profile
-*DefaultApi* | [**company_profile2**](docs/DefaultApi.md#company_profile2) | **GET** /stock/profile2 | Company Profile 2
-*DefaultApi* | [**company_revenue_estimates**](docs/DefaultApi.md#company_revenue_estimates) | **GET** /stock/revenue-estimate | Revenue Estimates
-*DefaultApi* | [**country**](docs/DefaultApi.md#country) | **GET** /country | Country Metadata
-*DefaultApi* | [**covid19**](docs/DefaultApi.md#covid19) | **GET** /covid19/us | COVID-19
-*DefaultApi* | [**crypto_candles**](docs/DefaultApi.md#crypto_candles) | **GET** /crypto/candle | Crypto Candles
-*DefaultApi* | [**crypto_exchanges**](docs/DefaultApi.md#crypto_exchanges) | **GET** /crypto/exchange | Crypto Exchanges
-*DefaultApi* | [**crypto_symbols**](docs/DefaultApi.md#crypto_symbols) | **GET** /crypto/symbol | Crypto Symbol
-*DefaultApi* | [**earnings_calendar**](docs/DefaultApi.md#earnings_calendar) | **GET** /calendar/earnings | Earnings Calendar
-*DefaultApi* | [**economic_code**](docs/DefaultApi.md#economic_code) | **GET** /economic/code | Economic Code
-*DefaultApi* | [**economic_data**](docs/DefaultApi.md#economic_data) | **GET** /economic | Economic Data
-*DefaultApi* | [**filings**](docs/DefaultApi.md#filings) | **GET** /stock/filings | Filings
-*DefaultApi* | [**financials**](docs/DefaultApi.md#financials) | **GET** /stock/financials | Financial Statements
-*DefaultApi* | [**financials_reported**](docs/DefaultApi.md#financials_reported) | **GET** /stock/financials-reported | Financials As Reported
-*DefaultApi* | [**forex_candles**](docs/DefaultApi.md#forex_candles) | **GET** /forex/candle | Forex Candles
-*DefaultApi* | [**forex_exchanges**](docs/DefaultApi.md#forex_exchanges) | **GET** /forex/exchange | Forex Exchanges
-*DefaultApi* | [**forex_rates**](docs/DefaultApi.md#forex_rates) | **GET** /forex/rates | Forex rates
-*DefaultApi* | [**forex_symbols**](docs/DefaultApi.md#forex_symbols) | **GET** /forex/symbol | Forex Symbol
-*DefaultApi* | [**fund_ownership**](docs/DefaultApi.md#fund_ownership) | **GET** /stock/fund-ownership | Fund Ownership
-*DefaultApi* | [**general_news**](docs/DefaultApi.md#general_news) | **GET** /news | General News
-*DefaultApi* | [**investors_ownership**](docs/DefaultApi.md#investors_ownership) | **GET** /stock/investor-ownership | Investors Ownership
-*DefaultApi* | [**ipo_calendar**](docs/DefaultApi.md#ipo_calendar) | **GET** /calendar/ipo | IPO Calendar
-*DefaultApi* | [**major_developments**](docs/DefaultApi.md#major_developments) | **GET** /major-development | Major Developments
-*DefaultApi* | [**news_sentiment**](docs/DefaultApi.md#news_sentiment) | **GET** /news-sentiment | News Sentiment
-*DefaultApi* | [**pattern_recognition**](docs/DefaultApi.md#pattern_recognition) | **GET** /scan/pattern | Pattern Recognition
-*DefaultApi* | [**price_target**](docs/DefaultApi.md#price_target) | **GET** /stock/price-target | Price Target
-*DefaultApi* | [**quote**](docs/DefaultApi.md#quote) | **GET** /quote | Quote
-*DefaultApi* | [**recommendation_trends**](docs/DefaultApi.md#recommendation_trends) | **GET** /stock/recommendation | Recommendation Trends
-*DefaultApi* | [**stock_candles**](docs/DefaultApi.md#stock_candles) | **GET** /stock/candle | Stock Candles
-*DefaultApi* | [**stock_dividends**](docs/DefaultApi.md#stock_dividends) | **GET** /stock/dividend | Dividends
-*DefaultApi* | [**stock_splits**](docs/DefaultApi.md#stock_splits) | **GET** /stock/split | Splits
-*DefaultApi* | [**stock_symbols**](docs/DefaultApi.md#stock_symbols) | **GET** /stock/symbol | Stock Symbol
-*DefaultApi* | [**stock_tick**](docs/DefaultApi.md#stock_tick) | **GET** /stock/tick | Tick Data
-*DefaultApi* | [**support_resistance**](docs/DefaultApi.md#support_resistance) | **GET** /scan/support-resistance | Support/Resistance
-*DefaultApi* | [**technical_indicator**](docs/DefaultApi.md#technical_indicator) | **GET** /indicator | Technical Indicators
-*DefaultApi* | [**transcripts**](docs/DefaultApi.md#transcripts) | **GET** /stock/transcripts | Earnings Call Transcripts
-*DefaultApi* | [**transcripts_list**](docs/DefaultApi.md#transcripts_list) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
-*DefaultApi* | [**upgrade_downgrade**](docs/DefaultApi.md#upgrade_downgrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
-
-
-## Documentation For Models
-
- - [AggregateIndicators](docs/AggregateIndicators.md)
- - [BasicFinancials](docs/BasicFinancials.md)
- - [Company](docs/Company.md)
- - [CompanyExecutive](docs/CompanyExecutive.md)
- - [CompanyNewsStatistics](docs/CompanyNewsStatistics.md)
- - [CompanyProfile](docs/CompanyProfile.md)
- - [CompanyProfile2](docs/CompanyProfile2.md)
- - [CountryMetadata](docs/CountryMetadata.md)
- - [CovidInfo](docs/CovidInfo.md)
- - [CryptoCandles](docs/CryptoCandles.md)
- - [CryptoSymbol](docs/CryptoSymbol.md)
- - [Development](docs/Development.md)
- - [Dividends](docs/Dividends.md)
- - [EarningEstimate](docs/EarningEstimate.md)
- - [EarningRelease](docs/EarningRelease.md)
- - [EarningResult](docs/EarningResult.md)
- - [EarningsCalendar](docs/EarningsCalendar.md)
- - [EarningsCallTranscripts](docs/EarningsCallTranscripts.md)
- - [EarningsCallTranscriptsList](docs/EarningsCallTranscriptsList.md)
- - [EarningsEstimates](docs/EarningsEstimates.md)
- - [EconomicCalendar](docs/EconomicCalendar.md)
- - [EconomicCode](docs/EconomicCode.md)
- - [EconomicData](docs/EconomicData.md)
- - [EconomicEvent](docs/EconomicEvent.md)
- - [Estimate](docs/Estimate.md)
- - [Filing](docs/Filing.md)
- - [FinancialStatements](docs/FinancialStatements.md)
- - [FinancialsAsReported](docs/FinancialsAsReported.md)
- - [ForexCandles](docs/ForexCandles.md)
- - [ForexSymbol](docs/ForexSymbol.md)
- - [Forexrates](docs/Forexrates.md)
- - [FundOwnership](docs/FundOwnership.md)
- - [IPOCalendar](docs/IPOCalendar.md)
- - [IPOEvent](docs/IPOEvent.md)
- - [Indicator](docs/Indicator.md)
- - [Investor](docs/Investor.md)
- - [InvestorsOwnership](docs/InvestorsOwnership.md)
- - [MajorDevelopments](docs/MajorDevelopments.md)
- - [News](docs/News.md)
- - [NewsSentiment](docs/NewsSentiment.md)
- - [PatternRecognition](docs/PatternRecognition.md)
- - [PriceTarget](docs/PriceTarget.md)
- - [Quote](docs/Quote.md)
- - [RecommendationTrend](docs/RecommendationTrend.md)
- - [Report](docs/Report.md)
- - [RevenueEstimates](docs/RevenueEstimates.md)
- - [Sentiment](docs/Sentiment.md)
- - [Split](docs/Split.md)
- - [Stock](docs/Stock.md)
- - [StockCandles](docs/StockCandles.md)
- - [StockTranscripts](docs/StockTranscripts.md)
- - [SupportResistance](docs/SupportResistance.md)
- - [TechnicalAnalysis](docs/TechnicalAnalysis.md)
- - [TickData](docs/TickData.md)
- - [TranscriptContent](docs/TranscriptContent.md)
- - [TranscriptParticipant](docs/TranscriptParticipant.md)
- - [Trend](docs/Trend.md)
- - [UpgradeDowngrade](docs/UpgradeDowngrade.md)
 
 ## License
 
