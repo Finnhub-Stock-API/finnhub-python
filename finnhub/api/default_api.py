@@ -1256,7 +1256,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: list[EconomicCode]
+        :return: list[CountryMetadata]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1282,7 +1282,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(list[EconomicCode], status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[CountryMetadata], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1336,7 +1336,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[EconomicCode]',  # noqa: E501
+            response_type='list[CountryMetadata]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -1361,7 +1361,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: list[Covid19]
+        :return: list[CovidInfo]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1387,7 +1387,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(list[Covid19], status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(list[CovidInfo], status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -1441,7 +1441,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[Covid19]',  # noqa: E501
+            response_type='list[CovidInfo]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -1463,7 +1463,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1492,7 +1491,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1513,8 +1511,7 @@ class DefaultApi(object):
             'symbol',
             'resolution',
             '_from',
-            'to',
-            'format'
+            'to'
         ]
         all_params.extend(
             [
@@ -1563,8 +1560,6 @@ class DefaultApi(object):
             query_params.append(('from', local_var_params['_from']))  # noqa: E501
         if 'to' in local_var_params and local_var_params['to'] is not None:  # noqa: E501
             query_params.append(('to', local_var_params['to']))  # noqa: E501
-        if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
-            query_params.append(('format', local_var_params['format']))  # noqa: E501
 
         header_params = {}
 
@@ -2564,7 +2559,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -2593,7 +2587,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -2614,8 +2607,7 @@ class DefaultApi(object):
             'symbol',
             'resolution',
             '_from',
-            'to',
-            'format'
+            'to'
         ]
         all_params.extend(
             [
@@ -2664,8 +2656,6 @@ class DefaultApi(object):
             query_params.append(('from', local_var_params['_from']))  # noqa: E501
         if 'to' in local_var_params and local_var_params['to'] is not None:  # noqa: E501
             query_params.append(('to', local_var_params['to']))  # noqa: E501
-        if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
-            query_params.append(('format', local_var_params['format']))  # noqa: E501
 
         header_params = {}
 
@@ -3983,7 +3973,7 @@ class DefaultApi(object):
     def quote(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote(symbol, async_req=True)
@@ -4008,7 +3998,7 @@ class DefaultApi(object):
     def quote_with_http_info(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote_with_http_info(symbol, async_req=True)
@@ -4211,7 +4201,7 @@ class DefaultApi(object):
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_candles(symbol, resolution, _from, to, async_req=True)
@@ -4222,7 +4212,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param str adjusted: By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -4241,7 +4230,7 @@ class DefaultApi(object):
     def stock_candles_with_http_info(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_candles_with_http_info(symbol, resolution, _from, to, async_req=True)
@@ -4252,7 +4241,6 @@ class DefaultApi(object):
         :param str resolution: Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange. (required)
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
-        :param str format: By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted.
         :param str adjusted: By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data.
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -4275,7 +4263,6 @@ class DefaultApi(object):
             'resolution',
             '_from',
             'to',
-            'format',
             'adjusted'
         ]
         all_params.extend(
@@ -4325,8 +4312,6 @@ class DefaultApi(object):
             query_params.append(('from', local_var_params['_from']))  # noqa: E501
         if 'to' in local_var_params and local_var_params['to'] is not None:  # noqa: E501
             query_params.append(('to', local_var_params['to']))  # noqa: E501
-        if 'format' in local_var_params and local_var_params['format'] is not None:  # noqa: E501
-            query_params.append(('format', local_var_params['format']))  # noqa: E501
         if 'adjusted' in local_var_params and local_var_params['adjusted'] is not None:  # noqa: E501
             query_params.append(('adjusted', local_var_params['adjusted']))  # noqa: E501
 
@@ -4839,7 +4824,7 @@ class DefaultApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+            ['text/csv'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4879,7 +4864,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Resistance
+        :return: SupportResistance
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -4907,7 +4892,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Resistance, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(SupportResistance, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -4975,7 +4960,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Resistance',  # noqa: E501
+            response_type='SupportResistance',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -5006,7 +4991,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: TechnicalIndicators
+        :return: object
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5038,7 +5023,7 @@ class DefaultApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(TechnicalIndicators, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(object, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5130,7 +5115,7 @@ class DefaultApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TechnicalIndicators',  # noqa: E501
+            response_type='object',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

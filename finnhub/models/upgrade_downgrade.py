@@ -46,7 +46,7 @@ class UpgradeDowngrade(object):
         'grade_time': 'gradeTime',
         'from_grade': 'fromGrade',
         'to_grade': 'toGrade',
-        'company': 'Company',
+        'company': 'company',
         'action': 'action'
     }
 

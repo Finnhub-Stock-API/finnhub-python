@@ -844,7 +844,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **country**
-> list[EconomicCode] country()
+> list[CountryMetadata] country()
 
 Country Metadata
 
@@ -898,7 +898,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[EconomicCode]**](EconomicCode.md)
+[**list[CountryMetadata]**](CountryMetadata.md)
 
 ### Authorization
 
@@ -917,7 +917,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **covid19**
-> list[Covid19] covid19()
+> list[CovidInfo] covid19()
 
 COVID-19
 
@@ -971,7 +971,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**list[Covid19]**](Covid19.md)
+[**list[CovidInfo]**](CovidInfo.md)
 
 ### Authorization
 
@@ -990,7 +990,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **crypto_candles**
-> CryptoCandles crypto_candles(symbol, resolution, _from, to, format=format)
+> CryptoCandles crypto_candles(symbol, resolution, _from, to)
 
 Crypto Candles
 
@@ -1034,11 +1034,10 @@ with finnhub.ApiClient(configuration) as api_client:
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
 _from = 56 # int | UNIX timestamp. Interval initial value.
 to = 56 # int | UNIX timestamp. Interval end value.
-format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
 
     try:
         # Crypto Candles
-        api_response = api_instance.crypto_candles(symbol, resolution, _from, to, format=format)
+        api_response = api_instance.crypto_candles(symbol, resolution, _from, to)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->crypto_candles: %s\n" % e)
@@ -1052,7 +1051,6 @@ Name | Type | Description  | Notes
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
  **_from** | **int**| UNIX timestamp. Interval initial value. | 
  **to** | **int**| UNIX timestamp. Interval end value. | 
- **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
 
 ### Return type
 
@@ -1709,7 +1707,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **forex_candles**
-> ForexCandles forex_candles(symbol, resolution, _from, to, format=format)
+> ForexCandles forex_candles(symbol, resolution, _from, to)
 
 Forex Candles
 
@@ -1753,11 +1751,10 @@ with finnhub.ApiClient(configuration) as api_client:
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
 _from = 56 # int | UNIX timestamp. Interval initial value.
 to = 56 # int | UNIX timestamp. Interval end value.
-format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
 
     try:
         # Forex Candles
-        api_response = api_instance.forex_candles(symbol, resolution, _from, to, format=format)
+        api_response = api_instance.forex_candles(symbol, resolution, _from, to)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->forex_candles: %s\n" % e)
@@ -1771,7 +1768,6 @@ Name | Type | Description  | Notes
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
  **_from** | **int**| UNIX timestamp. Interval initial value. | 
  **to** | **int**| UNIX timestamp. Interval end value. | 
- **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
 
 ### Return type
 
@@ -2655,7 +2651,7 @@ Name | Type | Description  | Notes
 
 Quote
 
-<p>Get quote data for stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p> This endpoint only provide real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2805,11 +2801,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stock_candles**
-> StockCandles stock_candles(symbol, resolution, _from, to, format=format, adjusted=adjusted)
+> StockCandles stock_candles(symbol, resolution, _from, to, adjusted=adjusted)
 
 Stock Candles
 
-<p>Get candlestick data for stocks going back 25 years.</p><p> This endpoint only provides real-time data for US stocks. Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2849,12 +2845,11 @@ with finnhub.ApiClient(configuration) as api_client:
 resolution = 'resolution_example' # str | Supported resolution includes <code>1, 5, 15, 30, 60, D, W, M </code>.Some timeframes might not be available depending on the exchange.
 _from = 56 # int | UNIX timestamp. Interval initial value.
 to = 56 # int | UNIX timestamp. Interval end value.
-format = 'format_example' # str | By default, <code>format=json</code>. Strings <code>json</code> and <code>csv</code> are accepted. (optional)
 adjusted = 'adjusted_example' # str | By default, <code>adjusted=false</code>. Use <code>true</code> to get adjusted data. (optional)
 
     try:
         # Stock Candles
-        api_response = api_instance.stock_candles(symbol, resolution, _from, to, format=format, adjusted=adjusted)
+        api_response = api_instance.stock_candles(symbol, resolution, _from, to, adjusted=adjusted)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->stock_candles: %s\n" % e)
@@ -2868,7 +2863,6 @@ Name | Type | Description  | Notes
  **resolution** | **str**| Supported resolution includes &lt;code&gt;1, 5, 15, 30, 60, D, W, M &lt;/code&gt;.Some timeframes might not be available depending on the exchange. | 
  **_from** | **int**| UNIX timestamp. Interval initial value. | 
  **to** | **int**| UNIX timestamp. Interval end value. | 
- **format** | **str**| By default, &lt;code&gt;format&#x3D;json&lt;/code&gt;. Strings &lt;code&gt;json&lt;/code&gt; and &lt;code&gt;csv&lt;/code&gt; are accepted. | [optional] 
  **adjusted** | **str**| By default, &lt;code&gt;adjusted&#x3D;false&lt;/code&gt;. Use &lt;code&gt;true&lt;/code&gt; to get adjusted data. | [optional] 
 
 ### Return type
@@ -3200,7 +3194,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: text/csv
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -3210,7 +3204,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **support_resistance**
-> Resistance support_resistance(symbol, resolution)
+> SupportResistance support_resistance(symbol, resolution)
 
 Support/Resistance
 
@@ -3270,7 +3264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Resistance**](Resistance.md)
+[**SupportResistance**](SupportResistance.md)
 
 ### Authorization
 
@@ -3289,7 +3283,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **technical_indicator**
-> TechnicalIndicators technical_indicator(symbol, resolution, _from, to, indicator, indicator_specific_fields=indicator_specific_fields)
+> object technical_indicator(symbol, resolution, _from, to, indicator, indicator_specific_fields=indicator_specific_fields)
 
 Technical Indicators
 
@@ -3357,7 +3351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TechnicalIndicators**](TechnicalIndicators.md)
+**object**
 
 ### Authorization
 

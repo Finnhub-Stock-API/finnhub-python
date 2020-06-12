@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import finnhub
-from finnhub.models.economic_code import EconomicCode  # noqa: E501
+from finnhub.models.covid_info import CovidInfo  # noqa: E501
 from finnhub.rest import ApiException
 
-class TestEconomicCode(unittest.TestCase):
-    """EconomicCode unit test stubs"""
+class TestCovidInfo(unittest.TestCase):
+    """CovidInfo unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,24 +29,24 @@ class TestEconomicCode(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test EconomicCode
+        """Test CovidInfo
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = finnhub.models.economic_code.EconomicCode()  # noqa: E501
+        # model = finnhub.models.covid_info.CovidInfo()  # noqa: E501
         if include_optional :
-            return EconomicCode(
-                code = '0', 
-                country = '0', 
-                name = '0', 
-                unit = '0'
+            return CovidInfo(
+                state = '0', 
+                case = 1.337, 
+                death = 1.337, 
+                updated = datetime.datetime.strptime('2013-10-20 19:20:30.00', '%Y-%m-%d %H:%M:%S.%f')
             )
         else :
-            return EconomicCode(
+            return CovidInfo(
         )
 
-    def testEconomicCode(self):
-        """Test EconomicCode"""
+    def testCovidInfo(self):
+        """Test CovidInfo"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

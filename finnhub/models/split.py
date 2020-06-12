@@ -41,7 +41,7 @@ class Split(object):
 
     attribute_map = {
         'symbol': 'symbol',
-        'date': 'Date',
+        'date': 'date',
         'from_factor': 'fromFactor',
         'to_factor': 'toFactor'
     }

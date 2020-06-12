@@ -21,7 +21,8 @@ from finnhub.models.company_executive import CompanyExecutive
 from finnhub.models.company_news_statistics import CompanyNewsStatistics
 from finnhub.models.company_profile import CompanyProfile
 from finnhub.models.company_profile2 import CompanyProfile2
-from finnhub.models.covid19 import Covid19
+from finnhub.models.country_metadata import CountryMetadata
+from finnhub.models.covid_info import CovidInfo
 from finnhub.models.crypto_candles import CryptoCandles
 from finnhub.models.crypto_symbol import CryptoSymbol
 from finnhub.models.development import Development
@@ -66,7 +67,6 @@ from finnhub.models.stock_candles import StockCandles
 from finnhub.models.stock_transcripts import StockTranscripts
 from finnhub.models.support_resistance import SupportResistance
 from finnhub.models.technical_analysis import TechnicalAnalysis
-from finnhub.models.technical_indicators import TechnicalIndicators
 from finnhub.models.tick_data import TickData
 from finnhub.models.transcript_content import TranscriptContent
 from finnhub.models.transcript_participant import TranscriptParticipant

@@ -1,7 +1,7 @@
 # finnhub-python
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 1.1.1
+- Package version: 1.1.3
 
 ## Requirements.
 
@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**upgrade_downgrade**](docs/DefaultApi.md#upgrade_downgrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
 
 
-## Models
+## Documentation For Models
 
  - [AggregateIndicators](docs/AggregateIndicators.md)
  - [BasicFinancials](docs/BasicFinancials.md)
@@ -109,7 +109,8 @@ Class | Method | HTTP request | Description
  - [CompanyNewsStatistics](docs/CompanyNewsStatistics.md)
  - [CompanyProfile](docs/CompanyProfile.md)
  - [CompanyProfile2](docs/CompanyProfile2.md)
- - [Covid19](docs/Covid19.md)
+ - [CountryMetadata](docs/CountryMetadata.md)
+ - [CovidInfo](docs/CovidInfo.md)
  - [CryptoCandles](docs/CryptoCandles.md)
  - [CryptoSymbol](docs/CryptoSymbol.md)
  - [Development](docs/Development.md)
@@ -154,7 +155,6 @@ Class | Method | HTTP request | Description
  - [StockTranscripts](docs/StockTranscripts.md)
  - [SupportResistance](docs/SupportResistance.md)
  - [TechnicalAnalysis](docs/TechnicalAnalysis.md)
- - [TechnicalIndicators](docs/TechnicalIndicators.md)
  - [TickData](docs/TickData.md)
  - [TranscriptContent](docs/TranscriptContent.md)
  - [TranscriptParticipant](docs/TranscriptParticipant.md)

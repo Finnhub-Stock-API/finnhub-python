@@ -33,55 +33,68 @@ class EconomicCode(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'code': 'str',
         'country': 'str',
-        'code2': 'str',
-        'code3': 'str',
-        'code_no': 'str',
-        'currency': 'str',
-        'currency_code': 'str'
+        'name': 'str',
+        'unit': 'str'
     }
 
     attribute_map = {
+        'code': 'code',
         'country': 'country',
-        'code2': 'code2',
-        'code3': 'code3',
-        'code_no': 'codeNo',
-        'currency': 'currency',
-        'currency_code': 'currencyCode'
+        'name': 'name',
+        'unit': 'unit'
     }
 
-    def __init__(self, country=None, code2=None, code3=None, code_no=None, currency=None, currency_code=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, code=None, country=None, name=None, unit=None, local_vars_configuration=None):  # noqa: E501
         """EconomicCode - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._code = None
         self._country = None
-        self._code2 = None
-        self._code3 = None
-        self._code_no = None
-        self._currency = None
-        self._currency_code = None
+        self._name = None
+        self._unit = None
         self.discriminator = None
 
+        if code is not None:
+            self.code = code
         if country is not None:
             self.country = country
-        if code2 is not None:
-            self.code2 = code2
-        if code3 is not None:
-            self.code3 = code3
-        if code_no is not None:
-            self.code_no = code_no
-        if currency is not None:
-            self.currency = currency
-        if currency_code is not None:
-            self.currency_code = currency_code
+        if name is not None:
+            self.name = name
+        if unit is not None:
+            self.unit = unit
+
+    @property
+    def code(self):
+        """Gets the code of this EconomicCode.  # noqa: E501
+
+        Finnhub economic code used to get historical data  # noqa: E501
+
+        :return: The code of this EconomicCode.  # noqa: E501
+        :rtype: str
+        """
+        return self._code
+
+    @code.setter
+    def code(self, code):
+        """Sets the code of this EconomicCode.
+
+        Finnhub economic code used to get historical data  # noqa: E501
+
+        :param code: The code of this EconomicCode.  # noqa: E501
+        :type: str
+        """
+
+        self._code = code
 
     @property
     def country(self):
         """Gets the country of this EconomicCode.  # noqa: E501
 
-        Country name  # noqa: E501
+        Country  # noqa: E501
 
         :return: The country of this EconomicCode.  # noqa: E501
         :rtype: str
@@ -92,7 +105,7 @@ class EconomicCode(object):
     def country(self, country):
         """Sets the country of this EconomicCode.
 
-        Country name  # noqa: E501
+        Country  # noqa: E501
 
         :param country: The country of this EconomicCode.  # noqa: E501
         :type: str
@@ -101,119 +114,50 @@ class EconomicCode(object):
         self._country = country
 
     @property
-    def code2(self):
-        """Gets the code2 of this EconomicCode.  # noqa: E501
+    def name(self):
+        """Gets the name of this EconomicCode.  # noqa: E501
 
-        Alpha 2 code  # noqa: E501
+        Indicator name  # noqa: E501
 
-        :return: The code2 of this EconomicCode.  # noqa: E501
+        :return: The name of this EconomicCode.  # noqa: E501
         :rtype: str
         """
-        return self._code2
+        return self._name
 
-    @code2.setter
-    def code2(self, code2):
-        """Sets the code2 of this EconomicCode.
+    @name.setter
+    def name(self, name):
+        """Sets the name of this EconomicCode.
 
-        Alpha 2 code  # noqa: E501
+        Indicator name  # noqa: E501
 
-        :param code2: The code2 of this EconomicCode.  # noqa: E501
+        :param name: The name of this EconomicCode.  # noqa: E501
         :type: str
         """
 
-        self._code2 = code2
+        self._name = name
 
     @property
-    def code3(self):
-        """Gets the code3 of this EconomicCode.  # noqa: E501
+    def unit(self):
+        """Gets the unit of this EconomicCode.  # noqa: E501
 
-        Alpha 3 code  # noqa: E501
+        Unit  # noqa: E501
 
-        :return: The code3 of this EconomicCode.  # noqa: E501
+        :return: The unit of this EconomicCode.  # noqa: E501
         :rtype: str
         """
-        return self._code3
+        return self._unit
 
-    @code3.setter
-    def code3(self, code3):
-        """Sets the code3 of this EconomicCode.
+    @unit.setter
+    def unit(self, unit):
+        """Sets the unit of this EconomicCode.
 
-        Alpha 3 code  # noqa: E501
+        Unit  # noqa: E501
 
-        :param code3: The code3 of this EconomicCode.  # noqa: E501
+        :param unit: The unit of this EconomicCode.  # noqa: E501
         :type: str
         """
 
-        self._code3 = code3
-
-    @property
-    def code_no(self):
-        """Gets the code_no of this EconomicCode.  # noqa: E501
-
-        UN code  # noqa: E501
-
-        :return: The code_no of this EconomicCode.  # noqa: E501
-        :rtype: str
-        """
-        return self._code_no
-
-    @code_no.setter
-    def code_no(self, code_no):
-        """Sets the code_no of this EconomicCode.
-
-        UN code  # noqa: E501
-
-        :param code_no: The code_no of this EconomicCode.  # noqa: E501
-        :type: str
-        """
-
-        self._code_no = code_no
-
-    @property
-    def currency(self):
-        """Gets the currency of this EconomicCode.  # noqa: E501
-
-        Currency name  # noqa: E501
-
-        :return: The currency of this EconomicCode.  # noqa: E501
-        :rtype: str
-        """
-        return self._currency
-
-    @currency.setter
-    def currency(self, currency):
-        """Sets the currency of this EconomicCode.
-
-        Currency name  # noqa: E501
-
-        :param currency: The currency of this EconomicCode.  # noqa: E501
-        :type: str
-        """
-
-        self._currency = currency
-
-    @property
-    def currency_code(self):
-        """Gets the currency_code of this EconomicCode.  # noqa: E501
-
-        Currency code  # noqa: E501
-
-        :return: The currency_code of this EconomicCode.  # noqa: E501
-        :rtype: str
-        """
-        return self._currency_code
-
-    @currency_code.setter
-    def currency_code(self, currency_code):
-        """Sets the currency_code of this EconomicCode.
-
-        Currency code  # noqa: E501
-
-        :param currency_code: The currency_code of this EconomicCode.  # noqa: E501
-        :type: str
-        """
-
-        self._currency_code = currency_code
+        self._unit = unit
 
     def to_dict(self):
         """Returns the model properties as a dict"""
