@@ -17,21 +17,6 @@ pip install finnhub-python
 ## Getting Started
 
 ```python
-from __future__ import print_function
-
-import time
-import finnhub
-from finnhub.rest import ApiException
-from pprint import pprint
-
-# Configure API key
-configuration = finnhub.Configuration(
-    api_key = {
-        'token': 'YOUR_API_KEY'
-    }
-)
-
-# Enter a context with an instance of the API client
 import finnhub
 
 # Configure API key
