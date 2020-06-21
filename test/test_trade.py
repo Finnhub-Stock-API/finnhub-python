@@ -16,11 +16,11 @@ import unittest
 import datetime
 
 import finnhub
-from finnhub.models.tick_data import TickData  # noqa: E501
+from finnhub.models.trade import Trade  # noqa: E501
 from finnhub.rest import ApiException
 
-class TestTickData(unittest.TestCase):
-    """TickData unit test stubs"""
+class TestTrade(unittest.TestCase):
+    """Trade unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,35 +29,24 @@ class TestTickData(unittest.TestCase):
         pass
 
     def make_instance(self, include_optional):
-        """Test TickData
+        """Test Trade
             include_option is a boolean, when False only required
             params are included, when True both required and
             optional params are included """
-        # model = finnhub.models.tick_data.TickData()  # noqa: E501
+        # model = finnhub.models.trade.Trade()  # noqa: E501
         if include_optional :
-            return TickData(
+            return Trade(
                 s = '0', 
-                skip = 56, 
-                count = 56, 
-                v = [
-                    1.337
-                    ], 
-                p = [
-                    1.337
-                    ], 
-                t = [
-                    56
-                    ], 
-                x = [
-                    '0'
-                    ]
+                p = 1.337, 
+                t = 56, 
+                v = 1.337
             )
         else :
-            return TickData(
+            return Trade(
         )
 
-    def testTickData(self):
-        """Test TickData"""
+    def testTrade(self):
+        """Test Trade"""
         inst_req_only = self.make_instance(include_optional=False)
         inst_req_and_optional = self.make_instance(include_optional=True)
 

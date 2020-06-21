@@ -51,6 +51,7 @@ from finnhub.models.ipo_event import IPOEvent
 from finnhub.models.indicator import Indicator
 from finnhub.models.investor import Investor
 from finnhub.models.investors_ownership import InvestorsOwnership
+from finnhub.models.last_bid_ask import LastBidAsk
 from finnhub.models.major_developments import MajorDevelopments
 from finnhub.models.news import News
 from finnhub.models.news_sentiment import NewsSentiment

@@ -39,6 +39,7 @@ Method | HTTP request | Description
 [**price_target**](DefaultApi.md#price_target) | **GET** /stock/price-target | Price Target
 [**quote**](DefaultApi.md#quote) | **GET** /quote | Quote
 [**recommendation_trends**](DefaultApi.md#recommendation_trends) | **GET** /stock/recommendation | Recommendation Trends
+[**stock_bidask**](DefaultApi.md#stock_bidask) | **GET** /stock/bidask | Last Bid-Ask
 [**stock_candles**](DefaultApi.md#stock_candles) | **GET** /stock/candle | Stock Candles
 [**stock_dividends**](DefaultApi.md#stock_dividends) | **GET** /stock/dividend | Dividends
 [**stock_splits**](DefaultApi.md#stock_splits) | **GET** /stock/split | Splits
@@ -449,7 +450,7 @@ Name | Type | Description  | Notes
 
 Company News
 
-List latest company news by symbol. This endpoint is only available for US companies.
+List latest company news by symbol. This endpoint is only available for North American companies.
 
 ### Example
 
@@ -2800,6 +2801,83 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **stock_bidask**
+> LastBidAsk stock_bidask(symbol)
+
+Last Bid-Ask
+
+Get last bid/ask data for US stocks.
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import finnhub
+from finnhub.rest import ApiException
+from pprint import pprint
+# Defining the host is optional and defaults to https://finnhub.io/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: api_key
+configuration = finnhub.Configuration(
+    host = "https://finnhub.io/api/v1",
+    api_key = {
+        'token': 'YOUR_API_KEY'
+    }
+)
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with finnhub.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = finnhub.DefaultApi(api_client)
+    symbol = 'symbol_example' # str | Symbol.
+
+    try:
+        # Last Bid-Ask
+        api_response = api_instance.stock_bidask(symbol)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling DefaultApi->stock_bidask: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | **str**| Symbol. | 
+
+### Return type
+
+[**LastBidAsk**](LastBidAsk.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | successful operation |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **stock_candles**
 > StockCandles stock_candles(symbol, resolution, _from, to, adjusted=adjusted)
 
@@ -3125,7 +3203,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **stock_tick**
-> TickData stock_tick(symbol, date)
+> TickData stock_tick(symbol, date, limit, skip)
 
 Tick Data
 
@@ -3167,10 +3245,12 @@ with finnhub.ApiClient(configuration) as api_client:
     api_instance = finnhub.DefaultApi(api_client)
     symbol = 'symbol_example' # str | Symbol.
 date = '2013-10-20' # date | Date: 2020-04-02.
+limit = 56 # int | Limit number of ticks returned. Maximum value: <code>25000</code>
+skip = 56 # int | Number of ticks to skip. Use this parameter to loop through the entire data.
 
     try:
         # Tick Data
-        api_response = api_instance.stock_tick(symbol, date)
+        api_response = api_instance.stock_tick(symbol, date, limit, skip)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->stock_tick: %s\n" % e)
@@ -3182,6 +3262,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | **str**| Symbol. | 
  **date** | **date**| Date: 2020-04-02. | 
+ **limit** | **int**| Limit number of ticks returned. Maximum value: &lt;code&gt;25000&lt;/code&gt; | 
+ **skip** | **int**| Number of ticks to skip. Use this parameter to loop through the entire data. | 
 
 ### Return type
 
@@ -3194,7 +3276,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/csv
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -273,6 +273,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_stock_bidask(self):
+        """Test case for stock_bidask
+
+        Last Bid-Ask  # noqa: E501
+        """
+        pass
+
     def test_stock_candles(self):
         """Test case for stock_candles
 

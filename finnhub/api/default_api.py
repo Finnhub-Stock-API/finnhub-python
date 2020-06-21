@@ -637,7 +637,7 @@ class DefaultApi(object):
     def company_news(self, symbol, _from, to, **kwargs):  # noqa: E501
         """Company News  # noqa: E501
 
-        List latest company news by symbol. This endpoint is only available for US companies.  # noqa: E501
+        List latest company news by symbol. This endpoint is only available for North American companies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.company_news(symbol, _from, to, async_req=True)
@@ -664,7 +664,7 @@ class DefaultApi(object):
     def company_news_with_http_info(self, symbol, _from, to, **kwargs):  # noqa: E501
         """Company News  # noqa: E501
 
-        List latest company news by symbol. This endpoint is only available for US companies.  # noqa: E501
+        List latest company news by symbol. This endpoint is only available for North American companies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.company_news_with_http_info(symbol, _from, to, async_req=True)
@@ -4198,6 +4198,120 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def stock_bidask(self, symbol, **kwargs):  # noqa: E501
+        """Last Bid-Ask  # noqa: E501
+
+        Get last bid/ask data for US stocks.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stock_bidask(symbol, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str symbol: Symbol. (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: LastBidAsk
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.stock_bidask_with_http_info(symbol, **kwargs)  # noqa: E501
+
+    def stock_bidask_with_http_info(self, symbol, **kwargs):  # noqa: E501
+        """Last Bid-Ask  # noqa: E501
+
+        Get last bid/ask data for US stocks.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.stock_bidask_with_http_info(symbol, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str symbol: Symbol. (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(LastBidAsk, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = [
+            'symbol'
+        ]
+        all_params.extend(
+            [
+                'async_req',
+                '_return_http_data_only',
+                '_preload_content',
+                '_request_timeout'
+            ]
+        )
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method stock_bidask" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'symbol' is set
+        if self.api_client.client_side_validation and ('symbol' not in local_var_params or  # noqa: E501
+                                                        local_var_params['symbol'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `symbol` when calling `stock_bidask`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'symbol' in local_var_params and local_var_params['symbol'] is not None:  # noqa: E501
+            query_params.append(('symbol', local_var_params['symbol']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/stock/bidask', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='LastBidAsk',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
@@ -4722,18 +4836,20 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def stock_tick(self, symbol, date, **kwargs):  # noqa: E501
+    def stock_tick(self, symbol, date, limit, skip, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
         <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stock_tick(symbol, date, async_req=True)
+        >>> thread = api.stock_tick(symbol, date, limit, skip, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol. (required)
         :param date date: Date: 2020-04-02. (required)
+        :param int limit: Limit number of ticks returned. Maximum value: <code>25000</code> (required)
+        :param int skip: Number of ticks to skip. Use this parameter to loop through the entire data. (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -4746,20 +4862,22 @@ class DefaultApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.stock_tick_with_http_info(symbol, date, **kwargs)  # noqa: E501
+        return self.stock_tick_with_http_info(symbol, date, limit, skip, **kwargs)  # noqa: E501
 
-    def stock_tick_with_http_info(self, symbol, date, **kwargs):  # noqa: E501
+    def stock_tick_with_http_info(self, symbol, date, limit, skip, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
         <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.stock_tick_with_http_info(symbol, date, async_req=True)
+        >>> thread = api.stock_tick_with_http_info(symbol, date, limit, skip, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str symbol: Symbol. (required)
         :param date date: Date: 2020-04-02. (required)
+        :param int limit: Limit number of ticks returned. Maximum value: <code>25000</code> (required)
+        :param int skip: Number of ticks to skip. Use this parameter to loop through the entire data. (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -4778,7 +4896,9 @@ class DefaultApi(object):
 
         all_params = [
             'symbol',
-            'date'
+            'date',
+            'limit',
+            'skip'
         ]
         all_params.extend(
             [
@@ -4805,6 +4925,14 @@ class DefaultApi(object):
         if self.api_client.client_side_validation and ('date' not in local_var_params or  # noqa: E501
                                                         local_var_params['date'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `date` when calling `stock_tick`")  # noqa: E501
+        # verify the required parameter 'limit' is set
+        if self.api_client.client_side_validation and ('limit' not in local_var_params or  # noqa: E501
+                                                        local_var_params['limit'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `limit` when calling `stock_tick`")  # noqa: E501
+        # verify the required parameter 'skip' is set
+        if self.api_client.client_side_validation and ('skip' not in local_var_params or  # noqa: E501
+                                                        local_var_params['skip'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `skip` when calling `stock_tick`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4815,6 +4943,10 @@ class DefaultApi(object):
             query_params.append(('symbol', local_var_params['symbol']))  # noqa: E501
         if 'date' in local_var_params and local_var_params['date'] is not None:  # noqa: E501
             query_params.append(('date', local_var_params['date']))  # noqa: E501
+        if 'limit' in local_var_params and local_var_params['limit'] is not None:  # noqa: E501
+            query_params.append(('limit', local_var_params['limit']))  # noqa: E501
+        if 'skip' in local_var_params and local_var_params['skip'] is not None:  # noqa: E501
+            query_params.append(('skip', local_var_params['skip']))  # noqa: E501
 
         header_params = {}
 
@@ -4824,7 +4956,7 @@ class DefaultApi(object):
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
-            ['text/csv'])  # noqa: E501
+            ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501

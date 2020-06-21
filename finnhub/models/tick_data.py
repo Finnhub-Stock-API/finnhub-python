@@ -33,103 +33,215 @@ class TickData(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'timestamp': 'int',
-        'price': 'float',
-        'volume': 'float'
+        's': 'str',
+        'skip': 'int',
+        'count': 'int',
+        'v': 'list[float]',
+        'p': 'list[float]',
+        't': 'list[int]',
+        'x': 'list[str]'
     }
 
     attribute_map = {
-        'timestamp': 'timestamp',
-        'price': 'price',
-        'volume': 'volume'
+        's': 's',
+        'skip': 'skip',
+        'count': 'count',
+        'v': 'v',
+        'p': 'p',
+        't': 't',
+        'x': 'x'
     }
 
-    def __init__(self, timestamp=None, price=None, volume=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, s=None, skip=None, count=None, v=None, p=None, t=None, x=None, local_vars_configuration=None):  # noqa: E501
         """TickData - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._timestamp = None
-        self._price = None
-        self._volume = None
+        self._s = None
+        self._skip = None
+        self._count = None
+        self._v = None
+        self._p = None
+        self._t = None
+        self._x = None
         self.discriminator = None
 
-        if timestamp is not None:
-            self.timestamp = timestamp
-        if price is not None:
-            self.price = price
-        if volume is not None:
-            self.volume = volume
+        if s is not None:
+            self.s = s
+        if skip is not None:
+            self.skip = skip
+        if count is not None:
+            self.count = count
+        if v is not None:
+            self.v = v
+        if p is not None:
+            self.p = p
+        if t is not None:
+            self.t = t
+        if x is not None:
+            self.x = x
 
     @property
-    def timestamp(self):
-        """Gets the timestamp of this TickData.  # noqa: E501
+    def s(self):
+        """Gets the s of this TickData.  # noqa: E501
 
-        UNIX milliseconds timestamp.  # noqa: E501
+        Symbol.  # noqa: E501
 
-        :return: The timestamp of this TickData.  # noqa: E501
+        :return: The s of this TickData.  # noqa: E501
+        :rtype: str
+        """
+        return self._s
+
+    @s.setter
+    def s(self, s):
+        """Sets the s of this TickData.
+
+        Symbol.  # noqa: E501
+
+        :param s: The s of this TickData.  # noqa: E501
+        :type: str
+        """
+
+        self._s = s
+
+    @property
+    def skip(self):
+        """Gets the skip of this TickData.  # noqa: E501
+
+        Number of ticks skipped.  # noqa: E501
+
+        :return: The skip of this TickData.  # noqa: E501
         :rtype: int
         """
-        return self._timestamp
+        return self._skip
 
-    @timestamp.setter
-    def timestamp(self, timestamp):
-        """Sets the timestamp of this TickData.
+    @skip.setter
+    def skip(self, skip):
+        """Sets the skip of this TickData.
 
-        UNIX milliseconds timestamp.  # noqa: E501
+        Number of ticks skipped.  # noqa: E501
 
-        :param timestamp: The timestamp of this TickData.  # noqa: E501
+        :param skip: The skip of this TickData.  # noqa: E501
         :type: int
         """
 
-        self._timestamp = timestamp
+        self._skip = skip
 
     @property
-    def price(self):
-        """Gets the price of this TickData.  # noqa: E501
+    def count(self):
+        """Gets the count of this TickData.  # noqa: E501
 
-        Price.  # noqa: E501
+        Number of ticks returned. If <code>count</code> < <code>limit</code>, all data for that date has been returned.  # noqa: E501
 
-        :return: The price of this TickData.  # noqa: E501
-        :rtype: float
+        :return: The count of this TickData.  # noqa: E501
+        :rtype: int
         """
-        return self._price
+        return self._count
 
-    @price.setter
-    def price(self, price):
-        """Sets the price of this TickData.
+    @count.setter
+    def count(self, count):
+        """Sets the count of this TickData.
 
-        Price.  # noqa: E501
+        Number of ticks returned. If <code>count</code> < <code>limit</code>, all data for that date has been returned.  # noqa: E501
 
-        :param price: The price of this TickData.  # noqa: E501
-        :type: float
+        :param count: The count of this TickData.  # noqa: E501
+        :type: int
         """
 
-        self._price = price
+        self._count = count
 
     @property
-    def volume(self):
-        """Gets the volume of this TickData.  # noqa: E501
+    def v(self):
+        """Gets the v of this TickData.  # noqa: E501
 
-        Volume of the trade.  # noqa: E501
+        List of volume data.  # noqa: E501
 
-        :return: The volume of this TickData.  # noqa: E501
-        :rtype: float
+        :return: The v of this TickData.  # noqa: E501
+        :rtype: list[float]
         """
-        return self._volume
+        return self._v
 
-    @volume.setter
-    def volume(self, volume):
-        """Sets the volume of this TickData.
+    @v.setter
+    def v(self, v):
+        """Sets the v of this TickData.
 
-        Volume of the trade.  # noqa: E501
+        List of volume data.  # noqa: E501
 
-        :param volume: The volume of this TickData.  # noqa: E501
-        :type: float
+        :param v: The v of this TickData.  # noqa: E501
+        :type: list[float]
         """
 
-        self._volume = volume
+        self._v = v
+
+    @property
+    def p(self):
+        """Gets the p of this TickData.  # noqa: E501
+
+        List of price data.  # noqa: E501
+
+        :return: The p of this TickData.  # noqa: E501
+        :rtype: list[float]
+        """
+        return self._p
+
+    @p.setter
+    def p(self, p):
+        """Sets the p of this TickData.
+
+        List of price data.  # noqa: E501
+
+        :param p: The p of this TickData.  # noqa: E501
+        :type: list[float]
+        """
+
+        self._p = p
+
+    @property
+    def t(self):
+        """Gets the t of this TickData.  # noqa: E501
+
+        List of timestamp in UNIX ms.  # noqa: E501
+
+        :return: The t of this TickData.  # noqa: E501
+        :rtype: list[int]
+        """
+        return self._t
+
+    @t.setter
+    def t(self, t):
+        """Sets the t of this TickData.
+
+        List of timestamp in UNIX ms.  # noqa: E501
+
+        :param t: The t of this TickData.  # noqa: E501
+        :type: list[int]
+        """
+
+        self._t = t
+
+    @property
+    def x(self):
+        """Gets the x of this TickData.  # noqa: E501
+
+        List of venues/exchanges.  # noqa: E501
+
+        :return: The x of this TickData.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._x
+
+    @x.setter
+    def x(self, x):
+        """Sets the x of this TickData.
+
+        List of venues/exchanges.  # noqa: E501
+
+        :param x: The x of this TickData.  # noqa: E501
+        :type: list[str]
+        """
+
+        self._x = x
 
     def to_dict(self):
         """Returns the model properties as a dict"""
