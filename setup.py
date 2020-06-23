@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "finnhub-python"
-VERSION = "1.1.4"
+VERSION = "1.1.5"
 # To install the library, run the following
 #
 # python setup.py install

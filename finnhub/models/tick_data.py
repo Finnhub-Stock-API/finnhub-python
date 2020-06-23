@@ -36,6 +36,7 @@ class TickData(object):
         's': 'str',
         'skip': 'int',
         'count': 'int',
+        'total': 'int',
         'v': 'list[float]',
         'p': 'list[float]',
         't': 'list[int]',
@@ -46,13 +47,14 @@ class TickData(object):
         's': 's',
         'skip': 'skip',
         'count': 'count',
+        'total': 'total',
         'v': 'v',
         'p': 'p',
         't': 't',
         'x': 'x'
     }
 
-    def __init__(self, s=None, skip=None, count=None, v=None, p=None, t=None, x=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, s=None, skip=None, count=None, total=None, v=None, p=None, t=None, x=None, local_vars_configuration=None):  # noqa: E501
         """TickData - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -61,6 +63,7 @@ class TickData(object):
         self._s = None
         self._skip = None
         self._count = None
+        self._total = None
         self._v = None
         self._p = None
         self._t = None
@@ -73,6 +76,8 @@ class TickData(object):
             self.skip = skip
         if count is not None:
             self.count = count
+        if total is not None:
+            self.total = total
         if v is not None:
             self.v = v
         if p is not None:
@@ -150,6 +155,29 @@ class TickData(object):
         """
 
         self._count = count
+
+    @property
+    def total(self):
+        """Gets the total of this TickData.  # noqa: E501
+
+        Total number of ticks for that date.  # noqa: E501
+
+        :return: The total of this TickData.  # noqa: E501
+        :rtype: int
+        """
+        return self._total
+
+    @total.setter
+    def total(self, total):
+        """Sets the total of this TickData.
+
+        Total number of ticks for that date.  # noqa: E501
+
+        :param total: The total of this TickData.  # noqa: E501
+        :type: int
+        """
+
+        self._total = total
 
     @property
     def v(self):

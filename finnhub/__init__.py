@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "1.1.4"
+__version__ = "1.1.5"
 
 # import apis into sdk package
 from finnhub.api.default_api import DefaultApi

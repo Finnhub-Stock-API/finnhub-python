@@ -1575,7 +1575,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/crypto/candle', 'GET',
+            '/crypto/candle?format=json', 'GET',
             path_params,
             query_params,
             header_params,
@@ -2671,7 +2671,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/forex/candle', 'GET',
+            '/forex/candle?format=json', 'GET',
             path_params,
             query_params,
             header_params,
@@ -4443,7 +4443,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/stock/candle', 'GET',
+            '/stock/candle?format=json', 'GET',
             path_params,
             query_params,
             header_params,
@@ -4962,7 +4962,7 @@ class DefaultApi(object):
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/stock/tick', 'GET',
+            '/stock/tick?format=json', 'GET',
             path_params,
             query_params,
             header_params,

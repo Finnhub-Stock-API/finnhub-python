@@ -39,6 +39,7 @@ class TestTickData(unittest.TestCase):
                 s = '0', 
                 skip = 56, 
                 count = 56, 
+                total = 56, 
                 v = [
                     1.337
                     ], 
