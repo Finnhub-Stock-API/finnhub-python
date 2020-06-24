@@ -163,7 +163,8 @@ print(finnhub_client.forex_candles('OANDA:EUR_USD', 'D', 1590988249, 1591852249)
 # Crypto Candles
 print(finnhub_client.crypto_candles('BINANCE:BTCUSDT', 'D', 1590988249, 1591852249))
 
-    
+# Tick Data
+print(finnhub_client.stock_tick('AAPL', '2020-03-25', 500, 0))
 ```
 
 ## License
