@@ -3973,7 +3973,7 @@ class DefaultApi(object):
     def quote(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote(symbol, async_req=True)
@@ -3998,7 +3998,7 @@ class DefaultApi(object):
     def quote_with_http_info(self, symbol, **kwargs):  # noqa: E501
         """Quote  # noqa: E501
 
-        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.quote_with_http_info(symbol, async_req=True)
@@ -4315,7 +4315,7 @@ class DefaultApi(object):
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_candles(symbol, resolution, _from, to, async_req=True)
@@ -4344,7 +4344,7 @@ class DefaultApi(object):
     def stock_candles_with_http_info(self, symbol, resolution, _from, to, **kwargs):  # noqa: E501
         """Stock Candles  # noqa: E501
 
-        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
+        <p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_candles_with_http_info(symbol, resolution, _from, to, async_req=True)
@@ -4839,7 +4839,7 @@ class DefaultApi(object):
     def stock_tick(self, symbol, date, limit, skip, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
-        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
+        <p>Get historical tick data for US stocks from all 13 exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_tick(symbol, date, limit, skip, async_req=True)
@@ -4867,7 +4867,7 @@ class DefaultApi(object):
     def stock_tick_with_http_info(self, symbol, date, limit, skip, **kwargs):  # noqa: E501
         """Tick Data  # noqa: E501
 
-        <p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
+        <p>Get historical tick data for US stocks from all 13 exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.stock_tick_with_http_info(symbol, date, limit, skip, async_req=True)
@@ -5115,7 +5115,7 @@ class DefaultApi(object):
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
         :param str indicator: Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>. (required)
-        :param object indicator_specific_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
+        :param object indicator_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5145,7 +5145,7 @@ class DefaultApi(object):
         :param int _from: UNIX timestamp. Interval initial value. (required)
         :param int to: UNIX timestamp. Interval end value. (required)
         :param str indicator: Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>. (required)
-        :param object indicator_specific_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
+        :param object indicator_fields: Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported.
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5168,7 +5168,7 @@ class DefaultApi(object):
             '_from',
             'to',
             'indicator',
-            'indicator_specific_fields'
+            'indicator_fields'
         ]
         all_params.extend(
             [
@@ -5223,8 +5223,6 @@ class DefaultApi(object):
             query_params.append(('to', local_var_params['to']))  # noqa: E501
         if 'indicator' in local_var_params and local_var_params['indicator'] is not None:  # noqa: E501
             query_params.append(('indicator', local_var_params['indicator']))  # noqa: E501
-        if 'indicator_specific_fields' in local_var_params and local_var_params['indicator_specific_fields'] is not None:  # noqa: E501
-            query_params.append(('Indicator specific fields', local_var_params['indicator_specific_fields']))  # noqa: E501
 
         header_params = {}
 
@@ -5232,15 +5230,21 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'indicator_fields' in local_var_params:
+            body_params = local_var_params['indicator_fields']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/indicator', 'GET',
+            '/indicator', 'POST',
             path_params,
             query_params,
             header_params,
@@ -5258,7 +5262,7 @@ class DefaultApi(object):
     def transcripts(self, id, **kwargs):  # noqa: E501
         """Earnings Call Transcripts  # noqa: E501
 
-        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
+        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. <p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts(id, async_req=True)
@@ -5283,7 +5287,7 @@ class DefaultApi(object):
     def transcripts_with_http_info(self, id, **kwargs):  # noqa: E501
         """Earnings Call Transcripts  # noqa: E501
 
-        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
+        <p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. <p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts_with_http_info(id, async_req=True)
@@ -5372,7 +5376,7 @@ class DefaultApi(object):
     def transcripts_list(self, symbol, **kwargs):  # noqa: E501
         """Earnings Call Transcripts List  # noqa: E501
 
-        List earnings call transcripts' metadata. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.  # noqa: E501
+        List earnings call transcripts' metadata. This endpoint is only available for US companies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts_list(symbol, async_req=True)
@@ -5397,7 +5401,7 @@ class DefaultApi(object):
     def transcripts_list_with_http_info(self, symbol, **kwargs):  # noqa: E501
         """Earnings Call Transcripts List  # noqa: E501
 
-        List earnings call transcripts' metadata. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.  # noqa: E501
+        List earnings call transcripts' metadata. This endpoint is only available for US companies.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.transcripts_list_with_http_info(symbol, async_req=True)

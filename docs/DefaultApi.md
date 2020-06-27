@@ -46,7 +46,7 @@ Method | HTTP request | Description
 [**stock_symbols**](DefaultApi.md#stock_symbols) | **GET** /stock/symbol | Stock Symbol
 [**stock_tick**](DefaultApi.md#stock_tick) | **GET** /stock/tick | Tick Data
 [**support_resistance**](DefaultApi.md#support_resistance) | **GET** /scan/support-resistance | Support/Resistance
-[**technical_indicator**](DefaultApi.md#technical_indicator) | **GET** /indicator | Technical Indicators
+[**technical_indicator**](DefaultApi.md#technical_indicator) | **POST** /indicator | Technical Indicators
 [**transcripts**](DefaultApi.md#transcripts) | **GET** /stock/transcripts | Earnings Call Transcripts
 [**transcripts_list**](DefaultApi.md#transcripts_list) | **GET** /stock/transcripts/list | Earnings Call Transcripts List
 [**upgrade_downgrade**](DefaultApi.md#upgrade_downgrade) | **GET** /stock/upgrade-downgrade | Stock Upgrade/Downgrade
@@ -2652,7 +2652,7 @@ Name | Type | Description  | Notes
 
 Quote
 
-<p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get real-time quote data for US stocks. Constant polling is not recommended. Use websocket if you need real-time update.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -2883,7 +2883,7 @@ Name | Type | Description  | Notes
 
 Stock Candles
 
-<p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Bulk download EOD international markets: <a href=\"https://www.metastock.com/products/endofday/DataLink/?ref=fih\" target=\"_blank\" rel=\"nofollow\">Metastock Datalink</a></p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
+<p>Get candlestick data for stocks going back 25 years for US stocks.</p><p>Real-time stock prices for international markets are supported for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact Us</a> to learn more.</p>
 
 ### Example
 
@@ -3207,7 +3207,7 @@ Name | Type | Description  | Notes
 
 Tick Data
 
-<p>Get historical tick data for US stocks from all 13 exchanges. Return csv format. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
+<p>Get historical tick data for US stocks from all 13 exchanges. You can send the request directly to our tick server at <a href=\"https://tick.finnhub.io/\">https://tick.finnhub.io/</a> with the same path and parameters or get redirected there if you call our main server. Data is updated at the end of each trading day.</p><p>Tick data from 1985 is available for Enterprise clients. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p>
 
 ### Example
 
@@ -3365,7 +3365,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **technical_indicator**
-> object technical_indicator(symbol, resolution, _from, to, indicator, indicator_specific_fields=indicator_specific_fields)
+> object technical_indicator(symbol, resolution, _from, to, indicator, indicator_fields=indicator_fields)
 
 Technical Indicators
 
@@ -3410,11 +3410,11 @@ resolution = 'resolution_example' # str | Supported resolution includes <code>1,
 _from = 56 # int | UNIX timestamp. Interval initial value.
 to = 56 # int | UNIX timestamp. Interval end value.
 indicator = 'indicator_example' # str | Indicator name. Full list can be found <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">here</a>.
-indicator_specific_fields = None # object | Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported. (optional)
+indicator_fields = None # object | Check out <a href=\"https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp=sharing\" target=\"_blank\">this page</a> to see which indicators and params are supported. (optional)
 
     try:
         # Technical Indicators
-        api_response = api_instance.technical_indicator(symbol, resolution, _from, to, indicator, indicator_specific_fields=indicator_specific_fields)
+        api_response = api_instance.technical_indicator(symbol, resolution, _from, to, indicator, indicator_fields=indicator_fields)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling DefaultApi->technical_indicator: %s\n" % e)
@@ -3429,7 +3429,7 @@ Name | Type | Description  | Notes
  **_from** | **int**| UNIX timestamp. Interval initial value. | 
  **to** | **int**| UNIX timestamp. Interval end value. | 
  **indicator** | **str**| Indicator name. Full list can be found &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt;. | 
- **indicator_specific_fields** | [**object**](.md)| Check out &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;this page&lt;/a&gt; to see which indicators and params are supported. | [optional] 
+ **indicator_fields** | **object**| Check out &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1ylUvKHVYN2E87WdwIza8ROaCpd48ggEl1k5i5SgA29k/edit?usp&#x3D;sharing\&quot; target&#x3D;\&quot;_blank\&quot;&gt;this page&lt;/a&gt; to see which indicators and params are supported. | [optional] 
 
 ### Return type
 
@@ -3441,7 +3441,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -3456,7 +3456,7 @@ Name | Type | Description  | Notes
 
 Earnings Call Transcripts
 
-<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.</p><p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>
+<p>Get earnings call transcripts, audio and participants' list. This endpoint is only available for US companies. <p>17+ years of data is available with 170,000+ audio which add up to 6TB in size.</p>
 
 ### Example
 
@@ -3533,7 +3533,7 @@ Name | Type | Description  | Notes
 
 Earnings Call Transcripts List
 
-List earnings call transcripts' metadata. This endpoint is only available for US companies. Earnings call transcripts for international markets are available for Enterprise clients via our partner's feed. <a href=\"mailto:support@finnhub.io\">Contact us</a> to learn more.
+List earnings call transcripts' metadata. This endpoint is only available for US companies.
 
 ### Example
 
