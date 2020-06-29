@@ -152,7 +152,7 @@ print(finnhub_client.economic_code()[0:5])
 print(finnhub_client.support_resistance('AAPL', 'D'))
 
 # Technical Indicator
-print(finnhub_client.technical_indicator('AAPL', 'D', 1580988249, 1591852249, 'macd'))
+print(finnhub_client.technical_indicator(symbol="AAPL", resolution='D', _from=1583098857, to=1584308457, indicator='rsi', indicator_fields={"timeperiod": 3}))
 
 # Stock splits
 print(finnhub_client.stock_splits('AAPL', _from='2000-01-01', to='2020-01-01'))
