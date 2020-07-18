@@ -1,11 +1,7 @@
 # finnhub-python
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 1.1.7
-
-## Requirements.
-
-Python 2.7 and 3.4+
+- Package version: 2.0.0rc3
 
 ## Installation
 
