@@ -1,8 +1,8 @@
 import requests
 import json
 
-from .exceptions import FinnhubAPIException
-from .exceptions import FinnhubRequestException
+from exceptions import FinnhubAPIException
+from exceptions import FinnhubRequestException
 
 class Client:
     API_URL = "https://finnhub.io/api/v1"
@@ -19,9 +19,7 @@ class Client:
         return session
 
     def _request(self, method, uri, **kwargs):
-        
         kwargs['timeout'] = 10
-
         data = kwargs.get('data', None)
 
         if data and isinstance(data, dict):
@@ -33,7 +31,6 @@ class Client:
         kwargs['params'] = kwargs['data']
 
         del(kwargs['data'])
-
         response = getattr(self.session, method)(uri, **kwargs)
 
         return self._handle_response(response)
@@ -53,14 +50,19 @@ class Client:
         except ValueError:
             raise FinnhubRequestException("Invalid Response: {}".format(response.text))
 
-    def __str_to_bool(self, **kwargs):
+    def _merge_two_dicts(self, a, b):
+        result = a.copy()
+        result.update(b)
+        return result
+
+    def _str_to_bool(self, **kwargs):
         for i in kwargs:
             if (kwargs[i] == True): kwargs[i] = "true"
             elif (kwargs[i] == False): kwargs[i] = "false"
         return kwargs
 
     def _get(self, path, **kwargs):
-        params = self.__str_to_bool(**kwargs)
+        params = self._str_to_bool(**kwargs)
         return self._request_api('get', path, **params)
 
     def covid19(self):
@@ -194,26 +196,25 @@ class Client:
         })
 
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):
-        return self._get("/stock/candle", data={
-            **{
-                "symbol": symbol,
-                "resolution": resolution,
-                "from": _from,
-                "to": to
-            },
-            **kwargs
-        })
+        data = self._merge_two_dicts({
+            "symbol": symbol,
+            "resolution": resolution,
+            "from": _from,
+            "to": to
+        }, kwargs)
+
+        return self._get("/stock/candle", data=data)
 
     def stock_tick(self, symbol, date, limit, skip, **kwargs):
-        return self._get("/stock/tick", data= {
-        **{
+        data = self._merge_two_dicts({
             "symbol": symbol,
             "date": date,
             "limit": limit,
             "skip": skip,
             "format": format
-        }, 
-        **kwargs})
+        }, kwargs)
+
+        return self._get("/stock/tick", data=data)
 
     def forex_rates(self, **params):
         return self._get("/forex/rates", data=params)
@@ -259,16 +260,15 @@ class Client:
         })
 
     def technical_indicator(self, symbol, resolution, _from, to, indicator, indicator_fields = {}):
-        return self._get("/indicator", data = {
-            **{
-                "symbol": symbol,
-                "resolution": resolution,
-                "from": _from,
-                "to": to,
-                "indicator": indicator
-            },
-            **indicator_fields
-        })
+        data = self._merge_two_dicts({
+            "symbol": symbol,
+            "resolution": resolution,
+            "from": _from,
+            "to": to,
+            "indicator": indicator
+        }, indicator_fields)
+
+        return self._get("/indicator", data=data)
 
     def stock_splits(self, symbol, _from, to):
         return self._get("/stock/split", data={
