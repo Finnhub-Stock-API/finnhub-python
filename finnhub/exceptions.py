@@ -1,5 +1,4 @@
 class FinnhubAPIException(Exception):
-
     def __init__(self, response):
         self.code = 0
 
@@ -21,7 +20,6 @@ class FinnhubAPIException(Exception):
 
 
 class FinnhubRequestException(Exception):
-
     def __init__(self, message):
         self.message = message
 

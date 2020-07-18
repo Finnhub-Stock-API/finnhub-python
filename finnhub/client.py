@@ -1,9 +1,6 @@
 import requests
 import json
 
-from exceptions import FinnhubAPIException
-from exceptions import FinnhubRequestException
-
 class Client:
     API_URL = "https://finnhub.io/api/v1"
 
