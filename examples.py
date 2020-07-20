@@ -1,18 +1,3 @@
-# finnhub-python
-- API documentation: https://finnhub.io/docs/api
-- API version: 1.0.0
-- Package version: 2.0.0
-
-## Installation
-
-Install package
-```sh
-pip install finnhub-python
-```
-
-## Getting Started
-
-```python
 import finnhub
 
 # Setup client
@@ -141,7 +126,7 @@ print(finnhub_client.economic_code()[0:5])
 # Support resistance
 print(finnhub_client.support_resistance('AAPL', 'D'))
 
-# Technical Indicator
+# # Technical Indicator
 print(finnhub_client.technical_indicator(symbol="AAPL", resolution='D', _from=1583098857, to=1584308457, indicator='rsi', indicator_fields={"timeperiod": 3}))
 
 # Stock splits
@@ -155,8 +140,3 @@ print(finnhub_client.crypto_candles('BINANCE:BTCUSDT', 'D', 1590988249, 15918522
 
 # Tick Data
 print(finnhub_client.stock_tick('AAPL', '2020-03-25', 500, 0))
-```
-
-## License
-
-Apache License
