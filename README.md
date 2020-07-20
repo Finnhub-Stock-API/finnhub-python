@@ -12,6 +12,8 @@ pip install finnhub-python
 
 ## Getting Started
 
+Refer to [CHANGELOG](https://github.com/Finnhub-Stock-API/finnhub-python/blob/master/CHANGELOG.md) If ypu are coming from version 1
+
 ```python
 import finnhub
 
