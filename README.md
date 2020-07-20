@@ -1,7 +1,7 @@
 # finnhub-python
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.0.0rc3
+- Package version: 2.0.0
 
 ## Installation
 
@@ -13,10 +13,10 @@ pip install finnhub-python
 ## Getting Started
 
 ```python
-from finnhub import client as Finnhub
+import finnhub
 
 # Setup client
-finnhub_client = Finnhub.Client(api_key="YOUR API KEY")
+finnhub_client = finnhub.Client(api_key="YOUR API KEY")
 
 # Stock candles
 print(finnhub_client.stock_candles('AAPL', 'D', 1590988249, 1591852249))
