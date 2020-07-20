@@ -1,6 +1,9 @@
 import requests
 import json
 
+from exceptions import FinnhubAPIException
+from exceptions import FinnhubRequestException
+
 class Client:
     API_URL = "https://finnhub.io/api/v1"
 
@@ -182,9 +185,9 @@ class Client:
             "symbol": symbol
         })
 
-    def transcripts(self, symbol):
+    def transcripts(self, id):
         return self._get("/stock/transcripts", data={
-            "symbol": symbol
+            "id": id
         })
     
     def transcripts_list(self, symbol):
