@@ -1,7 +1,7 @@
 import finnhub
 
 # Setup client
-finnhub_client = finnhub.Client(api_key="YOUR API KEY")
+# finnhub_client = finnhub.Client(api_key="YOUR API KEY")
 
 # Stock candles
 print(finnhub_client.stock_candles('AAPL', 'D', 1590988249, 1591852249))
@@ -99,6 +99,9 @@ print(finnhub_client.quote('AAPL'))
 # Recommendation trends
 print(finnhub_client.recommendation_trends('AAPL'))
 
+# Similarity index
+print(finnhub_client.sim_index(symbol='AAPL', freq='annual'))
+
 # Stock dividends
 print(finnhub_client.stock_dividends('KO', _from='2019-01-01', to='2020-01-01'))
 
@@ -140,3 +143,21 @@ print(finnhub_client.crypto_candles('BINANCE:BTCUSDT', 'D', 1590988249, 15918522
 
 # Tick Data
 print(finnhub_client.stock_tick('AAPL', '2020-03-25', 500, 0))
+
+# Indices Constituents
+print(finnhub_client.indices_const(symbol = "^GSPC"))
+
+# Indices Historical Constituents
+print(finnhub_client.indices_hist_const(symbol = "^GSPC"))
+
+# ETFs Profile
+print(finnhub_client.etfs_profile('SPY'))
+
+# ETFs Holdings
+print(finnhub_client.etfs_holdings('SPY'))
+
+# ETFs Industry Exposure
+print(finnhub_client.etfs_ind_exp('SPY'))
+
+# ETFs Country Exposure
+print(finnhub_client.etfs_country_exp('SPY'))
