@@ -352,3 +352,4 @@ class Client:
     def etfs_country_exp(self, symbol):
         return self._get("/etf/country", data = {"symbol": symbol})
         
+        
