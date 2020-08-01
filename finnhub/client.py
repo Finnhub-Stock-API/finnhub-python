@@ -194,6 +194,9 @@ class Client:
         return self._get("/stock/transcripts/list", data={
             "symbol": symbol
         })
+    
+    def sim_index(self, **params):
+        return self._get("/stock/similarity-index", data = params)
 
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):
         data = self._merge_two_dicts({
@@ -330,3 +333,23 @@ class Client:
 
     def calendar_ico(self):
         return self._get("/calendar/ico")
+
+    def indices_const(self, **params):
+        return self._get("/index/constituents", data = params)
+    
+    def indices_hist_const(self, **params):
+        return self._get("/index/historical-constituents", data = params)
+
+    def etfs_profile(self, symbol):
+        return self._get("/etf/profile", data = {"symbol":symbol})
+
+    def etfs_holdings(self, symbol):
+        return self._get("/etf/holdings", data = {"symbol":symbol})
+
+    def etfs_ind_exp(self, symbol):
+        return self._get("/etf/holdings", data = {"symbol":symbol})
+
+    def etfs_country_exp(self, symbol):
+        return self._get("/etf/country", data = {"symbol": symbol})
+        
+        
