@@ -33,7 +33,7 @@ class Client:
     def _request(self, method, path, **kwargs):
         uri = "{}/{}".format(self.API_URL, path)
         kwargs["timeout"] = kwargs.get("timeout", self.DEFAULT_TIMEOUT)
-        kwargs["params"] = self._format_params(kwargs.get("params"))
+        kwargs["params"] = self._format_params(kwargs.get("params", {}))
 
         response = getattr(self._session, method)(uri, **kwargs)
         return self._handle_response(response)
@@ -44,7 +44,7 @@ class Client:
             raise FinnhubAPIException(response)
 
         try:
-            content_type = response.header.get('Content-Type', '')
+            content_type = response.headers.get('Content-Type', '')
             if 'application/json' in content_type:
                 return response.json()
             if 'text/csv' in content_type:
