@@ -1,8 +1,8 @@
 import requests
-import json
 
 from finnhub.exceptions import FinnhubAPIException
 from finnhub.exceptions import FinnhubRequestException
+
 
 class Client:
     API_URL = "https://finnhub.io/api/v1"
@@ -14,23 +14,23 @@ class Client:
 
     def _init__session(self):
         session = requests.session()
-        session.headers.update({'Accept': 'application/json',
-                                'User-Agent': 'finnhub/python'})
+        session.headers.update({"Accept": "application/json",
+                                "User-Agent": "finnhub/python"})
         return session
 
     def _request(self, method, uri, **kwargs):
-        kwargs['timeout'] = 10
-        data = kwargs.get('data', None)
+        kwargs["timeout"] = 10
+        data = kwargs.get("data", None)
 
         if data and isinstance(data, dict):
-            kwargs['data'] = data
+            kwargs["data"] = data
         else:
-            kwargs['data'] = {}
+            kwargs["data"] = {}
 
-        kwargs['data']['token'] = self.api_key
-        kwargs['params'] = kwargs['data']
+        kwargs["data"]["token"] = self.api_key
+        kwargs["params"] = kwargs["data"]
 
-        del(kwargs['data'])
+        del kwargs["data"]
         response = getattr(self.session, method)(uri, **kwargs)
 
         return self._handle_response(response)
@@ -43,7 +43,7 @@ class Client:
         return self._request(method, uri, **kwargs)
 
     def _handle_response(self, response):
-        if not str(response.status_code).startswith('2'):
+        if not str(response.status_code).startswith("2"):
             raise FinnhubAPIException(response)
         try:
             return response.json()
@@ -57,13 +57,15 @@ class Client:
 
     def _str_to_bool(self, **kwargs):
         for i in kwargs:
-            if (kwargs[i] == True): kwargs[i] = "true"
-            elif (kwargs[i] == False): kwargs[i] = "false"
+            if kwargs[i]:
+                kwargs[i] = "true"
+            elif not kwargs[i]:
+                kwargs[i] = "false"
         return kwargs
 
     def _get(self, path, **kwargs):
         params = self._str_to_bool(**kwargs)
-        return self._request_api('get', path, **params)
+        return self._request_api("get", path, **params)
 
     def covid19(self):
         return self._get("/covid19/us")
@@ -98,7 +100,7 @@ class Client:
             "symbol": symbol
         })
 
-    def stock_dividends(self, symbol, _from = None, to = None):
+    def stock_dividends(self, symbol, _from=None, to=None):
         return self._get("/stock/dividend", data={
             "symbol": symbol,
             "from": _from,
@@ -106,7 +108,7 @@ class Client:
         })
 
     def stock_symbols(self, exchange):
-        return self._get("/stock/symbol", data = {
+        return self._get("/stock/symbol", data={
             "exchange": exchange
         })
 
@@ -130,20 +132,20 @@ class Client:
         return self._get("/stock/peers", data={
             "symbol": symbol
         })
-    
+
     def company_basic_financials(self, symbol, metric):
         return self._get("/stock/metric", data={
             "symbol": symbol,
             "metric": metric
         })
-    
+
     def financials(self, symbol, statement, freq):
-        return self._get("/stock/financials", data ={
+        return self._get("/stock/financials", data={
             "symbol": symbol,
             "statement": statement,
             "freq": freq
         })
-    
+
     def financials_reported(self, **params):
         return self._get("/stock/financials-reported", data=params)
 
@@ -160,20 +162,20 @@ class Client:
         })
 
     def company_revenue_estimates(self, symbol, freq=None):
-        return self._get("/stock/revenue-estimate", data = {
+        return self._get("/stock/revenue-estimate", data={
             "symbol": symbol,
             "freq": freq
         })
 
     def company_eps_estimates(self, symbol, freq=None):
-        return self._get("/stock/eps-estimate", data = {
+        return self._get("/stock/eps-estimate", data={
             "symbol": symbol,
             "freq": freq
         })
 
     def exchange(self):
         return self._get("/stock/exchange")
-    
+
     def filings(self, **params):
         return self._get("/stock/filings", data=params)
 
@@ -189,14 +191,14 @@ class Client:
         return self._get("/stock/transcripts", data={
             "id": id
         })
-    
+
     def transcripts_list(self, symbol):
         return self._get("/stock/transcripts/list", data={
             "symbol": symbol
         })
-    
+
     def sim_index(self, **params):
-        return self._get("/stock/similarity-index", data = params)
+        return self._get("/stock/similarity-index", data=params)
 
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):
         data = self._merge_two_dicts({
@@ -262,7 +264,7 @@ class Client:
             "resolution": resolution
         })
 
-    def technical_indicator(self, symbol, resolution, _from, to, indicator, indicator_fields = {}):
+    def technical_indicator(self, symbol, resolution, _from, to, indicator, indicator_fields={}):
         data = self._merge_two_dicts({
             "symbol": symbol,
             "resolution": resolution,
@@ -299,7 +301,7 @@ class Client:
         })
 
     def investors_ownership(self, symbol, limit=None):
-        return self._get("/stock/investor-ownership", data = {
+        return self._get("/stock/investor-ownership", data={
             "symbol": symbol,
             "limit": limit
         })
@@ -326,30 +328,28 @@ class Client:
         return self._get("/calendar/earnings", data=params)
 
     def ipo_calendar(self, _from, to):
-        return self._get("/calendar/ipo", data = {
+        return self._get("/calendar/ipo", data={
             "from": _from,
-            "to": to 
+            "to": to
         })
 
     def calendar_ico(self):
         return self._get("/calendar/ico")
 
     def indices_const(self, **params):
-        return self._get("/index/constituents", data = params)
-    
+        return self._get("/index/constituents", data=params)
+
     def indices_hist_const(self, **params):
-        return self._get("/index/historical-constituents", data = params)
+        return self._get("/index/historical-constituents", data=params)
 
     def etfs_profile(self, symbol):
-        return self._get("/etf/profile", data = {"symbol":symbol})
+        return self._get("/etf/profile", data={"symbol":symbol})
 
     def etfs_holdings(self, symbol):
-        return self._get("/etf/holdings", data = {"symbol":symbol})
+        return self._get("/etf/holdings", data={"symbol":symbol})
 
     def etfs_ind_exp(self, symbol):
-        return self._get("/etf/holdings", data = {"symbol":symbol})
+        return self._get("/etf/holdings", data={"symbol":symbol})
 
     def etfs_country_exp(self, symbol):
-        return self._get("/etf/country", data = {"symbol": symbol})
-        
-        
+        return self._get("/etf/country", data={"symbol": symbol})
