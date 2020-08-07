@@ -115,7 +115,8 @@ print(finnhub_client.transcripts("AAPL_162777"))
 print(finnhub_client.transcripts_list("AAPL"))
 
 # Earnings Calendar
-print(finnhub_client.earnings_calendar(_from="2020-06-10", to="2020-06-30", symbol="", international=False))
+print(finnhub_client.earnings_calendar(_from="2020-06-10", to="2020-06-30", symbol="",
+                                       international=False))
 
 # Covid-19
 print(finnhub_client.covid19())
