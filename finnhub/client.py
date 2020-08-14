@@ -1,81 +1,90 @@
-import requests
 import json
+import requests
 
 from finnhub.exceptions import FinnhubAPIException
 from finnhub.exceptions import FinnhubRequestException
 
+
 class Client:
     API_URL = "https://finnhub.io/api/v1"
+    DEFAULT_TIMEOUT = 10
 
-    def __init__(self, api_key, requests_params=None):
-        self.api_key = api_key
-        self.session = self._init__session()
-        self._requests_params = requests_params
+    def __init__(self, api_key):
+        self._session = self._init_session(api_key)
 
-    def _init__session(self):
+    @staticmethod
+    def _init_session(api_key):
         session = requests.session()
-        session.headers.update({'Accept': 'application/json',
-                                'User-Agent': 'finnhub/python'})
+        session.headers.update({"Accept": "application/json",
+                                "User-Agent": "finnhub/python"})
+        session.params["token"] = api_key
+
         return session
 
-    def _request(self, method, uri, **kwargs):
-        kwargs['timeout'] = 10
-        data = kwargs.get('data', None)
+    def close(self):
+        self._session.close()
 
-        if data and isinstance(data, dict):
-            kwargs['data'] = data
-        else:
-            kwargs['data'] = {}
+    def __enter__(self):
+        return self
 
-        kwargs['data']['token'] = self.api_key
-        kwargs['params'] = kwargs['data']
+    def __exit__(self, *exc):
+        self.close()
 
-        del(kwargs['data'])
-        response = getattr(self.session, method)(uri, **kwargs)
+    def _request(self, method, path, **kwargs):
+        uri = "{}/{}".format(self.API_URL, path)
+        kwargs["timeout"] = kwargs.get("timeout", self.DEFAULT_TIMEOUT)
+        kwargs["params"] = self._format_params(kwargs.get("params", {}))
 
+        response = getattr(self._session, method)(uri, **kwargs)
         return self._handle_response(response)
 
-    def _create_api_uri(self, path):
-        return "{}/{}".format(self.API_URL, path)
-
-    def _request_api(self, method, path, **kwargs):
-        uri = self._create_api_uri(path)
-        return self._request(method, uri, **kwargs)
-
-    def _handle_response(self, response):
-        if not str(response.status_code).startswith('2'):
+    @staticmethod
+    def _handle_response(response):
+        if not response.ok:
             raise FinnhubAPIException(response)
+
         try:
-            return response.json()
+            content_type = response.headers.get('Content-Type', '')
+            if 'application/json' in content_type:
+                return response.json()
+            if 'text/csv' in content_type:
+                return response.text
+            raise FinnhubRequestException("Invalid Response: {}".format(response.text))
         except ValueError:
             raise FinnhubRequestException("Invalid Response: {}".format(response.text))
 
-    def _merge_two_dicts(self, a, b):
-        result = a.copy()
-        result.update(b)
+    @staticmethod
+    def _merge_two_dicts(first, second):
+        result = first.copy()
+        result.update(second)
         return result
 
-    def _str_to_bool(self, **kwargs):
-        for i in kwargs:
-            if (kwargs[i] == True): kwargs[i] = "true"
-            elif (kwargs[i] == False): kwargs[i] = "false"
-        return kwargs
+    @staticmethod
+    def _format_params(params):
+        return {k: json.dumps(v) if isinstance(v, bool) else v for k, v in params.items()}
 
     def _get(self, path, **kwargs):
-        params = self._str_to_bool(**kwargs)
-        return self._request_api('get', path, **params)
+        return self._request("get", path, **kwargs)
+
+    @property
+    def api_key(self):
+        return self._session.params.get("token")
+
+    @api_key.setter
+    def api_key(self, token):
+        self._session.params["token"] = token
 
     def covid19(self):
         return self._get("/covid19/us")
 
     def company_profile(self, **params):
-        return self._get("/stock/profile", data=params)
+        return self._get("/stock/profile", params=params)
 
     def company_profile2(self, **params):
-        return self._get("/stock/profile2", data=params)
+        return self._get("/stock/profile2", params=params)
 
     def aggregate_indicator(self, symbol, resolution):
-        return self._get("/scan/technical-indicator", data={
+        return self._get("/scan/technical-indicator", params={
             "symbol": symbol,
             "resolution": resolution,
         })
@@ -87,183 +96,168 @@ class Client:
         return self._get("/forex/exchange")
 
     def major_developments(self, symbol, _from=None, to=None):
-        return self._get("/major-development", data={
+        return self._get("/major-development", params={
             "symbol": symbol,
             "from": _from,
             "to": to
         })
 
     def company_executive(self, symbol):
-        return self._get("/stock/executive", data={
-            "symbol": symbol
-        })
+        return self._get("/stock/executive", params={"symbol": symbol})
 
-    def stock_dividends(self, symbol, _from = None, to = None):
-        return self._get("/stock/dividend", data={
+    def stock_dividends(self, symbol, _from=None, to=None):
+        return self._get("/stock/dividend", params={
             "symbol": symbol,
             "from": _from,
             "to": to
         })
 
     def stock_symbols(self, exchange):
-        return self._get("/stock/symbol", data = {
-            "exchange": exchange
-        })
+        return self._get("/stock/symbol", params={"exchange": exchange})
 
     def recommendation_trends(self, symbol):
-        return self._get("/stock/recommendation", data={
-            "symbol": symbol
-        })
+        return self._get("/stock/recommendation", params={"symbol": symbol})
 
     def price_target(self, symbol):
-        return self._get("/stock/price-target", data={
-            "symbol": symbol
-        })
+        return self._get("/stock/price-target", params={"symbol": symbol})
 
     def upgrade_downgrade(self, **params):
-        return self._get("/stock/upgrade-downgrade", data=params)
+        return self._get("/stock/upgrade-downgrade", params=params)
 
     def option_chain(self, **params):
-        return self._get("/stock/option-chain", data=params)
+        return self._get("/stock/option-chain", params=params)
 
     def company_peers(self, symbol):
-        return self._get("/stock/peers", data={
-            "symbol": symbol
-        })
-    
+        return self._get("/stock/peers", params={"symbol": symbol})
+
     def company_basic_financials(self, symbol, metric):
-        return self._get("/stock/metric", data={
+        return self._get("/stock/metric", params={
             "symbol": symbol,
             "metric": metric
         })
-    
+
     def financials(self, symbol, statement, freq):
-        return self._get("/stock/financials", data ={
+        return self._get("/stock/financials", params={
             "symbol": symbol,
             "statement": statement,
             "freq": freq
         })
-    
+
     def financials_reported(self, **params):
-        return self._get("/stock/financials-reported", data=params)
+        return self._get("/stock/financials-reported", params=params)
 
     def fund_ownership(self, symbol, limit=None):
-        return self._get("/stock/fund-ownership", data={
+        return self._get("/stock/fund-ownership", params={
             "symbol": symbol,
             "limit": limit
         })
 
     def company_earnings(self, symbol, limit=None):
-        return self._get("/stock/earnings", data={
+        return self._get("/stock/earnings", params={
             "symbol": symbol,
             "limit": limit
         })
 
     def company_revenue_estimates(self, symbol, freq=None):
-        return self._get("/stock/revenue-estimate", data = {
+        return self._get("/stock/revenue-estimate", params={
             "symbol": symbol,
             "freq": freq
         })
 
     def company_eps_estimates(self, symbol, freq=None):
-        return self._get("/stock/eps-estimate", data = {
+        return self._get("/stock/eps-estimate", params={
             "symbol": symbol,
             "freq": freq
         })
 
     def exchange(self):
         return self._get("/stock/exchange")
-    
+
     def filings(self, **params):
-        return self._get("/stock/filings", data=params)
+        return self._get("/stock/filings", params=params)
 
     def stock_symbol(self, **params):
-        return self._get("/stock/symbol", data=params)
+        return self._get("/stock/symbol", params=params)
 
     def quote(self, symbol):
-        return self._get("/quote", data={
+        return self._get("/quote", params={
             "symbol": symbol
         })
 
-    def transcripts(self, id):
-        return self._get("/stock/transcripts", data={
-            "id": id
-        })
-    
+    def transcripts(self, _id):
+        return self._get("/stock/transcripts", params={"id": _id})
+
     def transcripts_list(self, symbol):
-        return self._get("/stock/transcripts/list", data={
-            "symbol": symbol
-        })
-    
+        return self._get("/stock/transcripts/list", params={"symbol": symbol})
+
     def sim_index(self, **params):
-        return self._get("/stock/similarity-index", data = params)
+        return self._get("/stock/similarity-index", params=params)
 
     def stock_candles(self, symbol, resolution, _from, to, **kwargs):
-        data = self._merge_two_dicts({
+        params = self._merge_two_dicts({
             "symbol": symbol,
             "resolution": resolution,
             "from": _from,
             "to": to
         }, kwargs)
 
-        return self._get("/stock/candle", data=data)
+        return self._get("/stock/candle", params=params)
 
-    def stock_tick(self, symbol, date, limit, skip, **kwargs):
-        data = self._merge_two_dicts({
+    def stock_tick(self, symbol, date, limit, skip, _format='json', **kwargs):
+        params = self._merge_two_dicts({
             "symbol": symbol,
             "date": date,
             "limit": limit,
             "skip": skip,
-            "format": format
+            "format": _format
         }, kwargs)
 
-        return self._get("/stock/tick", data=data)
+        return self._get("/stock/tick", params=params)
 
     def forex_rates(self, **params):
-        return self._get("/forex/rates", data=params)
+        return self._get("/forex/rates", params=params)
 
     def forex_symbols(self, exchange):
-        return self._get("/forex/symbol", data={
+        return self._get("/forex/symbol", params={
             "exchange": exchange
         })
 
-    def forex_candles(self, symbol, resolution, _from, to, format=None):
-        return self._get("/forex/candle", data={
+    def forex_candles(self, symbol, resolution, _from, to, _format='json'):
+        return self._get("/forex/candle", params={
             "symbol": symbol,
             "resolution": resolution,
             "from": _from,
             "to": to,
-            "format": format
+            "format": _format
         })
 
     def crypto_symbols(self, exchange):
-        return self._get("/crypto/symbol", data={
-            "exchange": exchange
-        })
+        return self._get("/crypto/symbol", params={"exchange": exchange})
 
-    def crypto_candles(self, symbol, resolution, _from, to, format=None):
-        return self._get("/crypto/candle", data={
+    def crypto_candles(self, symbol, resolution, _from, to, _format='json'):
+        return self._get("/crypto/candle", params={
             "symbol": symbol,
             "resolution": resolution,
             "from": _from,
             "to": to,
-            "format": format
+            "format": _format
         })
 
     def pattern_recognition(self, symbol, resolution):
-        return self._get("/scan/pattern", data={
+        return self._get("/scan/pattern", params={
             "symbol": symbol,
             "resolution": resolution
         })
 
     def support_resistance(self, symbol, resolution):
-        return self._get("/scan/support-resistance", data={
+        return self._get("/scan/support-resistance", params={
             "symbol": symbol,
             "resolution": resolution
         })
 
-    def technical_indicator(self, symbol, resolution, _from, to, indicator, indicator_fields = {}):
-        data = self._merge_two_dicts({
+    def technical_indicator(self, symbol, resolution, _from, to, indicator, indicator_fields=None):
+        indicator_fields = indicator_fields or {}
+        params = self._merge_two_dicts({
             "symbol": symbol,
             "resolution": resolution,
             "from": _from,
@@ -271,35 +265,35 @@ class Client:
             "indicator": indicator
         }, indicator_fields)
 
-        return self._get("/indicator", data=data)
+        return self._get("/indicator", params=params)
 
     def stock_splits(self, symbol, _from, to):
-        return self._get("/stock/split", data={
+        return self._get("/stock/split", params={
             "symbol": symbol,
             "from": _from,
             "to": to
         })
 
-    def general_news(self, category, min_id=None):
-        return self._get("/news", data={
+    def general_news(self, category, min_id=0):
+        return self._get("/news", params={
             "category": category,
             "minId": min_id
         })
 
     def company_news(self, symbol, _from, to):
-        return self._get("/company-news", data={
+        return self._get("/company-news", params={
             "symbol": symbol,
             "from": _from,
             "to": to
         })
 
     def news_sentiment(self, symbol):
-        return self._get("/news-sentiment", data={
+        return self._get("/news-sentiment", params={
             "symbol": symbol
         })
 
     def investors_ownership(self, symbol, limit=None):
-        return self._get("/stock/investor-ownership", data = {
+        return self._get("/stock/investor-ownership", params={
             "symbol": symbol,
             "limit": limit
         })
@@ -311,45 +305,43 @@ class Client:
         return self._get("/merger/country")
 
     def merger(self, **params):
-        return self._get("/merger", data=params)
+        return self._get("/merger", params=params)
 
     def economic_code(self):
         return self._get("/economic/code")
 
     def economic_data(self, code):
-        return self._get("/economic", data={"code": code})
+        return self._get("/economic", params={"code": code})
 
     def calendar_economic(self):
         return self._get("/calendar/economic")
 
     def earnings_calendar(self, **params):
-        return self._get("/calendar/earnings", data=params)
+        return self._get("/calendar/earnings", params=params)
 
     def ipo_calendar(self, _from, to):
-        return self._get("/calendar/ipo", data = {
+        return self._get("/calendar/ipo", params={
             "from": _from,
-            "to": to 
+            "to": to
         })
 
     def calendar_ico(self):
         return self._get("/calendar/ico")
 
     def indices_const(self, **params):
-        return self._get("/index/constituents", data = params)
-    
+        return self._get("/index/constituents", params=params)
+
     def indices_hist_const(self, **params):
-        return self._get("/index/historical-constituents", data = params)
+        return self._get("/index/historical-constituents", params=params)
 
     def etfs_profile(self, symbol):
-        return self._get("/etf/profile", data = {"symbol":symbol})
+        return self._get("/etf/profile", params={"symbol":symbol})
 
     def etfs_holdings(self, symbol):
-        return self._get("/etf/holdings", data = {"symbol":symbol})
+        return self._get("/etf/holdings", params={"symbol":symbol})
 
     def etfs_ind_exp(self, symbol):
-        return self._get("/etf/holdings", data = {"symbol":symbol})
+        return self._get("/etf/holdings", params={"symbol":symbol})
 
     def etfs_country_exp(self, symbol):
-        return self._get("/etf/country", data = {"symbol": symbol})
-        
-        
+        return self._get("/etf/country", params={"symbol": symbol})
