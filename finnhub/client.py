@@ -49,6 +49,8 @@ class Client:
                 return response.json()
             if 'text/csv' in content_type:
                 return response.text
+            if 'text/plain' in content_type:
+                return response.text
             raise FinnhubRequestException("Invalid Response: {}".format(response.text))
         except ValueError:
             raise FinnhubRequestException("Invalid Response: {}".format(response.text))
