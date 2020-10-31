@@ -1,11 +1,13 @@
 # finnhub-python
+
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.2.1
+- Package version: 2.3.0
 
 ## Installation
 
 Install package
+
 ```sh
 pip install finnhub-python
 ```
