@@ -97,8 +97,8 @@ class Client:
     def forex_exchanges(self):
         return self._get("/forex/exchange")
 
-    def major_developments(self, symbol, _from=None, to=None):
-        return self._get("/major-development", params={
+    def press_releases(self, symbol, _from=None, to=None):
+        return self._get("/press-releases", params={
             "symbol": symbol,
             "from": _from,
             "to": to
@@ -294,8 +294,8 @@ class Client:
             "symbol": symbol
         })
 
-    def investors_ownership(self, symbol, limit=None):
-        return self._get("/stock/investor-ownership", params={
+    def ownership(self, symbol, limit=None):
+        return self._get("/stock/ownership", params={
             "symbol": symbol,
             "limit": limit
         })
@@ -327,9 +327,6 @@ class Client:
             "to": to
         })
 
-    def calendar_ico(self):
-        return self._get("/calendar/ico")
-
     def indices_const(self, **params):
         return self._get("/index/constituents", params=params)
 
@@ -337,13 +334,28 @@ class Client:
         return self._get("/index/historical-constituents", params=params)
 
     def etfs_profile(self, symbol):
-        return self._get("/etf/profile", params={"symbol":symbol})
+        return self._get("/etf/profile", params={"symbol": symbol})
 
     def etfs_holdings(self, symbol):
-        return self._get("/etf/holdings", params={"symbol":symbol})
+        return self._get("/etf/holdings", params={"symbol": symbol})
 
     def etfs_ind_exp(self, symbol):
-        return self._get("/etf/holdings", params={"symbol":symbol})
+        return self._get("/etf/holdings", params={"symbol": symbol})
 
     def etfs_country_exp(self, symbol):
         return self._get("/etf/country", params={"symbol": symbol})
+
+    def international_filings(self, symbol="", country=""):
+        return self._get("/stock/international-filings", params={"symbol": symbol, "country": country})
+
+    def sec_sentiment_analysis(self, access_number):
+        return self._get("/stock/filings-sentiment", params={"accessNumber": access_number})
+
+    def sec_similarity_index(self, symbol="", cik="", freq="annual"):
+        return self._get("/stock/similarity-index", params={"symbol": symbol, "cik": cik, "freq": freq})
+
+    def last_bid_ask(self, symbol):
+        return self._get("/stock/bidask", params={"symbol": symbol})
+
+    def fda_calendar(self):
+        return self._get("/fda-advisory-committee-calendar")

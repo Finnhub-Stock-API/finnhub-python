@@ -1,7 +1,7 @@
 import finnhub
 
 # Setup client
-finnhub_client = finnhub.Client(api_key="YOUR API KEY")
+finnhub_client = finnhub.Client(api_key="API key")
 
 # Stock candles
 print(finnhub_client.stock_candles("AAPL", "D", 1590988249, 1591852249))
@@ -76,13 +76,13 @@ print(finnhub_client.fund_ownership("AMZN", limit=5))
 print(finnhub_client.general_news("forex", min_id=0))
 
 # Investors ownership
-print(finnhub_client.investors_ownership("AAPL", limit=5))
+print(finnhub_client.ownership("AAPL", limit=5))
 
 # IPO calendar
 print(finnhub_client.ipo_calendar(_from="2020-05-01", to="2020-06-01"))
 
 # Major developments
-print(finnhub_client.major_developments("AAPL", _from="2020-01-01", to="2020-12-31"))
+print(finnhub_client.press_releases("AAPL", _from="2020-01-01", to="2020-12-31"))
 
 # News sentiment
 print(finnhub_client.news_sentiment("AAPL"))
@@ -171,3 +171,19 @@ print(finnhub_client.etfs_ind_exp("SPY"))
 
 # ETFs Country Exposure
 print(finnhub_client.etfs_country_exp("SPY"))
+
+# International Filings
+print(finnhub_client.international_filings('RY.TO'))
+print(finnhub_client.international_filings(country='GB'))
+
+# SEC Sentiment Analysis
+print(finnhub_client.sec_sentiment_analysis('0000320193-20-000052'))
+
+# SEC similarity index
+print(finnhub_client.sec_similarity_index('AAPL'))
+
+# Bid Ask
+print(finnhub_client.last_bid_ask('AAPL'))
+
+# FDA Calendar
+print(finnhub_client.fda_calendar())
