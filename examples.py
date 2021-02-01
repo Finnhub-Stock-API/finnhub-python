@@ -187,3 +187,6 @@ print(finnhub_client.last_bid_ask('AAPL'))
 
 # FDA Calendar
 print(finnhub_client.fda_calendar())
+
+# Symbol lookup
+print(finnhub_client.symbol_lookup('apple'))

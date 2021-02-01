@@ -359,3 +359,6 @@ class Client:
 
     def fda_calendar(self):
         return self._get("/fda-advisory-committee-calendar")
+
+    def symbol_lookup(self, query):
+        return self._get("/search", params={"q": query})
