@@ -362,3 +362,10 @@ class Client:
 
     def symbol_lookup(self, query):
         return self._get("/search", params={"q": query})
+
+    def short_interest(self, symbol, _from, to):
+        return self._get("/stock/short-interest", params={
+            "symbol": symbol,
+            "from": _from,
+            "to": to
+        })

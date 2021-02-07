@@ -203,6 +203,9 @@ print(finnhub_client.fda_calendar())
 # Symbol lookup
 print(finnhub_client.symbol_lookup('apple'))
 
+# Short Interest
+print(finnhub_client.short_interest("AAPL", _from="2020-12-31", to="2021-02-01"))
+
 ```
 
 ## License
