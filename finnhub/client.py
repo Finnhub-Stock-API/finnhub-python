@@ -9,14 +9,15 @@ class Client:
     API_URL = "https://finnhub.io/api/v1"
     DEFAULT_TIMEOUT = 10
 
-    def __init__(self, api_key):
-        self._session = self._init_session(api_key)
+    def __init__(self, api_key, proxies):
+        self._session = self._init_session(api_key, proxies)
 
     @staticmethod
-    def _init_session(api_key):
+    def _init_session(api_key, proxies):
         session = requests.session()
         session.headers.update({"Accept": "application/json",
                                 "User-Agent": "finnhub/python"})
+        session.proxies = proxies
         session.params["token"] = api_key
 
         return session
