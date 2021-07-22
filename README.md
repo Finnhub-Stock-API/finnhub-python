@@ -203,6 +203,33 @@ print(finnhub_client.fda_calendar())
 # Symbol lookup
 print(finnhub_client.symbol_lookup('apple'))
 
+# Insider transactions
+print(finnhub_client.stock_insider_transactions('AAPL', '2021-01-01', '2021-03-01'))
+
+# Mutual Funds Profile
+print(finnhub_client.mutual_fund_profile("VTSAX"))
+
+# Mutual Funds Holdings
+print(finnhub_client.mutual_fund_holdings("VTSAX"))
+
+# Mutual Funds Industry Exposure
+print(finnhub_client.mutual_fund_sector_exp("VTSAX"))
+
+# Mutual Funds Country Exposure
+print(finnhub_client.mutual_fund_country_exp("VTSAX"))
+
+# Revenue breakdown
+print(finnhub_client.stock_revenue_breakdown('AAPL'))
+
+# Social sentiment
+print(finnhub_client.stock_social_sentiment('GME'))
+
+# Investment Themes
+print(finnhub_client.stock_investment_theme('financialExchangesData'))
+
+# Supply chain
+print(finnhub_client.stock_supply_chain('AAPL'))
+
 ```
 
 ## License
