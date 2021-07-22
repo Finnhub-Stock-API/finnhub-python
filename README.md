@@ -178,8 +178,8 @@ print(finnhub_client.etfs_profile('SPY'))
 # ETFs Holdings
 print(finnhub_client.etfs_holdings('SPY'))
 
-# ETFs Industry Exposure
-print(finnhub_client.etfs_ind_exp('SPY'))
+# ETFs Sector Exposure
+print(finnhub_client.etfs_sector_exp('SPY'))
 
 # ETFs Country Exposure
 print(finnhub_client.etfs_country_exp('SPY'))
@@ -212,7 +212,7 @@ print(finnhub_client.mutual_fund_profile("VTSAX"))
 # Mutual Funds Holdings
 print(finnhub_client.mutual_fund_holdings("VTSAX"))
 
-# Mutual Funds Industry Exposure
+# Mutual Funds Sector Exposure
 print(finnhub_client.mutual_fund_sector_exp("VTSAX"))
 
 # Mutual Funds Country Exposure
