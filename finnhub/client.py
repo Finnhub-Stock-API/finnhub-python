@@ -339,8 +339,8 @@ class Client:
     def etfs_holdings(self, symbol):
         return self._get("/etf/holdings", params={"symbol": symbol})
 
-    def etfs_ind_exp(self, symbol):
-        return self._get("/etf/holdings", params={"symbol": symbol})
+    def etfs_sector_exp(self, symbol):
+        return self._get("/etf/sector", params={"symbol": symbol})
 
     def etfs_country_exp(self, symbol):
         return self._get("/etf/country", params={"symbol": symbol})
@@ -362,3 +362,30 @@ class Client:
 
     def symbol_lookup(self, query):
         return self._get("/search", params={"q": query})
+
+    def stock_insider_transactions(self, symbol, _from=None, to=None):
+        return self._get("/stock/insider-transactions", params={"symbol": symbol, "from": _from, "to": to})
+
+    def mutual_fund_profile(self, symbol):
+        return self._get("/mutual-fund/profile", params={"symbol": symbol})
+
+    def mutual_fund_holdings(self, symbol):
+        return self._get("/mutual-fund/holdings", params={"symbol": symbol})
+
+    def mutual_fund_sector_exp(self, symbol):
+        return self._get("/mutual-fund/sector", params={"symbol": symbol})
+
+    def mutual_fund_country_exp(self, symbol):
+        return self._get("/mutual-fund/country", params={"symbol": symbol})
+
+    def stock_revenue_breakdown(self, symbol, cik=""):
+        return self._get("/stock/revenue-breakdown", params={"symbol": symbol, "cik": cik})
+
+    def stock_social_sentiment(self, symbol, _from=None, to=None):
+        return self._get("/stock/social-sentiment", params={"symbol": symbol, "from": _from, "to": to})
+
+    def stock_investment_theme(self, theme):
+        return self._get("/stock/investment-theme", params={"theme": theme})
+
+    def stock_supply_chain(self, symbol):
+        return self._get("/stock/supply-chain", params={"symbol": symbol})
