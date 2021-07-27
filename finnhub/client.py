@@ -114,6 +114,9 @@ class Client:
             "to": to
         })
 
+    def stock_basic_dividends(self, symbol):
+        return self._get("/stock/dividend2", params={"symbol": symbol})
+
     def stock_symbols(self, exchange):
         return self._get("/stock/symbol", params={"exchange": exchange})
 
@@ -215,6 +218,17 @@ class Client:
         }, kwargs)
 
         return self._get("/stock/tick", params=params)
+
+    def stock_nbbo(self, symbol, date, limit, skip, _format='json', **kwargs):
+        params = self._merge_two_dicts({
+            "symbol": symbol,
+            "date": date,
+            "limit": limit,
+            "skip": skip,
+            "format": _format
+        }, kwargs)
+
+        return self._get("/stock/bbo", params=params)
 
     def forex_rates(self, **params):
         return self._get("/forex/rates", params=params)

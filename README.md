@@ -34,7 +34,7 @@ print(pd.DataFrame(res))
 print(finnhub_client.aggregate_indicator('AAPL', 'D'))
 
 # Basic financials
-print(finnhub_client.company_basic_financials('AAPL', 'margin'))
+print(finnhub_client.company_basic_financials('AAPL', 'all'))
 
 # Earnings surprises
 print(finnhub_client.company_earnings('TSLA', limit=5))
@@ -126,6 +126,9 @@ print(finnhub_client.recommendation_trends('AAPL'))
 # Stock dividends
 print(finnhub_client.stock_dividends('KO', _from='2019-01-01', to='2020-01-01'))
 
+# Stock dividends 2
+print(finnhub_client.stock_basic_dividends("KO"))
+
 # Stock symbols
 print(finnhub_client.stock_symbols('US')[0:5])
 
@@ -165,6 +168,8 @@ print(finnhub_client.crypto_candles('BINANCE:BTCUSDT', 'D', 1590988249, 15918522
 # Tick Data
 print(finnhub_client.stock_tick('AAPL', '2020-03-25', 500, 0))
 
+# BBO Data
+print(finnhub_client.stock_nbbo("AAPL", "2020-03-25", 500, 0))
 
 # Indices Constituents
 print(finnhub_client.indices_const(symbol = "^GSPC"))

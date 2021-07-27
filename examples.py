@@ -10,7 +10,7 @@ print(finnhub_client.stock_candles("AAPL", "D", 1590988249, 1591852249))
 print(finnhub_client.aggregate_indicator("AAPL", "D"))
 
 # Basic financials
-print(finnhub_client.company_basic_financials("AAPL", "margin"))
+print(finnhub_client.company_basic_financials("AAPL", "all"))
 
 # Earnings surprises
 print(finnhub_client.company_earnings("TSLA", limit=5))
@@ -48,8 +48,14 @@ print(finnhub_client.crypto_exchanges())
 # Crypto symbols
 print(finnhub_client.crypto_symbols("BINANCE"))
 
+# Economic code
+print(finnhub_client.economic_code()[0:5])
+
 # Economic data
 print(finnhub_client.economic_data("MA-USA-656880"))
+
+# Economic calendar
+print(finnhub_client.calendar_economic())
 
 # Filings
 print(finnhub_client.filings(symbol="AAPL", _from="2020-01-01", to="2020-06-11"))
@@ -105,6 +111,9 @@ print(finnhub_client.sim_index(symbol="AAPL", freq="annual"))
 # Stock dividends
 print(finnhub_client.stock_dividends("KO", _from="2019-01-01", to="2020-01-01"))
 
+# Stock dividends 2
+print(finnhub_client.stock_basic_dividends("KO"))
+
 # Stock symbols
 print(finnhub_client.stock_symbols("US")[0:5])
 
@@ -123,9 +132,6 @@ print(finnhub_client.covid19())
 
 # Upgrade downgrade
 print(finnhub_client.upgrade_downgrade(symbol="AAPL", _from="2020-01-01", to="2020-06-30"))
-
-# Economic code
-print(finnhub_client.economic_code()[0:5])
 
 # Support resistance
 print(finnhub_client.support_resistance("AAPL", "D"))
@@ -153,6 +159,9 @@ print(finnhub_client.crypto_candles("BINANCE:BTCUSDT", "D", 1590988249, 15918522
 
 # Tick Data
 print(finnhub_client.stock_tick("AAPL", "2020-03-25", 500, 0))
+
+# BBO Data
+print(finnhub_client.stock_nbbo("AAPL", "2020-03-25", 500, 0))
 
 # Indices Constituents
 print(finnhub_client.indices_const(symbol="^GSPC"))
