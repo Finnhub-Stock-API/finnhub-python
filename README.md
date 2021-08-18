@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.2
+- Package version: 2.4.3
 
 ## Installation
 
@@ -234,6 +234,9 @@ print(finnhub_client.stock_investment_theme('financialExchangesData'))
 
 # Supply chain
 print(finnhub_client.stock_supply_chain('AAPL'))
+
+# Company ESG
+print(finnhub_client.company_esg_score("AAPL"))
 
 ```
 

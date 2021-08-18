@@ -226,3 +226,6 @@ print(finnhub_client.stock_investment_theme('financialExchangesData'))
 
 # Supply chain
 print(finnhub_client.stock_supply_chain('AAPL'))
+
+# Company ESG
+print(finnhub_client.company_esg_score("AAPL"))

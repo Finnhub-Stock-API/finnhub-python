@@ -403,3 +403,6 @@ class Client:
 
     def stock_supply_chain(self, symbol):
         return self._get("/stock/supply-chain", params={"symbol": symbol})
+
+    def company_esg_score(self, symbol):
+        return self._get("/stock/esg", params={"symbol": symbol})
