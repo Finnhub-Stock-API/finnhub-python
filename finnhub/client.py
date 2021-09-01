@@ -332,8 +332,13 @@ class Client:
     def calendar_economic(self):
         return self._get("/calendar/economic")
 
-    def earnings_calendar(self, **params):
-        return self._get("/calendar/earnings", params=params)
+    def earnings_calendar(self, _from, to, symbol, international=False):
+        return self._get("/calendar/earnings", params={
+            "from": _from,
+            "to": to,
+            "symbol": symbol,
+            "international": international
+        })
 
     def ipo_calendar(self, _from, to):
         return self._get("/calendar/ipo", params={
