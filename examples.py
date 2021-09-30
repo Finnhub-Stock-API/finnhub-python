@@ -1,7 +1,7 @@
 import finnhub
 
 # Setup client
-finnhub_client = finnhub.Client(api_key="API key")
+finnhub_client = finnhub.Client(api_key="API_KEY")
 
 # Stock candles
 print(finnhub_client.stock_candles("AAPL", "D", 1590988249, 1591852249))
@@ -229,3 +229,6 @@ print(finnhub_client.stock_supply_chain('AAPL'))
 
 # Company ESG
 print(finnhub_client.company_esg_score("AAPL"))
+
+# Earnings Quality Score
+print(finnhub_client.company_earnings_quality_score('AAPL', 'quarterly'))

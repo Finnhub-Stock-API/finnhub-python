@@ -413,3 +413,6 @@ class Client:
 
     def company_esg_score(self, symbol):
         return self._get("/stock/esg", params={"symbol": symbol})
+
+    def company_earnings_quality_score(self, symbol, freq):
+        return self._get("/stock/earnings-quality-score", params={"symbol": symbol, 'freq': freq})

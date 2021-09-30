@@ -238,6 +238,9 @@ print(finnhub_client.stock_supply_chain('AAPL'))
 # Company ESG
 print(finnhub_client.company_esg_score("AAPL"))
 
+# Earnings Quality Score
+print(finnhub_client.company_earnings_quality_score('AAPL', 'quarterly'))
+
 ```
 
 ## License
