@@ -319,12 +319,6 @@ class Client:
     def country(self):
         return self._get("/country")
 
-    def merger_country(self):
-        return self._get("/merger/country")
-
-    def merger(self, **params):
-        return self._get("/merger", params=params)
-
     def economic_code(self):
         return self._get("/economic/code")
 
@@ -416,3 +410,6 @@ class Client:
 
     def company_earnings_quality_score(self, symbol, freq):
         return self._get("/stock/earnings-quality-score", params={"symbol": symbol, 'freq': freq})
+
+    def crypto_profile(self, symbol):
+        return self._get("/crypto/profile", params={"symbol": symbol})

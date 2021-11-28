@@ -232,3 +232,6 @@ print(finnhub_client.company_esg_score("AAPL"))
 
 # Earnings Quality Score
 print(finnhub_client.company_earnings_quality_score('AAPL', 'quarterly'))
+
+# Crypto Profile
+print(finnhub_client.crypto_profile('BTC'))
