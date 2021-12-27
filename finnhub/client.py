@@ -171,6 +171,18 @@ class Client:
             "freq": freq
         })
 
+    def company_ebitda_estimates(self, symbol, freq=None):
+        return self._get("/stock/ebitda-estimate", params={
+            "symbol": symbol,
+            "freq": freq
+        })
+
+    def company_ebit_estimates(self, symbol, freq=None):
+        return self._get("/stock/ebit-estimate", params={
+            "symbol": symbol,
+            "freq": freq
+        })
+
     def company_eps_estimates(self, symbol, freq=None):
         return self._get("/stock/eps-estimate", params={
             "symbol": symbol,

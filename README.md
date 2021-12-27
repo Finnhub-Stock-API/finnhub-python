@@ -243,6 +243,13 @@ print(finnhub_client.company_earnings_quality_score('AAPL', 'quarterly'))
 
 # Crypto Profile
 print(finnhub_client.crypto_profile('BTC'))
+
+# EBITDA Estimates
+print(finnhub_client.company_ebitda_estimates("TSLA", freq="quarterly"))
+
+# EBIT Estimates
+print(finnhub_client.company_ebit_estimates("TSLA", freq="quarterly"))
+
 ```
 
 ## License
