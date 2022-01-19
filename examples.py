@@ -241,3 +241,6 @@ print(finnhub_client.company_ebitda_estimates("TSLA", freq="quarterly"))
 
 # EBIT Estimates
 print(finnhub_client.company_ebit_estimates("TSLA", freq="quarterly"))
+
+# USPTO Patent
+print(finnhub_client.stock_uspto_patent("AAPL", "2021-01-01", "2021-12-31"))

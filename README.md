@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.4
+- Package version: 2.4.8
 
 ## Installation
 
@@ -249,6 +249,9 @@ print(finnhub_client.company_ebitda_estimates("TSLA", freq="quarterly"))
 
 # EBIT Estimates
 print(finnhub_client.company_ebit_estimates("TSLA", freq="quarterly"))
+
+# USPTO Patent
+print(finnhub_client.stock_uspto_patent("AAPL", "2021-01-01", "2021-12-31"))
 
 ```
 

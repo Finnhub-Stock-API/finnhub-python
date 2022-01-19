@@ -425,3 +425,6 @@ class Client:
 
     def crypto_profile(self, symbol):
         return self._get("/crypto/profile", params={"symbol": symbol})
+
+    def stock_uspto_patent(self, symbol, _from=None, to=None):
+        return self._get("/stock/uspto-patent", params={"symbol": symbol, "from": _from, "to": to})
