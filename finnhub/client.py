@@ -128,8 +128,8 @@ class Client:
     def price_target(self, symbol):
         return self._get("/stock/price-target", params={"symbol": symbol})
 
-    def upgrade_downgrade(self, **params):
-        return self._get("/stock/upgrade-downgrade", params=params)
+    def upgrade_downgrade(self, symbol=None, _from=None, to=None):
+        return self._get("/stock/upgrade-downgrade", params={'symbol': symbol, 'from': _from, 'to': to})
 
     def option_chain(self, **params):
         return self._get("/stock/option-chain", params=params)
@@ -337,8 +337,11 @@ class Client:
     def economic_data(self, code):
         return self._get("/economic", params={"code": code})
 
-    def calendar_economic(self):
-        return self._get("/calendar/economic")
+    def calendar_economic(self, _from=None, to=None):
+        return self._get("/calendar/economic", params={
+            "from": _from,
+            "to": to
+        })
 
     def earnings_calendar(self, _from, to, symbol, international=False):
         return self._get("/calendar/earnings", params={

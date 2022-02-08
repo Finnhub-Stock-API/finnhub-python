@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.8
+- Package version: 2.4.9
 
 ## Installation
 
@@ -149,6 +149,9 @@ print(finnhub_client.upgrade_downgrade(symbol='AAPL', _from='2020-01-01', to='20
 
 # Economic code
 print(finnhub_client.economic_code()[0:5])
+
+# Economic calendar
+print(finnhub_client.calendar_economic('2021-01-01', '2021-01-07'))
 
 # Support resistance
 print(finnhub_client.support_resistance('AAPL', 'D'))

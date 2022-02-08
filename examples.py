@@ -55,7 +55,7 @@ print(finnhub_client.economic_code()[0:5])
 print(finnhub_client.economic_data("MA-USA-656880"))
 
 # Economic calendar
-print(finnhub_client.calendar_economic())
+print(finnhub_client.calendar_economic('2021-01-01', '2021-01-07'))
 
 # Filings
 print(finnhub_client.filings(symbol="AAPL", _from="2020-01-01", to="2020-06-11"))
