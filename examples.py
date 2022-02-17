@@ -1,7 +1,8 @@
 import finnhub
+import os
 
 # Setup client
-finnhub_client = finnhub.Client(api_key="API_KEY")
+finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
 # Stock candles
 print(finnhub_client.stock_candles("AAPL", "D", 1590988249, 1591852249))
@@ -171,9 +172,11 @@ print(finnhub_client.indices_hist_const(symbol="^GSPC"))
 
 # ETFs Profile
 print(finnhub_client.etfs_profile("SPY"))
+print(finnhub_client.etfs_profile(isin="US78462F1030"))
 
 # ETFs Holdings
 print(finnhub_client.etfs_holdings("SPY"))
+print(finnhub_client.etfs_holdings(isin="US00214Q1040", skip=2))
 
 # ETFs Industry Exposure
 print(finnhub_client.etfs_sector_exp("SPY"))
@@ -205,9 +208,11 @@ print(finnhub_client.stock_insider_transactions('AAPL', '2021-01-01', '2021-03-0
 
 # Mutual Funds Profile
 print(finnhub_client.mutual_fund_profile("VTSAX"))
+print(finnhub_client.mutual_fund_profile(isin="US9229087286"))
 
 # Mutual Funds Holdings
 print(finnhub_client.mutual_fund_holdings("VTSAX"))
+print(finnhub_client.mutual_fund_holdings(isin="US9229087286", skip=2))
 
 # Mutual Funds Industry Exposure
 print(finnhub_client.mutual_fund_sector_exp("VTSAX"))
@@ -244,3 +249,6 @@ print(finnhub_client.company_ebit_estimates("TSLA", freq="quarterly"))
 
 # USPTO Patent
 print(finnhub_client.stock_uspto_patent("AAPL", "2021-01-01", "2021-12-31"))
+
+# Visa application
+print(finnhub_client.stock_visa_application("AAPL", "2021-01-01", "2022-06-15"))

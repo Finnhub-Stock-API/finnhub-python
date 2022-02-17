@@ -119,8 +119,9 @@ class Client:
     def stock_basic_dividends(self, symbol):
         return self._get("/stock/dividend2", params={"symbol": symbol})
 
-    def stock_symbols(self, exchange):
-        return self._get("/stock/symbol", params={"exchange": exchange})
+    def stock_symbols(self, exchange, mic=None, security_type=None, currency=None):
+        return self._get("/stock/symbol",
+                         params={"exchange": exchange, 'mic': mic, 'securityType': security_type, 'currency': currency})
 
     def recommendation_trends(self, symbol):
         return self._get("/stock/recommendation", params={"symbol": symbol})
@@ -363,11 +364,11 @@ class Client:
     def indices_hist_const(self, **params):
         return self._get("/index/historical-constituents", params=params)
 
-    def etfs_profile(self, symbol):
-        return self._get("/etf/profile", params={"symbol": symbol})
+    def etfs_profile(self, symbol=None, isin=None):
+        return self._get("/etf/profile", params={"symbol": symbol, "isin": isin})
 
-    def etfs_holdings(self, symbol):
-        return self._get("/etf/holdings", params={"symbol": symbol})
+    def etfs_holdings(self, symbol=None, isin=None, skip=None):
+        return self._get("/etf/holdings", params={"symbol": symbol, "isin": isin, "skip": skip})
 
     def etfs_sector_exp(self, symbol):
         return self._get("/etf/sector", params={"symbol": symbol})
@@ -396,11 +397,11 @@ class Client:
     def stock_insider_transactions(self, symbol, _from=None, to=None):
         return self._get("/stock/insider-transactions", params={"symbol": symbol, "from": _from, "to": to})
 
-    def mutual_fund_profile(self, symbol):
-        return self._get("/mutual-fund/profile", params={"symbol": symbol})
+    def mutual_fund_profile(self, symbol=None, isin=None):
+        return self._get("/mutual-fund/profile", params={"symbol": symbol, "isin": isin})
 
-    def mutual_fund_holdings(self, symbol):
-        return self._get("/mutual-fund/holdings", params={"symbol": symbol})
+    def mutual_fund_holdings(self, symbol=None, isin=None, skip=None):
+        return self._get("/mutual-fund/holdings", params={"symbol": symbol, "isin": isin, "skip": skip})
 
     def mutual_fund_sector_exp(self, symbol):
         return self._get("/mutual-fund/sector", params={"symbol": symbol})
@@ -431,3 +432,6 @@ class Client:
 
     def stock_uspto_patent(self, symbol, _from=None, to=None):
         return self._get("/stock/uspto-patent", params={"symbol": symbol, "from": _from, "to": to})
+
+    def stock_visa_application(self, symbol, _from=None, to=None):
+        return self._get("/stock/visa-application", params={"symbol": symbol, "from": _from, "to": to})
