@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.10
+- Package version: 2.4.11
 
 ## Installation
 
@@ -187,6 +187,7 @@ print(finnhub_client.etfs_profile(isin="US78462F1030"))
 # ETFs Holdings
 print(finnhub_client.etfs_holdings('SPY'))
 print(finnhub_client.etfs_holdings(isin="US00214Q1040", skip=2))
+print(finnhub_client.etfs_holdings("IPO", date='2022-03-10'))
 
 # ETFs Sector Exposure
 print(finnhub_client.etfs_sector_exp('SPY'))
@@ -262,6 +263,9 @@ print(finnhub_client.stock_uspto_patent("AAPL", "2021-01-01", "2021-12-31"))
 
 # Visa application
 print(finnhub_client.stock_visa_application("AAPL", "2021-01-01", "2022-06-15"))
+
+# Insider sentiment
+print(finnhub_client.stock_insider_sentiment('AAPL', '2021-01-01', '2022-03-01'))
 
 ```
 

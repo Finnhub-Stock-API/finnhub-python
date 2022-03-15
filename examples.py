@@ -4,6 +4,9 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+# Insider sentiment
+print(finnhub_client.stock_insider_sentiment('AAPL', '2021-01-01', '2022-03-01'))
+
 # Stock candles
 print(finnhub_client.stock_candles("AAPL", "D", 1590988249, 1591852249))
 

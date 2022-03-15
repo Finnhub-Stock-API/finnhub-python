@@ -367,8 +367,8 @@ class Client:
     def etfs_profile(self, symbol=None, isin=None):
         return self._get("/etf/profile", params={"symbol": symbol, "isin": isin})
 
-    def etfs_holdings(self, symbol=None, isin=None, skip=None):
-        return self._get("/etf/holdings", params={"symbol": symbol, "isin": isin, "skip": skip})
+    def etfs_holdings(self, symbol=None, isin=None, skip=None, date=None):
+        return self._get("/etf/holdings", params={"symbol": symbol, "isin": isin, "skip": skip, "date": date})
 
     def etfs_sector_exp(self, symbol):
         return self._get("/etf/sector", params={"symbol": symbol})
@@ -435,3 +435,6 @@ class Client:
 
     def stock_visa_application(self, symbol, _from=None, to=None):
         return self._get("/stock/visa-application", params={"symbol": symbol, "from": _from, "to": to})
+
+    def stock_insider_sentiment(self, symbol, _from, to):
+        return self._get("/stock/insider-sentiment", params={"symbol": symbol, "from": _from, "to": to})
