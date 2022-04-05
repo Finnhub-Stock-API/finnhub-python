@@ -4,6 +4,10 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+print(finnhub_client.bond_profile(isin='US912810TD00'))
+print(finnhub_client.bond_price('US912810TD00', 1590988249, 1649099548))
+print(finnhub_client.stock_lobbying("AAPL", "2021-01-01", "2022-06-15"))
+
 # Insider sentiment
 print(finnhub_client.stock_insider_sentiment('AAPL', '2021-01-01', '2022-03-01'))
 

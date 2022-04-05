@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "finnhub-python"
-VERSION = "2.4.11"
+VERSION = "2.4.12"
 REQUIRES = ["requests >= 2.22.0"]
 
 with open("README.md", "r") as fh:

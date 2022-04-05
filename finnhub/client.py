@@ -438,3 +438,12 @@ class Client:
 
     def stock_insider_sentiment(self, symbol, _from, to):
         return self._get("/stock/insider-sentiment", params={"symbol": symbol, "from": _from, "to": to})
+
+    def stock_lobbying(self, symbol, _from, to):
+        return self._get("/stock/lobbying", params={"symbol": symbol, "from": _from, "to": to})
+
+    def bond_profile(self, **params):
+        return self._get("/bond/profile", params=params)
+
+    def bond_price(self, isin, _from, to):
+        return self._get("/bond/price", params={"isin": isin, "from": _from, "to": to})
