@@ -447,3 +447,6 @@ class Client:
 
     def bond_price(self, isin, _from, to):
         return self._get("/bond/price", params={"isin": isin, "from": _from, "to": to})
+
+    def stock_usa_spending(self, symbol, _from, to):
+        return self._get("/stock/usa-spending", params={"symbol": symbol, "from": _from, "to": to})

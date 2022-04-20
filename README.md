@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.12
+- Package version: 2.4.13
 
 ## Installation
 
@@ -275,6 +275,9 @@ print(finnhub_client.bond_price('US912810TD00', 1590988249, 1649099548))
 
 # Lobbying
 print(finnhub_client.stock_lobbying("AAPL", "2021-01-01", "2022-06-15"))
+
+# USA Spending
+print(finnhub_client.stock_usa_spending("LMT", "2021-01-01", "2022-06-15"))
 
 ```
 
