@@ -262,3 +262,6 @@ print(finnhub_client.stock_uspto_patent("AAPL", "2021-01-01", "2021-12-31"))
 
 # Visa application
 print(finnhub_client.stock_visa_application("AAPL", "2021-01-01", "2022-06-15"))
+
+# Sector metrics
+print(finnhub_client.sector_metric('NA'))

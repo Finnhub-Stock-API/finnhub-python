@@ -450,3 +450,6 @@ class Client:
 
     def stock_usa_spending(self, symbol, _from, to):
         return self._get("/stock/usa-spending", params={"symbol": symbol, "from": _from, "to": to})
+
+    def sector_metric(self, region):
+        return self._get("/sector/metrics", params={"region": region})
