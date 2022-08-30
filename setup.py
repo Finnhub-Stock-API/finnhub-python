@@ -4,7 +4,7 @@ from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "finnhub-python"
 VERSION = "2.4.14"
-REQUIRES = ["requests >= 2.22.0"]
+REQUIRES = ["requests >= 2.22.0", "pandas==1.4.3"]
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
