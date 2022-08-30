@@ -8,6 +8,23 @@ from finnhub.exceptions import FinnhubAPIException
 from finnhub.exceptions import FinnhubRequestException
 
 
+def handle_rate_limit(function):
+    """
+    Decorator. Try the underlying function, and if a Finnhub rate limit error 
+    is caught, sleep for a second and keep trying the endpoint until 
+    a valid result is obtained.
+    """
+    def wrapper(*args, **kwargs):
+        try:
+            return function(*args, **kwargs)
+        except FinnhubAPIException as e:
+            if "API limit reached" in str(e):
+                time.sleep(1)
+                return wrapper(*args, **kwargs)
+
+    return wrapper
+
+
 class Client:
     API_URL = "https://finnhub.io/api/v1"
     DEFAULT_TIMEOUT = 10
@@ -226,6 +243,7 @@ class Client:
 
         return self._get("/stock/candle", params=params)
     
+    @handle_rate_limit
     def stock_candles_df(self, symbol, resolution, _from, to, filter_eod: bool = False, **kwargs) -> pd.DataFrame:
         """
         Returns data as a DataFrame.
@@ -284,7 +302,6 @@ class Client:
             )
 
             current_pointer += dt.timedelta(days=29)
-            time.sleep(0.4)  # finnhub rate limit
 
         return pd.concat(datas)
         
