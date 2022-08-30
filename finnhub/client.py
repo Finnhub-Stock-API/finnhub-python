@@ -1,5 +1,8 @@
 import json
 import requests
+import pandas as pd
+import datetime as dt
+import time
 
 from finnhub.exceptions import FinnhubAPIException
 from finnhub.exceptions import FinnhubRequestException
@@ -222,7 +225,69 @@ class Client:
         }, kwargs)
 
         return self._get("/stock/candle", params=params)
+    
+    def stock_candles_df(self, symbol, resolution, _from, to, filter_eod: bool = False, **kwargs) -> pd.DataFrame:
+        """
+        Returns data as a DataFrame.
+        """
+        data = self.stock_candles(
+            symbol.upper(),
+            resolution,
+            _from,
+            to,
+            **kwargs
+        )
 
+        data_df = pd.DataFrame(data)
+        data_df['Date'] = pd.to_datetime(data_df['t'], unit="s")
+        data_df.set_index('Date', inplace=True)
+        data_df.drop(['s', 't'], axis=1, inplace=True)
+        data_df.rename(
+            columns = {
+                "c": "Close",
+                "h": "High",
+                "l": "Low",
+                "o": "Open",
+                "v": "Volume"
+            },
+            inplace = True
+        )
+
+        if filter_eod: return data_df.between_time(dt.time(13, 30), dt.time(20))
+        return data_df
+
+    def stock_candles_intraday(self, symbol, resolution, _from, to, filter_eod: bool = False, **kwargs) -> pd.DataFrame:
+        """
+        Due to the rate limit, incrementally aggregate intraday candle data.
+        """
+        # If not getting intraday data, Finnhub iteration unnecessary
+        if resolution.upper() in {"D", "W"}:
+            return self.stock_candles_df(symbol, resolution, _from, to, **kwargs)
+
+        start = dt.datetime.fromtimestamp(_from)
+        end = dt.datetime.fromtimestamp(to)
+
+        datas = []
+        current_pointer = start
+        while current_pointer < end:
+            if (look_forward := (current_pointer + dt.timedelta(days=29))) > end:
+                look_forward = end
+
+            datas.append(
+                self.stock_candles_df(
+                    symbol, 
+                    resolution, 
+                    int(current_pointer.timestamp()), 
+                    int(look_forward.timestamp()),
+                    filter_eod=filter_eod
+                )
+            )
+
+            current_pointer += dt.timedelta(days=29)
+            time.sleep(0.4)  # finnhub rate limit
+
+        return pd.concat(datas)
+        
     def stock_tick(self, symbol, date, limit, skip, _format='json', **kwargs):
         params = self._merge_two_dicts({
             "symbol": symbol,
