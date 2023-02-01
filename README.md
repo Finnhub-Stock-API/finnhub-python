@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.14
+- Package version: 2.4.16
 
 ## Installation
 
@@ -281,6 +281,17 @@ print(finnhub_client.stock_usa_spending("LMT", "2021-01-01", "2022-06-15"))
 
 # Sector metrics
 print(finnhub_client.sector_metric('NA'))
+
+print(finnhub_client.mutual_fund_eet('LU2036931686'))
+print(finnhub_client.mutual_fund_eet_pai('LU2036931686'))
+
+
+print(finnhub_client.isin_change(_from='2022-10-01', to='2022-10-07'))
+print(finnhub_client.symbol_change(_from='2022-10-01', to='2022-10-07'))
+
+print(finnhub_client.institutional_profile())
+print(finnhub_client.institutional_portfolio(cik='1000097', _from='2022-01-01', to='2022-10-07'))
+print(finnhub_client.institutional_ownership('TSLA', '', _from='2022-01-01', to='2022-10-07'))
 
 ```
 

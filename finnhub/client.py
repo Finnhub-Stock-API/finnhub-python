@@ -193,8 +193,10 @@ class Client:
     def exchange(self):
         return self._get("/stock/exchange")
 
-    def filings(self, **params):
-        return self._get("/stock/filings", params=params)
+    def filings(self, symbol='', cik='', access_number='', form='', _from='', to=''):
+        return self._get("/stock/filings",
+                         params={"symbol": symbol, "cik": cik, "accessNumber": access_number, "form": form,
+                                 "from": _from, "to": to})
 
     def stock_symbol(self, **params):
         return self._get("/stock/symbol", params=params)
@@ -409,6 +411,12 @@ class Client:
     def mutual_fund_country_exp(self, symbol):
         return self._get("/mutual-fund/country", params={"symbol": symbol})
 
+    def mutual_fund_eet(self, isin):
+        return self._get("/mutual-fund/eet", params={"isin": isin})
+
+    def mutual_fund_eet_pai(self, isin):
+        return self._get("/mutual-fund/eet-pai", params={"isin": isin})
+
     def stock_revenue_breakdown(self, symbol, cik=""):
         return self._get("/stock/revenue-breakdown", params={"symbol": symbol, "cik": cik})
 
@@ -453,3 +461,21 @@ class Client:
 
     def sector_metric(self, region):
         return self._get("/sector/metrics", params={"region": region})
+
+    def price_metrics(self, symbol):
+        return self._get("/stock/price-metric", params={"symbol": symbol})
+
+    def symbol_change(self, _from, to):
+        return self._get("/ca/symbol-change", params={"from": _from, "to": to})
+
+    def isin_change(self, _from, to):
+        return self._get("/ca/isin-change", params={"from": _from, "to": to})
+
+    def institutional_profile(self, cik=''):
+        return self._get("/institutional/profile", params={"cik": cik})
+
+    def institutional_portfolio(self, cik, _from, to):
+        return self._get("/institutional/portfolio", params={"cik": cik, "from": _from, "to": to})
+
+    def institutional_ownership(self, symbol, cusip, _from, to):
+        return self._get("/institutional/ownership", params={"symbol": symbol, "cusip": cusip, "from": _from, "to": to})
