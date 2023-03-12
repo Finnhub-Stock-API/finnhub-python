@@ -4,6 +4,19 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+# Filings
+print(finnhub_client.filings(symbol="AAPL", _from="2023-01-01", to="2023-01-15"))
+
+print(finnhub_client.mutual_fund_eet('LU2036931686'))
+print(finnhub_client.mutual_fund_eet_pai('LU2036931686'))
+
+
+print(finnhub_client.isin_change(_from='2022-10-01', to='2022-10-07'))
+print(finnhub_client.symbol_change(_from='2022-10-01', to='2022-10-07'))
+print(finnhub_client.institutional_profile())
+print(finnhub_client.institutional_portfolio(cik='1000097', _from='2022-01-01', to='2022-10-07'))
+print(finnhub_client.institutional_ownership('TSLA', '', _from='2022-01-01', to='2022-10-07'))
+
 # USA Spending
 print(finnhub_client.stock_usa_spending("LMT", "2021-01-01", "2022-06-15"))
 
@@ -67,9 +80,6 @@ print(finnhub_client.economic_data("MA-USA-656880"))
 
 # Economic calendar
 print(finnhub_client.calendar_economic('2021-01-01', '2021-01-07'))
-
-# Filings
-print(finnhub_client.filings(symbol="AAPL", _from="2020-01-01", to="2020-06-11"))
 
 # Financials
 print(finnhub_client.financials("AAPL", "bs", "annual"))
