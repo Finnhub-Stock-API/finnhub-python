@@ -4,12 +4,17 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+print(finnhub_client.bond_yield_curve('10y'))
+print(finnhub_client.bond_tick('US693475BF18', '2022-08-19', 500, 0, 'trace'))
+
+print(finnhub_client.congressional_trading('AAPL', '2020-01-01', '2023-03-31'))
+print(finnhub_client.price_metrics(symbol="AAPL", date="2022-01-01"))
+
 # Filings
 print(finnhub_client.filings(symbol="AAPL", _from="2023-01-01", to="2023-01-15"))
 
 print(finnhub_client.mutual_fund_eet('LU2036931686'))
 print(finnhub_client.mutual_fund_eet_pai('LU2036931686'))
-
 
 print(finnhub_client.isin_change(_from='2022-10-01', to='2022-10-07'))
 print(finnhub_client.symbol_change(_from='2022-10-01', to='2022-10-07'))

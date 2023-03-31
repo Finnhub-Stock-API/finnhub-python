@@ -462,8 +462,8 @@ class Client:
     def sector_metric(self, region):
         return self._get("/sector/metrics", params={"region": region})
 
-    def price_metrics(self, symbol):
-        return self._get("/stock/price-metric", params={"symbol": symbol})
+    def price_metrics(self, symbol, date=''):
+        return self._get("/stock/price-metric", params={"symbol": symbol, "date": date})
 
     def symbol_change(self, _from, to):
         return self._get("/ca/symbol-change", params={"from": _from, "to": to})
@@ -479,3 +479,21 @@ class Client:
 
     def institutional_ownership(self, symbol, cusip, _from, to):
         return self._get("/institutional/ownership", params={"symbol": symbol, "cusip": cusip, "from": _from, "to": to})
+
+    def congressional_trading(self, symbol, _from, to):
+        return self._get("/stock/congressional-trading", params={"symbol": symbol, "from": _from, "to": to})
+
+    def bond_tick(self, isin, date, limit, skip, exchange='trace', _format='json', **kwargs):
+        params = self._merge_two_dicts({
+            "isin": isin,
+            "date": date,
+            "limit": limit,
+            "skip": skip,
+            "exchange": exchange,
+            "format": _format
+        }, kwargs)
+
+        return self._get("/bond/tick", params=params)
+
+    def bond_yield_curve(self, code):
+        return self._get("/bond/yield-curve", params={'code': code})
