@@ -6,7 +6,7 @@ from finnhub.exceptions import FinnhubRequestException
 
 
 class Client:
-    API_URL = "https://finnhub.io/api/v1"
+    API_URL = "https://api.finnhub.io/api/v1"
     DEFAULT_TIMEOUT = 10
 
     def __init__(self, api_key, proxies=None):
