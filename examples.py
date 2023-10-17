@@ -4,6 +4,9 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+print(finnhub_client.market_holiday(exchange='US'))
+print(finnhub_client.market_status(exchange='US'))
+
 print(finnhub_client.bond_yield_curve('10y'))
 print(finnhub_client.bond_tick('US693475BF18', '2022-08-19', 500, 0, 'trace'))
 

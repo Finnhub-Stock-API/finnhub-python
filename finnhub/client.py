@@ -497,3 +497,9 @@ class Client:
 
     def bond_yield_curve(self, code):
         return self._get("/bond/yield-curve", params={'code': code})
+
+    def market_status(self, exchange):
+        return self._get("/stock/market-status", params={'exchange': exchange})
+
+    def market_holiday(self, exchange):
+        return self._get("/stock/market-holiday", params={'exchange': exchange})

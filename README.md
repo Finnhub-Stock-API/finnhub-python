@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.18
+- Package version: 2.4.19
 
 ## Installation
 
@@ -304,6 +304,10 @@ print(finnhub_client.congressional_trading('AAPL', '2020-01-01', '2023-03-31'))
 
 # Price metrics with historical data
 print(finnhub_client.price_metrics(symbol="AAPL", date="2022-01-01"))
+
+## Market Holday / Status
+print(finnhub_client.market_holiday(exchange='US'))
+print(finnhub_client.market_status(exchange='US'))
 
 ```
 
