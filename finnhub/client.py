@@ -432,6 +432,12 @@ class Client:
     def company_esg_score(self, symbol):
         return self._get("/stock/esg", params={"symbol": symbol})
 
+    def company_historical_esg_score(self, symbol):
+        return self._get("/stock/historical-esg", params={"symbol": symbol})
+
+    def historical_market_cap(self, symbol, _from=None, to=None):
+        return self._get("/stock/historical-market-cap", params={"symbol": symbol, "from": _from, "to": to})
+
     def company_earnings_quality_score(self, symbol, freq):
         return self._get("/stock/earnings-quality-score", params={"symbol": symbol, 'freq': freq})
 

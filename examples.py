@@ -4,6 +4,9 @@ import os
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
 
+print(finnhub_client.historical_market_cap('AAPL', '2022-01-01', '2024-01-01'))
+print(finnhub_client.company_historical_esg_score('AAPL'))
+
 print(finnhub_client.market_holiday(exchange='US'))
 print(finnhub_client.market_status(exchange='US'))
 
