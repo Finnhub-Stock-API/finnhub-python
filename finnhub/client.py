@@ -509,3 +509,9 @@ class Client:
 
     def market_holiday(self, exchange):
         return self._get("/stock/market-holiday", params={'exchange': exchange})
+
+    def historical_employee_count(self, symbol, _from, to):
+        return self._get("/stock/historical-employee-count", params={"symbol": symbol, "from": _from, "to": to})
+
+    def airline_price_index(self, airline, _from, to):
+        return self._get("/airline/price-index", params={"airline": airline, "from": _from, "to": to})
