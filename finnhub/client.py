@@ -515,3 +515,12 @@ class Client:
 
     def airline_price_index(self, airline, _from, to):
         return self._get("/airline/price-index", params={"airline": airline, "from": _from, "to": to})
+
+    def earnings_call_live(self, _from, to, symbol=""):
+        return self._get("/stock/earnings-call-live", params={"symbol": symbol, "from": _from, "to": to})
+
+    def stock_presentation(self, symbol):
+        return self._get("/stock/presentation", params={"symbol": symbol})
+
+    def stock_revenue_breakdown2(self, symbol):
+        return self._get("/stock/revenue-breakdown2", params={"symbol": symbol})

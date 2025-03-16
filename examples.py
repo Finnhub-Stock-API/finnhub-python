@@ -3,6 +3,10 @@ import os
 
 # Setup client
 finnhub_client = finnhub.Client(api_key=os.environ["FINNHUB_API_KEY"])
+print(finnhub_client.stock_presentation('AAPL'))
+print(finnhub_client.stock_revenue_breakdown2('AAPL'))
+
+print(finnhub_client.earnings_call_live('2024-11-01', '2024-11-24', 'NVDA'))
 print(finnhub_client.historical_employee_count('AAPL', '2020-01-01', '2024-01-01'))
 print(finnhub_client.airline_price_index('united', '2022-01-01', '2025-01-01'))
 
