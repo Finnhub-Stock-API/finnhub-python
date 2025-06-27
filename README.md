@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.23
+- Package version: 2.4.24
 
 ## Installation
 
@@ -308,6 +308,9 @@ print(finnhub_client.price_metrics(symbol="AAPL", date="2022-01-01"))
 ## Market Holday / Status
 print(finnhub_client.market_holiday(exchange='US'))
 print(finnhub_client.market_status(exchange='US'))
+
+# Bank Branch
+print(finnhub_client.bank_branch("JPM"))
 
 ```
 
