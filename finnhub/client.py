@@ -144,11 +144,12 @@ class Client:
             "metric": metric
         })
 
-    def financials(self, symbol, statement, freq):
+    def financials(self, symbol, statement, freq, preliminary=''):
         return self._get("/stock/financials", params={
             "symbol": symbol,
             "statement": statement,
-            "freq": freq
+            "freq": freq,
+            "preliminary": preliminary
         })
 
     def financials_reported(self, **params):
