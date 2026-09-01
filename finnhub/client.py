@@ -9,7 +9,8 @@ class Client:
     API_URL = "https://api.finnhub.io/api/v1"
     DEFAULT_TIMEOUT = 10
 
-    def __init__(self, api_key, proxies=None):
+    def __init__(self, api_key, proxies=None, timeout=None):
+        self._timeout = timeout
         self._session = self._init_session(api_key, proxies)
 
     @staticmethod
@@ -34,7 +35,8 @@ class Client:
 
     def _request(self, method, path, **kwargs):
         uri = "{}/{}".format(self.API_URL, path)
-        kwargs["timeout"] = kwargs.get("timeout", self.DEFAULT_TIMEOUT)
+        timeout = self.DEFAULT_TIMEOUT if self._timeout is None else self._timeout
+        kwargs["timeout"] = kwargs.get("timeout", timeout)
         kwargs["params"] = self._format_params(kwargs.get("params", {}))
 
         response = getattr(self._session, method)(uri, **kwargs)
