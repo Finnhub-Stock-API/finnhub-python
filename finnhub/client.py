@@ -576,3 +576,6 @@ class Client:
             "symbol": symbol,
             "freq": freq
         })
+
+    def historical_price_target(self, symbol):
+        return self._get("/stock/historical-price-target", params={"symbol": symbol})

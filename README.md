@@ -2,7 +2,7 @@
 
 - API documentation: https://finnhub.io/docs/api
 - API version: 1.0.0
-- Package version: 2.4.25
+- Package version: 2.4.30
 
 ## Installation
 
@@ -116,6 +116,7 @@ print(finnhub_client.pattern_recognition('AAPL', 'D'))
 
 # Price target
 print(finnhub_client.price_target('AAPL'))
+print(finnhub_client.historical_price_target('AAPL'))
 
 # Quote
 print(finnhub_client.quote('AAPL'))
